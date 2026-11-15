@@ -2,27 +2,185 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AegisSat — 7-Slide Mission Deck (EN)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AegisSat — Beyond Earth Zero-SRAM CubeSat Survivability (EN)</title>
   <style>
-    body { font-family: system-ui, sans-serif; background: #050811; color: #e2e8f0; margin: 0; padding: 2rem; }
-    .deck { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
-    .slide { background: #0c1324; border: 1px solid #1e293b; border-radius: 14px; padding: 2rem; }
-    .slide h2 { color: #38bdf8; margin-top: 0; }
-    .tag { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; }
-    ul { line-height: 1.7; }
-    a { color: #38bdf8; }
+    :root { --bg: #070b14; --card: #0f172a; --text: #f8fafc; --muted: #94a3b8; --accent: #38bdf8; --ok: #22c55e; --warn: #f59e0b; --bad: #ef4444; --border: rgba(56,189,248,0.28); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); }
+    .toolbar { position: fixed; top: 12px; right: 16px; display: flex; gap: 8px; z-index: 99; background: rgba(15,23,42,0.92); padding: 6px 10px; border-radius: 10px; border: 1px solid var(--border); align-items: center; }
+    .toolbar a, .toolbar button { background: #1e293b; color: var(--text); border: 1px solid var(--border); padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; text-decoration: none; cursor: pointer; }
+    .toolbar a:hover, .toolbar button:hover { background: var(--accent); color: #020617; }
+    .slide { width: 100%; min-height: 100vh; padding: 48px 64px; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid rgba(148,163,184,0.12); background: radial-gradient(circle at top right, rgba(14,165,233,0.10), transparent 52%), var(--bg); page-break-after: always; break-after: page; position: relative; }
+    .slide-num { position: absolute; bottom: 18px; right: 32px; font-size: 12px; color: var(--muted); font-family: ui-monospace, monospace; }
+    .kicker { color: var(--accent); font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; font-size: 13px; margin-bottom: 8px; }
+    h1 { font-size: 46px; line-height: 1.12; margin-bottom: 14px; font-weight: 800; }
+    h2 { font-size: 32px; line-height: 1.18; margin-bottom: 22px; color: var(--accent); font-weight: 750; }
+    p.lead { font-size: 19px; color: var(--muted); max-width: 920px; line-height: 1.48; margin-bottom: 24px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .card { background: var(--card); border: 1px solid rgba(148,163,184,0.22); border-radius: 14px; padding: 20px; }
+    .card h3 { font-size: 17px; color: var(--accent); margin-bottom: 8px; }
+    .card p, .card li { font-size: 14.5px; color: #cbd5e1; line-height: 1.5; }
+    ul.clean { list-style: none; }
+    ul.clean li { margin-bottom: 7px; }
+    .metric { font-size: 34px; font-weight: 800; color: var(--ok); margin: 4px 0; font-family: ui-monospace, monospace; }
+    .metric.warn { color: var(--warn); }
+    .metric.bad { color: var(--bad); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .hex-box { background: #020617; border: 1px solid rgba(56,189,248,0.4); border-radius: 10px; padding: 14px 18px; font-size: 15px; color: var(--accent); letter-spacing: 0.04em; margin-top: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14.5px; }
+    th, td { border: 1px solid rgba(148,163,184,0.25); padding: 10px 14px; text-align: left; }
+    th { background: rgba(56,189,248,0.12); color: var(--accent); font-weight: 700; }
+    .hero-row { display: flex; align-items: center; gap: 36px; }
+    .patch-img { width: 150px; height: 150px; border-radius: 18px; object-fit: cover; border: 2px solid var(--border); flex-shrink: 0; }
+    @page { size: 13.333in 7.5in; margin: 0; }
+    @media print {
+      .toolbar { display: none !important; }
+      .slide { width: 13.333in; height: 7.5in; min-height: 7.5in; max-height: 7.5in; padding: 38px 54px; overflow: hidden; border-bottom: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
   </style>
 </head>
 <body>
-  <div class="deck">
-    <p><a href="../index.html">&larr; Back to Live Simulator</a> | <a href="slides_tr.html">Türkçe Sunum (TR)</a></p>
-    <div class="slide"><div class="tag">Slide 1 / 7 · Mission</div><h2>AegisSat — Space Mission Architecture Simulator</h2><p>NASA Space Apps Challenge 2026 (Space Mission Design Game). Live at <a href="https://aegissat.space">aegissat.space</a>. Uniting TRL-7 stratospheric hardware heritage with zero-SRAM WERR avionics.</p></div>
-    <div class="slide"><div class="tag">Slide 2 / 7 · Problem</div><h2>Cosmic-Ray SEU &amp; Launch Dynamics in SmallSats</h2><p>Deep-space and LEO CubeSats face Single Event Upsets (SEU) in SRAM AI weights, extreme -150 °C / +120 °C thermal cycling, and post-deployment angular tumbling.</p></div>
-    <div class="slide"><div class="tag">Slide 3 / 7 · Hardware Heritage</div><h2>KÜPSAT-01 &amp; IAC 2026 Antalya (IAC-26-C2.IPB.29)</h2><ul><li><strong>TPMK 2025/007159</strong> · 345 g 1U chassis (AA7075-T6 + Toray T700 CFRP + Rigid 10K Ceramic + XPS).</li><li>5-Gen FEA: 100.87 MPa &rarr; 18.49 MPa (<strong>-81.7% stress</strong>), 0.254 mm deflection, Mode 1 = <strong>100.76 Hz</strong>, FS = 27.20.</li></ul></div>
-    <div class="slide"><div class="tag">Slide 4 / 7 · TRL-7 Flight</div><h2>7 August 2026 Mersin Stratospheric Flight</h2><ul><li>Peak Altitude: <strong>25.64 km</strong> (22.51 hPa, 97.75% atmosphere traversed).</li><li>Thermal Delta: <strong>-54.50 °C</strong> ambient vs <strong>-17.27 °C</strong> internal (+37.23 °C passive protection).</li><li>Balloon Burst Shock: ~20G &amp; <strong>3,647.58 °/s</strong> (10.13 rev/s) tumbling recorded.</li></ul></div>
-    <div class="slide"><div class="tag">Slide 5 / 7 · 0-SRAM Avionics</div><h2>WERR 24-Byte Rad-Hard PROM Architecture</h2><p>Entire neural decision model synthesized on demand from a <strong>24-byte seed</strong> (72 B full TMR). <strong>0 bytes</strong> mutable weight SRAM = zero weight bit-flips, with 192/192 CRC-16/CCITT-FALSE fault detection.</p></div>
-    <div class="slide"><div class="tag">Slide 6 / 7 · ADCS Control</div><h2>Negative Schwarzian + Koenigs Detumbling</h2><p>Universal negative Schwarzian derivative (<code>S(f)(0) &le; -6.9196 &lt; 0</code>) prevents spurious equilibria; Koenigs contraction (<code>&mu; = 0.75</code>) damps <strong>94.37%</strong> of KÜPSAT-01's 3,647.58 °/s tumbling energy in 10 cycles.</p></div>
-    <div class="slide"><div class="tag">Slide 7 / 7 · Team &amp; Impact</div><h2>Team AegisSat</h2><p>Bekirhan Dağlı (Team Owner), Burak Salar, Emrah Yurtseven · Contact: <a href="mailto:info@aegissat.space">info@aegissat.space</a> · <a href="https://github.com/bdagli-web/aegissat">github.com/bdagli-web/aegissat</a></p></div>
+  <div class="toolbar">
+    <span id="slide-ind" class="mono" style="font-size:12px;color:#94a3b8;margin-right:4px;">1 / 7</span>
+    <button onclick="step(-1)">Prev</button>
+    <button onclick="step(1)">Next</button>
+    <a href="slides_tr.html">TR</a>
+    <a href="../docs/AegisSat_Presentation_EN.pdf" target="_blank" rel="noopener">PDF</a>
+    <a href="../index.html">Simulator</a>
   </div>
+
+  <section class="slide">
+    <div class="hero-row">
+      <img src="../assets/aegissat_mission_patch.jpg" alt="AegisSat Mission Patch" class="patch-img" />
+      <div>
+        <div class="kicker">NASA Space Apps Challenge 2026 · Beyond Earth</div>
+        <h1>AegisSat: Zero-SRAM Hybrid 1U CubeSat Survivability Architecture</h1>
+        <p class="lead">Uniting the flight-proven <strong>KÜPSAT-01</strong> stratospheric probe, <strong>IAC 2026</strong> composite-honeycomb shielding, and the patent-pending <strong>WERR 24-Byte Zero-SRAM</strong> mathematical engine for Lunar/Artemis &amp; Mars deep-space missions.</p>
+      </div>
+    </div>
+    <div class="grid-3" style="margin-top:24px;">
+      <div class="card"><h3>Live WebGL Twin</h3><p>https://aegissat.space<br/>Contact: info@aegissat.space</p></div>
+      <div class="card"><h3>Flight Heritage</h3><p>KÜPSAT-01 TRL-7 (7 Aug 2026) &amp; IAC-26-C2.IPB.29 Antalya</p></div>
+      <div class="card"><h3>Team AegisSat</h3><p>Bekirhan Dağlı (Flight Lead) · Emrah Yurtseven (WERR AI/IP) · Burak Salar (Sim &amp; Data)</p></div>
+    </div>
+    <span class="slide-num">01 / 07</span>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">01 · Deep-Space Challenge</div>
+    <h2>Why Standard CubeSats Die Beyond Low Earth Orbit</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Radiation-Induced SEUs Corrupt AI Weights</h3>
+        <div class="metric bad">234.0 flips/day</div>
+        <p>Under Mars Deep-Space GCR + X-Class Solar Proton Storms, 64 MB volatile AI weight SRAM on unshielded Al-6061 suffers 234 flips/day, silently corrupting attitude &amp; fault control.</p>
+      </div>
+      <div class="card">
+        <h3>Thermomechanical &amp; Detumbling Shocks</h3>
+        <div class="metric warn">3,647.58 °/s · -150.0 °C</div>
+        <p>KÜPSAT-01 recorded ~20 G separation shock and 3,647.58 °/s tumble. Standard Al-6061/COTS buses freeze down to -141.5 °C internal temp and lose 64 Hz modal margin under 14.1 Grms.</p>
+      </div>
+    </div>
+    <span class="slide-num">02 / 07</span>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">02 · Verified Hardware &amp; Flight Proof</div>
+    <h2>KÜPSAT-01 Stratospheric Heritage + IAC 2026 Composite Chassis</h2>
+    <div class="grid-3">
+      <div class="card"><h3>KÜPSAT-01 Flight (421 Samples)</h3><div class="metric">25,636 m</div><p>7 Aug 2026 mission: 22.51 hPa min pressure, -54.50 °C exterior vs -17.27 °C internal (+37.23 °C passive thermal differential).</p></div>
+      <div class="card"><h3>IAC-26-C2.IPB.29 Structure</h3><div class="metric">-81.7% Stress</div><p>Al7075-T6 / CFRP + Hexagonal Honeycomb sandwich: 18.49 MPa von Mises, 0.254 mm deflection, Mode 1 = 100.76 Hz (GEVS 14.1 Grms), FS = 27.20.</p></div>
+      <div class="card"><h3>1U Mass &amp; Cost Advantage</h3><div class="metric">345 g / $8,300</div><p>Complete WERR Hybrid bus is 373 g (957 g payload margin out of 1,330 g 1U limit) at $8,300 total vs $42,800 for heavy 775 g Rad-Hard TMR avionics.</p></div>
+    </div>
+    <span class="slide-num">03 / 07</span>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">03 · Core Innovation</div>
+    <h2>WERR 24-Byte Zero-SRAM PROM + MLI Active Thermal Control</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Immutable 24-Byte (192-bit) Mathematical Seed</h3>
+        <ul class="clean">
+          <li>• <strong>0 Bytes mutable weight SRAM</strong> (0.0 weight flips/day, <strong>0.35 W</strong> ultra-low compute)</li>
+          <li>• Deterministic arithmetic replaces 64 MB volatile neural matrices</li>
+          <li>• Dual-byte hardware <strong>CRC-16/CCITT-FALSE</strong> catches <strong>192 / 192</strong> single-bit SEU corruptions at 100% accuracy</li>
+        </ul>
+        <div class="hex-box mono">02 02 03 03 bf3ed46f 3de770bd 3fcccccd 445861ed ff0b f146</div>
+      </div>
+      <div class="card">
+        <h3>Dual-Stage Deep-Space Thermal Envelope</h3>
+        <div class="metric">-24.5 °C</div>
+        <p>IAC passive MLI/honeycomb insulation (+37.23 °C gain) paired with a thermostatically regulated <strong>0.50 W survival heater</strong> (<strong>0.85 W</strong> total bus in deep space) keeps internal electronics ≥ -24.5 °C (safe above -30 °C limit) at -150.0 °C ambient.</p>
+      </div>
+    </div>
+    <span class="slide-num">04 / 07</span>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">04 · Control Theory &amp; Patents</div>
+    <h2>3-Axis Euler ADCS (94.37% Damped) + Patent 2 &amp; 3 Safety Gates</h2>
+    <div class="grid-3">
+      <div class="card"><h3>Schwarzian + Koenigs ADCS</h3><div class="metric">94.37%</div><p>Negative Schwarzian S(f)(0) = -6.919 &lt; 0 &amp; Koenig multiplier μ = 0.75 damp 3,647.58 °/s energy by 94.37% in 10 cycles vs PID 63.15% or SEU-degraded ARM 29.97%.</p></div>
+      <div class="card"><h3>Patent 2 · Julia Watchdog</h3><p>TR 2026/016633 hardware gate strictly vetoes unstable controller gains (|r| ≥ 2.4046) and locks μ = 0.75 before actuator saturation.</p></div>
+      <div class="card"><h3>Patent 3 · Spoofing Barrier</h3><p>TR 2026/020266 Collatz Parity Lyapunov barrier isolates injected spoofing bursts whenever γ = n_odd / n_even &gt; 0.58496.</p></div>
+    </div>
+    <span class="slide-num">05 / 07</span>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">05 · Live Data &amp; Global Collaborators</div>
+    <h2>NASA, NOAA, Planetary Computer &amp; Meteomatics Integration</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Live Space Weather &amp; Radiation Telemetry</h3>
+        <ul class="clean">
+          <li>• <strong>Cloudflare Edge Proxy (`/api/space-weather`):</strong> real-time NOAA SWPC GOES ≥10 MeV proton flux + Planetary Kp index</li>
+          <li>• <strong>NASA DONKI GST &amp; SPENVIS/OMNIWeb:</strong> real geomagnetic storms + trapped LEO/GEO/Artemis/Mars TID envelopes</li>
+          <li>• <strong>NASA GEVS STD-7000B:</strong> 14.1 Grms structural modal validation (&gt;90 Hz Mode 1)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Space Apps Global Offers Utilized</h3>
+        <ul class="clean">
+          <li>• <strong>Microsoft Planetary Computer STAC:</strong> Sentinel-2 L2A optical imagery (&lt;15% cloud) mapping the KÜPSAT-01 Arslanköy–Ermenek recovery corridor</li>
+          <li>• <strong>Meteomatics Weather API:</strong> surface temperature &amp; 100 m wind shear telemetry for stratospheric balloon launch windows</li>
+        </ul>
+      </div>
+    </div>
+    <span class="slide-num">06 / 07</span>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">06 · Mission Trade Study &amp; Impact</div>
+    <h2>Mars Transit (Solar Storm + Spoofing Attack): 2.0% vs 100.0%</h2>
+    <table>
+      <thead><tr><th>Architecture</th><th>Weight SRAM</th><th>SEU Flips/Day</th><th>10-Cycle ADCS</th><th>Min Temp</th><th>Power / Cost</th><th>1U Margin</th><th>Survival</th></tr></thead>
+      <tbody>
+        <tr><td>Al-6061 + 64 MB ARM SRAM</td><td>64 MB</td><td>234.0</td><td>29.97% (SEU)</td><td>-141.5 °C (Freeze)</td><td>4.20 W / $3,600</td><td>730 g</td><td style="color:#ef4444;font-weight:700;">2.0% FAIL</td></tr>
+        <tr><td>CFRP + Rad-Hard TMR CPU</td><td>16 MB</td><td>0.0</td><td>63.15% (PID)</td><td>-129.0 °C (Freeze)</td><td>8.50 W / $42,800</td><td>555 g</td><td style="color:#f59e0b;font-weight:700;">48.5% DEGRADED</td></tr>
+        <tr><td><strong>AegisSat Hybrid + WERR 24B</strong></td><td><strong>0 B PROM</strong></td><td><strong>0.0</strong></td><td><strong>94.37% (μ=0.75)</strong></td><td><strong>-24.5 °C (OK)</strong></td><td><strong>0.85 W / $8,300</strong></td><td><strong>957 g</strong></td><td style="color:#22c55e;font-weight:800;">100.0% SURVIVED</td></tr>
+      </tbody>
+    </table>
+    <p class="lead" style="margin-top:18px;font-size:16px;">Open-source simulator, Python/JS bit-exact core, KÜPSAT-01 replay &amp; patents live at <strong>https://aegissat.space</strong> · <strong>github.com/bdagli-web/aegissat</strong></p>
+    <span class="slide-num">07 / 07</span>
+  </section>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    let idx = 0;
+    function updateInd() { document.getElementById("slide-ind").textContent = `${idx + 1} / ${slides.length}`; }
+    function step(d) {
+      idx = Math.max(0, Math.min(slides.length - 1, idx + d));
+      slides[idx].scrollIntoView({ behavior: "smooth" });
+      updateInd();
+    }
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") step(1);
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") step(-1);
+    });
+  </script>
 </body>
 </html>

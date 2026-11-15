@@ -16,7 +16,7 @@ from typing import Any, Dict, List
 
 NOAA_PROTONS_URL = "https://services.swpc.noaa.gov/json/goes/primary/integral-protons-1-day.json"
 NOAA_KP_URL = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
-NASA_DONKI_SEP_URL = "https://api.nasa.gov/DONKI/SEP?api_key=DEMO_KEY"
+NASA_DONKI_GST_URL = "https://api.nasa.gov/DONKI/GST?api_key=DEMO_KEY"
 PC_STAC_SEARCH_URL = "https://planetarycomputer.microsoft.com/api/stac/v1/search"
 METEOMATICS_BASE_URL = "https://api.meteomatics.com"
 KUPSAT_CORRIDOR_BBOX = [34.15, 36.95, 34.85, 37.35]
@@ -172,17 +172,18 @@ def sync_live_space_weather(snapshot_path: Path) -> Dict[str, Any]:
         pass
 
     try:
-        sep = _get_json(NASA_DONKI_SEP_URL)
-        if isinstance(sep, list):
+        gst = _get_json(NASA_DONKI_GST_URL)
+        if isinstance(gst, list) and gst:
             donki_events = [
                 {
-                    "sepID": ev.get("sepID", ""),
-                    "eventTime": ev.get("eventTime", ""),
-                    "instruments": [i.get("displayName", "") for i in ev.get("instruments", [])][:2],
+                    "gstID": ev.get("gstID", ""),
+                    "startTime": ev.get("startTime", ""),
+                    "kpIndex": (ev.get("allKpIndex") or [{}])[-1].get("kpIndex"),
+                    "link": ev.get("link", ""),
                 }
-                for ev in sep[-5:]
+                for ev in gst[-5:]
             ]
-            live_sources.append("NASA DONKI SEP")
+            live_sources.append("NASA DONKI GST")
     except Exception:
         pass
 

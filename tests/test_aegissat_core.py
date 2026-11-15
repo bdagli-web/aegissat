@@ -9,6 +9,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from aegissat_core import (  # noqa: E402
     KUPSAT01_BURST_RATE_DPS,
+    compute_internal_min_temp,
     evaluate_ai_watchdog,
     evaluate_mission,
     evaluate_spoofing_barrier,
@@ -86,6 +87,34 @@ class TestAegisSatCore(unittest.TestCase):
         self.assertLess(baseline["survival_score_pct"], 15.0)
         self.assertIn("Zero-SRAM Survivor", aegis["badges"])
 
+    def test_thermal_mli_heater_vs_passive_freeze(self):
+        temp_aegis_mars, ok_aegis_mars = compute_internal_min_temp("WERR_AEGIS_HYBRID", "MARS_DEEP_SPACE")
+        self.assertEqual(temp_aegis_mars, -24.5)
+        self.assertTrue(ok_aegis_mars)
+
+        temp_al_mars, ok_al_mars = compute_internal_min_temp("AL6061", "MARS_DEEP_SPACE")
+        self.assertEqual(temp_al_mars, -141.5)
+        self.assertFalse(ok_al_mars)
+
+        mars_res = evaluate_mission("WERR_AEGIS_HYBRID", "WERR_24B_FNS", "MARS_DEEP_SPACE", True, False)
+        leo_res = evaluate_mission("WERR_AEGIS_HYBRID", "WERR_24B_FNS", "LEO", True, False)
+        self.assertEqual(mars_res["power_w"], 0.85)
+        self.assertEqual(leo_res["power_w"], 0.35)
+
+    def test_adcs_differentiation_across_avionics(self):
+        werr = evaluate_mission("WERR_AEGIS_HYBRID", "WERR_24B_FNS", "MARS_DEEP_SPACE", True, False)
+        rad = evaluate_mission("WERR_AEGIS_HYBRID", "RAD_HARD_CPU", "MARS_DEEP_SPACE", True, False)
+        arm = evaluate_mission("AL6061", "ARM_SRAM", "MARS_DEEP_SPACE", True, True)
+
+        self.assertEqual(werr["adcs"]["mu"], 0.75)
+        self.assertEqual(werr["adcs"]["energy_damped_pct"], 94.37)
+        self.assertEqual(rad["adcs"]["mu"], 0.905)
+        self.assertLess(rad["adcs"]["energy_damped_pct"], 65.0)
+        self.assertEqual(arm["adcs"]["mu"], 0.965)
+        self.assertLess(arm["adcs"]["energy_damped_pct"], 35.0)
+        self.assertEqual(len(werr["adcs"]["baseline_pid_energies"]), 11)
+        self.assertLess(werr["adcs"]["baseline_pid_energies"][-1], 0.38)
+
     def test_verified_datasets_and_noaa_scale(self):
         flight = json.loads((ROOT / "data" / "kupsat01_flight_20260807.json").read_text(encoding="utf-8"))
         self.assertGreaterEqual(len(flight["samples"]), 400)
@@ -93,25 +122,35 @@ class TestAegisSatCore(unittest.TestCase):
 
         sw = json.loads((ROOT / "data" / "verified_nasa_space_weather.json").read_text(encoding="utf-8"))
         self.assertIn("noaa_swpc", sw)
+        self.assertTrue(len(sw.get("nasa_donki", {}).get("recent_sep_events", [])) >= 1)
         self.assertTrue(len(sw.get("planetary_computer_corridor", [])) >= 1)
         self.assertIn("arslankoy_mersin", sw.get("meteomatics_launch_weather", {}))
         self.assertEqual(map_proton_flux_to_noaa_scale(1500.0)["scale"], "S3 (Strong)")
 
     def test_python_js_bit_exact_parity(self):
         js_path = (ROOT / "assets" / "js" / "werr_aegissat_core.js").as_posix()
-        script = f"""
-        const core = require({json.dumps(js_path)});
-        const res = core.evaluateMission("WERR_AEGIS_HYBRID", "WERR_24B_FNS", "LUNAR_ARTEMIS", true, true);
-        console.log(JSON.stringify(res));
-        """
-        out = subprocess.check_output(["node", "-e", script], text=True).strip()
-        js_res = json.loads(out)
-        py_res = evaluate_mission("WERR_AEGIS_HYBRID", "WERR_24B_FNS", "LUNAR_ARTEMIS", True, True)
-        self.assertEqual(py_res["werr24_hex"], js_res["werr24_hex"])
-        self.assertEqual(py_res["survival_score_pct"], js_res["survival_score_pct"])
-        self.assertEqual(py_res["adcs"]["energy_damped_pct"], js_res["adcs"]["energy_damped_pct"])
-        self.assertEqual(py_res["watchdog"]["vetoed"], js_res["watchdog"]["vetoed"])
-        self.assertEqual(py_res["spoofing"]["spoofing_isolated"], js_res["spoofing"]["spoofing_isolated"])
+        cases = [
+            ("WERR_AEGIS_HYBRID", "WERR_24B_FNS", "LUNAR_ARTEMIS", True, True),
+            ("WERR_AEGIS_HYBRID", "WERR_24B_FNS", "MARS_DEEP_SPACE", True, False),
+            ("AL6061", "ARM_SRAM", "MARS_DEEP_SPACE", True, True),
+        ]
+        for ch, av, orb, storm, spoof in cases:
+            script = f"""
+            const core = require({json.dumps(js_path)});
+            const res = core.evaluateMission({json.dumps(ch)}, {json.dumps(av)}, {json.dumps(orb)}, {str(storm).lower()}, {str(spoof).lower()});
+            console.log(JSON.stringify(res));
+            """
+            out = subprocess.check_output(["node", "-e", script], text=True).strip()
+            js_res = json.loads(out)
+            py_res = evaluate_mission(ch, av, orb, storm, spoof)
+            self.assertEqual(py_res["werr24_hex"], js_res["werr24_hex"])
+            self.assertEqual(py_res["survival_score_pct"], js_res["survival_score_pct"])
+            self.assertEqual(py_res["internal_min_temp_c"], js_res["internal_min_temp_c"])
+            self.assertEqual(py_res["power_w"], js_res["power_w"])
+            self.assertEqual(py_res["adcs"]["mu"], js_res["adcs"]["mu"])
+            self.assertEqual(py_res["adcs"]["energy_damped_pct"], js_res["adcs"]["energy_damped_pct"])
+            self.assertEqual(py_res["watchdog"]["vetoed"], js_res["watchdog"]["vetoed"])
+            self.assertEqual(py_res["spoofing"]["spoofing_isolated"], js_res["spoofing"]["spoofing_isolated"])
 
 
 if __name__ == "__main__":

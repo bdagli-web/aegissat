@@ -6,6 +6,7 @@
       subtitle: "Space Mission Architecture Simulator · KÜPSAT-01 TRL-7 + IAC 2026 + WERR 24-Byte 0-SRAM",
       btn_slides: "Slides (EN)",
       btn_slides_alt: "Sunum (TR)",
+      btn_pdf: "Deck PDF",
       btn_lang: "TR / EN",
       h_config: "1. Mission Architecture",
       lbl_chassis: "Chassis & Shielding (IAC-26-C2.IPB.29)",
@@ -21,8 +22,8 @@
       btn_seu: "Flip 1 Bit in 24B Frame (SEU)",
       h_sim: "2. 3D CubeSat & Rigid-Body ADCS",
       hud_hint: "Drag to rotate 3D CubeSat · Scroll to zoom",
-      chart_adcs: "3-Axis Schwarzian + Koenigs ADCS Energy Damping (10 Cycles = 94.37%)",
-      chart_flight: "KÜPSAT-01 Verified Flight Replay (421 Samples · 25.64 km · 22.51 hPa)",
+      chart_adcs: "3-Axis Schwarzian + Koenigs ADCS Energy Damping vs. PID Baseline",
+      chart_flight: "KÜPSAT-01 Verified Flight Replay (421 Samples · 25.64 km · +37.23°C Passive Gap)",
       h_telemetry: "3. Survivability, Watchdog & 24B WERR",
       k_survival: "Mission Survival Score",
       k_seu: "SRAM Weight Bit-Flips / Day",
@@ -33,13 +34,14 @@
       k_adcs: "ADCS 10-Cycle Damping",
       k_guard: "Watchdog & Spoof Gate",
       lbl_hex: "Immutable 24-Byte (192-bit) WERR Frame + CRC-16/CCITT-FALSE",
-      lbl_sw: "Live Space Weather (NOAA SWPC / NASA DONKI)",
+      lbl_sw: "Live Space Weather (NOAA SWPC / NASA DONKI / Planetary Computer)",
       h_heritage: "Verified Flight & Research Heritage",
     },
     tr: {
       subtitle: "Uzay Görevi Mimari Simülatörü · KÜPSAT-01 TRL-7 + IAC 2026 + WERR 24-Bayt 0-SRAM",
       btn_slides: "Slaytlar (EN)",
       btn_slides_alt: "Sunum (TR)",
+      btn_pdf: "Sunum PDF",
       btn_lang: "EN / TR",
       h_config: "1. Görev Mimarisi Seçimi",
       lbl_chassis: "Şasi & Radyasyon Kalkanı (IAC-26-C2.IPB.29)",
@@ -55,8 +57,8 @@
       btn_seu: "24B Çerçevede 1 Bit Çevir (SEU)",
       h_sim: "2. 3D Küpsat & Rijit Cisim ADCS",
       hud_hint: "3D Küpsat'ı sürükleyip çevirin · Tekerlekle yakınlaştırın",
-      chart_adcs: "3-Eksen Schwarzian + Koenigs ADCS Enerji Sönümleme (10 Çevrim = %94.37)",
-      chart_flight: "KÜPSAT-01 Gerçek Uçuş Telemetrisi (421 Örnek · 25.64 km · 22.51 hPa)",
+      chart_adcs: "3-Eksen Schwarzian + Koenigs ADCS Enerji Sönümleme vs. PID Referansı",
+      chart_flight: "KÜPSAT-01 Gerçek Uçuş Telemetrisi (421 Örnek · 25.64 km · +37.23°C Pasif Fark)",
       h_telemetry: "3. Hayatta Kalma, Bekçi & 24B WERR",
       k_survival: "Görev Başarı Skoru",
       k_seu: "Günlük SRAM Bit-Flip Hatası",
@@ -67,9 +69,16 @@
       k_adcs: "ADCS 10-Çevrim Sönümleme",
       k_guard: "Bekçi & Spoofing Bariyeri",
       lbl_hex: "Değişmez 24-Bayt (192-bit) WERR Çerçevesi + CRC-16/CCITT-FALSE",
-      lbl_sw: "Canlı Uzay Havası (NOAA SWPC / NASA DONKI)",
+      lbl_sw: "Canlı Uzay Havası (NOAA SWPC / NASA DONKI / Planetary Computer)",
       h_heritage: "Doğrulanmış Uçuş & Araştırma Mirası",
     },
+  };
+
+  const BADGE_TR = {
+    "Zero-SRAM Survivor": "Sıfır-SRAM Hayatta Kalan",
+    "GEVS 14.1 Grms Qualified": "GEVS 14.1 Grms Onaylı",
+    "Schwarzian Detumbler": "Schwarzian Sönümleyici",
+    "Artemis Flight Ready": "Artemis Uçuşuna Hazır",
   };
 
   const state = {
@@ -81,9 +90,12 @@
     spoofAttack: false,
     exploded: false,
     tumbleOmegaVisual: 18.0,
+    tumbleRateDps: 2735.69,
     lastResult: null,
-    seuStatusText: "",
+    seuEvent: null,
     flightSamples: null,
+    swData: null,
+    snapJson: null,
   };
 
   let scene, camera, renderer, cubeGroup, protonPoints, panels = [], brackets = [], rails = [];
@@ -225,7 +237,13 @@
         }
       }
 
-      state.tumbleOmegaVisual = Math.max(0.24, state.tumbleOmegaVisual * Math.pow(0.866, dt * 3.0));
+      const muVisual = state.lastResult ? state.lastResult.adcs.mu : 0.75;
+      state.tumbleOmegaVisual = Math.max(0.24, state.tumbleOmegaVisual * Math.pow(muVisual, dt * 3.0));
+      state.tumbleRateDps = Math.max(0.5, state.tumbleRateDps * Math.pow(muVisual, dt * 3.0));
+      const hudOmega = document.getElementById("hud-omega");
+      if (hudOmega) {
+        hudOmega.textContent = `ω = ${state.tumbleRateDps.toFixed(1)} °/s (μ=${muVisual})`;
+      }
       if (!dragging) {
         userRotY += state.tumbleOmegaVisual * dt * 0.4;
         userRotX += state.tumbleOmegaVisual * dt * 0.2;
@@ -260,9 +278,26 @@
     ctx.lineTo(w - pad, h - pad);
     ctx.stroke();
 
+    if (Array.isArray(adcs.baseline_pid_energies)) {
+      ctx.save();
+      ctx.setLineDash([5, 4]);
+      ctx.strokeStyle = "#64748b";
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      adcs.baseline_pid_energies.forEach((e, i) => {
+        const x = pad + (i / (adcs.baseline_pid_energies.length - 1)) * (w - pad * 2);
+        const y = h - pad - e * (h - pad * 2);
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+      ctx.restore();
+    }
+
     const pts = adcs.normalized_energy;
-    ctx.strokeStyle = "#22c55e";
-    ctx.lineWidth = 2.5;
+    const lineColor = adcs.mu <= 0.8 ? "#22c55e" : adcs.mu <= 0.92 ? "#f59e0b" : "#ef4444";
+    ctx.strokeStyle = lineColor;
+    ctx.lineWidth = 2.6;
     ctx.beginPath();
     pts.forEach((e, i) => {
       const x = pad + (i / (pts.length - 1)) * (w - pad * 2);
@@ -272,11 +307,12 @@
     });
     ctx.stroke();
 
+    const isTr = state.lang === "tr";
     ctx.fillStyle = "#94a3b8";
     ctx.font = "11px monospace";
-    ctx.fillText("E0: 100% (3,647.58°/s)", pad + 4, pad + 10);
-    ctx.fillStyle = "#22c55e";
-    ctx.fillText(`E10: ${(pts[pts.length - 1] * 100).toFixed(2)}% (-${adcs.energy_damped_pct}%)`, w - 160, h - pad - 8);
+    ctx.fillText(isTr ? "E0: %100 (3,647.58°/s) | Kesikli: PID" : "E0: 100% (3,647.58°/s) | Dashed: PID", pad + 4, pad + 10);
+    ctx.fillStyle = lineColor;
+    ctx.fillText(`E10: ${(pts[pts.length - 1] * 100).toFixed(2)}% (-${adcs.energy_damped_pct}%)`, w - 180, h - pad - 8);
   }
 
   function drawFlightChart() {
@@ -297,7 +333,7 @@
 
     const samples = state.flightSamples || [];
     if (samples.length > 5) {
-      const maxAlt = Math.max(...samples.map((s) => s.alt_m), 23000);
+      const maxAlt = Math.max(...samples.map((s) => s.alt_m), 26000);
       ctx.strokeStyle = "#38bdf8";
       ctx.lineWidth = 2;
       ctx.beginPath();
@@ -309,25 +345,39 @@
       });
       ctx.stroke();
 
-      // Overlay external temperature normalized
+      const tNormFn = (tc) => Math.max(0, Math.min(1, (tc + 65) / 100));
+
       ctx.strokeStyle = "#f59e0b";
       ctx.lineWidth = 1.4;
       ctx.beginPath();
       samples.forEach((s, i) => {
-        const tNorm = Math.max(0, Math.min(1, (s.t_out_c + 60) / 100));
         const x = pad + (i / (samples.length - 1)) * (w - pad * 2);
-        const y = h - pad - tNorm * (h - pad * 2);
+        const y = h - pad - tNormFn(s.t_out_c) * (h - pad * 2);
         if (i === 0) ctx.moveTo(x, y);
         else ctx.lineTo(x, y);
       });
       ctx.stroke();
+
+      if (samples[0] && samples[0].t_in_c !== undefined) {
+        ctx.strokeStyle = "#22c55e";
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        samples.forEach((s, i) => {
+          const x = pad + (i / (samples.length - 1)) * (w - pad * 2);
+          const y = h - pad - tNormFn(s.t_in_c) * (h - pad * 2);
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        });
+        ctx.stroke();
+      }
     }
 
+    const isTr = state.lang === "tr";
     ctx.fillStyle = "#38bdf8";
     ctx.font = "11px monospace";
-    ctx.fillText("Peak: 25.64 km (ISA) | 22.51 hPa", pad + 6, pad + 12);
-    ctx.fillStyle = "#f59e0b";
-    ctx.fillText("Ext -54.50°C | ΔT +37.23°C", w - 175, h - pad - 8);
+    ctx.fillText(isTr ? "Zirve: 25.64 km (ISA) | 22.51 hPa" : "Peak: 25.64 km (ISA) | 22.51 hPa", pad + 6, pad + 12);
+    ctx.fillStyle = "#22c55e";
+    ctx.fillText(isTr ? "Dış -54.50°C | İç -17.27°C (+37.23°C)" : "Ext -54.50°C | Int -17.27°C (+37.23°C)", w - 245, h - pad - 8);
   }
 
   function renderOptions() {
@@ -341,7 +391,7 @@
       btn.className = "opt-card" + (state.chassis === k ? " selected" : "");
       btn.innerHTML = `<span class="title">${isTr ? v.name_tr : v.name_en}</span>
         <span class="sub">${v.mass_g} g · $${v.cost_usd.toLocaleString()} · ${v.von_mises_mpa} MPa · FS ${v.safety_factor}</span>`;
-      btn.onclick = () => { state.chassis = k; state.seuStatusText = ""; updateAll(); };
+      btn.onclick = () => { state.chassis = k; state.seuEvent = null; updateAll(); };
       chBox.appendChild(btn);
     });
 
@@ -350,10 +400,12 @@
     Object.entries(core.AVIONICS_SPECS).forEach(([k, v]) => {
       const btn = document.createElement("button");
       btn.className = "opt-card" + (state.avionics === k ? " selected" : "");
-      const sramLabel = v.weight_sram_bytes === 0 ? "0 B SRAM (24 B Seed)" : `${(v.weight_sram_bytes / 1e6).toFixed(0)} MB SRAM`;
+      const sramLabel = v.weight_sram_bytes === 0
+        ? (isTr ? "0 B SRAM (24 B Çekirdek)" : "0 B SRAM (24 B Seed)")
+        : `${(v.weight_sram_bytes / 1e6).toFixed(0)} MB SRAM`;
       btn.innerHTML = `<span class="title">${isTr ? v.name_tr : v.name_en}</span>
         <span class="sub">${sramLabel} · ${v.power_w} W · ${v.mass_g} g · $${v.cost_usd.toLocaleString()}</span>`;
-      btn.onclick = () => { state.avionics = k; state.seuStatusText = ""; updateAll(); };
+      btn.onclick = () => { state.avionics = k; state.seuEvent = null; updateAll(); };
       avBox.appendChild(btn);
     });
 
@@ -364,17 +416,100 @@
       btn.className = "opt-card" + (state.orbit === k ? " selected" : "");
       btn.innerHTML = `<span class="title">${isTr ? v.name_tr : v.name_en}</span>
         <span class="sub">${v.dose_krad} krad · ${v.ext_temp_min_c}°C / +${v.ext_temp_max_c}°C</span>`;
-      btn.onclick = () => { state.orbit = k; state.seuStatusText = ""; updateAll(); };
+      btn.onclick = () => { state.orbit = k; state.seuEvent = null; updateAll(); };
       orbBox.appendChild(btn);
     });
   }
 
+  function renderHeritage() {
+    const el = document.getElementById("heritage-list");
+    if (!el) return;
+    if (state.lang === "tr") {
+      el.innerHTML = `
+        <li>• <strong>IAC 2026 Antalya:</strong> <a href="https://iac2026.ipostersessions.com/default.aspx?s=37-F2-E3-3C-C9-44-80-17-24-BB-B9-A7-A6-5B-65-2D&guestview=true" target="_blank" rel="noopener">IAC-26-C2.IPB.29 İnteraktif Poster</a> (%81.7 gerilme düşüşü, 100.76 Hz)</li>
+        <li>• <strong>KÜPSAT-01 Uçuş Raporu:</strong> <a href="https://teknosanat.com.tr/lib/cubesat/cubesat_master_flight_report_tr.html" target="_blank" rel="noopener">7 Ağustos 2026 Stratosfer Görevi</a> (25.64 km, 22.51 hPa, -54.50 °C)</li>
+        <li>• <strong>Fikri Mülkiyet &amp; Patentler:</strong> TPMK 2025/007159 · TR 2026/016285 · TR 2026/016633 · TR 2026/020266 · arXiv:2611.11641</li>
+        <li>• <strong>Sunumlar &amp; İletişim:</strong> <a href="docs/AegisSat_Presentation_TR.pdf" target="_blank" rel="noopener">TR PDF</a> · <a href="docs/AegisSat_Presentation_EN.pdf" target="_blank" rel="noopener">EN PDF</a> · <a href="mailto:info@aegissat.space">info@aegissat.space</a> · <a href="https://www.spaceappschallenge.org/2026/find-a-team/aegissat/?tab=details" target="_blank" rel="noopener">NASA Space Apps Takımı</a></li>
+      `;
+    } else {
+      el.innerHTML = `
+        <li>• <strong>IAC 2026 Antalya:</strong> <a href="https://iac2026.ipostersessions.com/default.aspx?s=37-F2-E3-3C-C9-44-80-17-24-BB-B9-A7-A6-5B-65-2D&guestview=true" target="_blank" rel="noopener">IAC-26-C2.IPB.29 Interactive Poster</a> (81.7% stress reduction, 100.76 Hz)</li>
+        <li>• <strong>KÜPSAT-01 Flight Report:</strong> <a href="https://teknosanat.com.tr/lib/cubesat/cubesat_master_flight_report_tr.html" target="_blank" rel="noopener">7 Aug 2026 Stratospheric Mission</a> (25.64 km, 22.51 hPa, -54.50 °C)</li>
+        <li>• <strong>IP &amp; Patents:</strong> TPMK 2025/007159 · TR 2026/016285 · TR 2026/016633 · TR 2026/020266 · arXiv:2611.11641</li>
+        <li>• <strong>Presentations &amp; Contact:</strong> <a href="docs/AegisSat_Presentation_EN.pdf" target="_blank" rel="noopener">EN PDF</a> · <a href="docs/AegisSat_Presentation_TR.pdf" target="_blank" rel="noopener">TR PDF</a> · <a href="mailto:info@aegissat.space">info@aegissat.space</a> · <a href="https://www.spaceappschallenge.org/2026/find-a-team/aegissat/?tab=details" target="_blank" rel="noopener">NASA Space Apps Team</a></li>
+      `;
+    }
+  }
+
+  function renderSpaceWeather() {
+    const swEl = document.getElementById("sw-status");
+    if (!swEl) return;
+    const isTr = state.lang === "tr";
+    const swData = state.swData;
+    const snapJson = state.snapJson;
+    if (!swData) {
+      swEl.textContent = isTr ? "Çevrimdışı SPENVIS / OMNIWeb Zarfları Aktif" : "Offline SPENVIS / OMNIWeb Envelope Active";
+      return;
+    }
+    const pcScene = swData.planetary_computer_latest_scene || ((snapJson && snapJson.planetary_computer_corridor) || [])[0];
+    const meteo = snapJson && snapJson.meteomatics_launch_weather && snapJson.meteomatics_launch_weather.arslankoy_mersin;
+    const donkiList = swData.donki_events || (snapJson && snapJson.nasa_donki && (snapJson.nasa_donki.recent_sep_events || snapJson.nasa_donki.events)) || [];
+    const srcLabel = isTr
+      ? (swData.source && swData.source.includes("Live") ? "Canlı NOAA SWPC + NASA DONKI + PC STAC" : "Doğrulanmış Anlık Veri (NOAA SWPC + NASA DONKI)")
+      : (swData.source || "NOAA SWPC Live");
+    let html = `<strong>${srcLabel}</strong><br/>GOES &ge;10 MeV: <code>${swData.goes_proton_10mev_pfu} pfu</code> · Kp: <code>${swData.kp_index}</code>`;
+    if (donkiList.length > 0 && donkiList[donkiList.length - 1].gstID) {
+      html += `<br/>DONKI GST: <code>${donkiList[donkiList.length - 1].gstID}</code>`;
+    }
+    if (pcScene && pcScene.id) {
+      html += `<br/>Planetary Computer STAC: <code>${pcScene.id.slice(0, 26)}…</code>`;
+    }
+    if (meteo && meteo["t_2m:C"] !== undefined) {
+      html += `<br/>${isTr ? "Meteomatics Arslanköy" : "Meteomatics Arslanköy"}: <code>${meteo["t_2m:C"]}°C</code> · ${isTr ? "Rüzgâr" : "Wind"} <code>${meteo["wind_speed_100m:ms"]} m/s</code>`;
+    }
+    swEl.innerHTML = html;
+  }
+
+  function renderSeuStatus(res) {
+    const isTr = state.lang === "tr";
+    const el = document.getElementById("seu-status");
+    if (!state.seuEvent) {
+      if (res.avionics === "ARM_SRAM") {
+        el.textContent = isTr
+          ? `64 MB Ağırlık SRAM Korumasız (${res.bit_flips_per_day} SEU/gün riski)`
+          : `64 MB Weight SRAM Unprotected (${res.bit_flips_per_day} SEU/day risk)`;
+      } else {
+        el.textContent = isTr ? "CRC-16/CCITT-FALSE: GEÇERLİ (0 bit hatası)" : "CRC-16/CCITT-FALSE: VALID (0 bit errors)";
+      }
+      return;
+    }
+    const { bitIdx, avionics, valid } = state.seuEvent;
+    if (avionics === "WERR_24B_FNS") {
+      el.textContent = isTr
+        ? `SEU Bit #${bitIdx} bozuldu -> CRC-16 YAKALADI (valid=${valid}), 0 B Ağırlık SRAM Etkilenmedi!`
+        : `SEU Bit #${bitIdx} flipped -> CRC-16 TRAPPED (valid=${valid}), 0 B Weight SRAM Uncorrupted!`;
+    } else if (avionics === "ARM_SRAM") {
+      el.textContent = isTr
+        ? `SEU Bit #${bitIdx} bozuldu -> KORUMASIZ 64 MB Ağırlık SRAM BOZULDU! (${res.bit_flips_per_day} SEU/gün, ADCS riski)`
+        : `SEU Bit #${bitIdx} flipped -> UNPROTECTED 64 MB Weight SRAM CORRUPTED! (${res.bit_flips_per_day} flips/day, attitude drift risk)`;
+    } else {
+      el.textContent = isTr
+        ? `SEU Bit #${bitIdx} bozuldu -> TMR 3'lü oylama düzeltti (${res.power_w} W / $${res.total_cost_usd.toLocaleString()} ek maliyet)`
+        : `SEU Bit #${bitIdx} flipped -> TMR triple-voted (${res.power_w} W / $${res.total_cost_usd.toLocaleString()} penalty, valid=${valid})`;
+    }
+  }
+
   function updateI18n() {
     const dict = I18N[state.lang];
+    document.documentElement.lang = state.lang;
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
       if (dict[key]) el.textContent = dict[key];
     });
+    const pdfBtn = document.querySelector('[data-i18n="btn_pdf"]');
+    if (pdfBtn) {
+      pdfBtn.setAttribute("href", state.lang === "tr" ? "docs/AegisSat_Presentation_TR.pdf" : "docs/AegisSat_Presentation_EN.pdf");
+    }
     const stormBtn = document.getElementById("btn-storm");
     stormBtn.textContent = state.solarStorm ? dict.btn_storm : dict.btn_storm_off;
     stormBtn.classList.toggle("active", state.solarStorm);
@@ -384,6 +519,8 @@
     spoofBtn.classList.toggle("active", state.spoofAttack);
 
     document.getElementById("btn-explode").classList.toggle("active", state.exploded);
+    renderHeritage();
+    renderSpaceWeather();
   }
 
   function updateAll() {
@@ -400,30 +537,45 @@
     seu.textContent = `${res.bit_flips_per_day}`;
     seu.className = "k-val " + (res.bit_flips_per_day === 0 ? "k-good" : "k-bad");
 
-    document.getElementById("val-sram").textContent = res.weight_sram_bytes === 0 ? "0 B (24B PROM)" : `${(res.weight_sram_bytes / 1e6).toFixed(0)} MB`;
-    document.getElementById("val-temp").textContent = `${res.internal_min_temp_c} °C`;
-    document.getElementById("val-mass").textContent = `${res.payload_margin_g} g`;
+    document.getElementById("val-sram").textContent = res.weight_sram_bytes === 0
+      ? (state.lang === "tr" ? "0 B (24B Salt Okunur)" : "0 B (24B PROM)")
+      : `${(res.weight_sram_bytes / 1e6).toFixed(0)} MB`;
+
+    const tempEl = document.getElementById("val-temp");
+    tempEl.textContent = `${res.internal_min_temp_c} °C`;
+    tempEl.className = "k-val " + (res.thermal_ok ? "k-good" : "k-bad");
+
+    const massEl = document.getElementById("val-mass");
+    massEl.textContent = `${res.payload_margin_g} g`;
+    massEl.className = "k-val " + (res.structural_ok && res.payload_margin_g >= 500 ? "k-good" : "k-warn");
+
     document.getElementById("val-power").textContent = `${res.power_w} W / $${res.total_cost_usd.toLocaleString()}`;
-    document.getElementById("val-adcs").textContent = `${res.adcs.energy_damped_pct}% (μ=0.75)`;
+    document.getElementById("val-adcs").textContent = `${res.adcs.energy_damped_pct}% (μ=${res.adcs.mu})`;
 
     const guardEl = document.getElementById("val-guard");
+    const isTr = state.lang === "tr";
     if (state.spoofAttack) {
-      guardEl.textContent = res.avionics === "WERR_24B_FNS" ? "VETOED & ISOLATED" : "COMPROMISED!";
+      guardEl.textContent = res.avionics === "WERR_24B_FNS"
+        ? (isTr ? "VETO & İZOLE EDİLDİ" : "VETOED & ISOLATED")
+        : (isTr ? "ELE GEÇİRİLDİ!" : "COMPROMISED!");
       guardEl.className = "k-val " + (res.avionics === "WERR_24B_FNS" ? "k-good" : "k-bad");
     } else {
-      guardEl.textContent = "NOMINAL (γ < 0.585)";
+      guardEl.textContent = isTr ? "NOMİNAL (γ < 0.585)" : "NOMINAL (γ < 0.585)";
       guardEl.className = "k-val k-good";
     }
 
-    document.getElementById("werr24-hex").textContent = res.werr24_hex;
-    document.getElementById("seu-status").textContent = state.seuStatusText || (state.lang === "tr" ? "CRC-16/CCITT-FALSE: GEÇERLİ (0 bit hatası)" : "CRC-16/CCITT-FALSE: VALID (0 bit errors)");
+    if (!state.seuEvent) {
+      document.getElementById("werr24-hex").textContent = res.werr24_hex;
+    }
+    renderSeuStatus(res);
 
     const badgesEl = document.getElementById("badges-wrap");
     badgesEl.innerHTML = "";
     res.badges.forEach((b) => {
       const span = document.createElement("span");
       span.className = "badge-chip";
-      span.textContent = "★ " + b;
+      const label = isTr ? (BADGE_TR[b] || b) : b;
+      span.textContent = "★ " + label;
       badgesEl.appendChild(span);
     });
 
@@ -444,7 +596,6 @@
       }
     } catch (_) {}
 
-    const swEl = document.getElementById("sw-status");
     try {
       let swData = null;
       let snapJson = null;
@@ -466,20 +617,12 @@
           };
         }
       }
-      if (swData) {
-        const pcScene = swData.planetary_computer_latest_scene || ((snapJson && snapJson.planetary_computer_corridor) || [])[0];
-        const meteo = snapJson && snapJson.meteomatics_launch_weather && snapJson.meteomatics_launch_weather.arslankoy_mersin;
-        let html = `<strong>${swData.source || "NOAA SWPC Live"}</strong><br/>GOES &ge;10 MeV: <code>${swData.goes_proton_10mev_pfu} pfu</code> · Kp: <code>${swData.kp_index}</code>`;
-        if (pcScene && pcScene.id) {
-          html += `<br/>Planetary Computer STAC: <code>${pcScene.id.slice(0, 26)}…</code>`;
-        }
-        if (meteo && meteo["t_2m:C"] !== undefined) {
-          html += `<br/>Meteomatics Arslanköy: <code>${meteo["t_2m:C"]}°C</code> · Wind <code>${meteo["wind_speed_100m:ms"]} m/s</code>`;
-        }
-        swEl.innerHTML = html;
-      }
+      state.swData = swData;
+      state.snapJson = snapJson;
+      renderSpaceWeather();
     } catch (_) {
-      swEl.textContent = "Offline SPENVIS / OMNIWeb Envelope Active";
+      state.swData = null;
+      renderSpaceWeather();
     }
   }
 
@@ -490,10 +633,12 @@
     };
     document.getElementById("btn-storm").onclick = () => {
       state.solarStorm = !state.solarStorm;
+      state.seuEvent = null;
       updateAll();
     };
     document.getElementById("btn-spoof").onclick = () => {
       state.spoofAttack = !state.spoofAttack;
+      state.seuEvent = null;
       updateAll();
     };
     document.getElementById("btn-explode").onclick = () => {
@@ -502,6 +647,7 @@
     };
     document.getElementById("btn-tumble").onclick = () => {
       state.tumbleOmegaVisual = 24.0;
+      state.tumbleRateDps = 3647.58;
     };
     document.getElementById("btn-seu").onclick = () => {
       if (!state.lastResult) return;
@@ -510,10 +656,8 @@
       corrupted[Math.floor(bitIdx / 8)] ^= 1 << (bitIdx % 8);
       const valid = window.AegisCore.verifyWerr24FrameBytes(corrupted);
       document.getElementById("werr24-hex").textContent = window.AegisCore.bytesToHex(corrupted);
-      state.seuStatusText = state.lang === "tr"
-        ? `SEU Bit #${bitIdx} bozuldu -> CRC-16 YAKALADI (valid=${valid}), 0 B Ağırlık SRAM Etkilenmedi!`
-        : `SEU Bit #${bitIdx} flipped -> CRC-16 TRAPPED (valid=${valid}), 0 B Weight SRAM Uncorrupted!`;
-      document.getElementById("seu-status").textContent = state.seuStatusText;
+      state.seuEvent = { bitIdx, avionics: state.avionics, valid };
+      renderSeuStatus(state.lastResult);
     };
 
     initThree();

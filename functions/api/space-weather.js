@@ -5,12 +5,14 @@
 export async function onRequestGet() {
   const protonsUrl = "https://services.swpc.noaa.gov/json/goes/primary/integral-protons-1-day.json";
   const kpUrl = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json";
+  const donkiUrl = "https://api.nasa.gov/DONKI/GST?api_key=DEMO_KEY";
   const stacUrl = "https://planetarycomputer.microsoft.com/api/stac/v1/search";
 
   try {
-    const [pResp, kResp, sResp] = await Promise.all([
+    const [pSet, kSet, dSet, sSet] = await Promise.allSettled([
       fetch(protonsUrl, { headers: { "User-Agent": "AegisSat-Pages-Edge/1.0" }, cf: { cacheTtl: 900, cacheEverything: true } }),
       fetch(kpUrl, { headers: { "User-Agent": "AegisSat-Pages-Edge/1.0" }, cf: { cacheTtl: 900, cacheEverything: true } }),
+      fetch(donkiUrl, { headers: { "User-Agent": "AegisSat-Pages-Edge/1.0" }, cf: { cacheTtl: 3600, cacheEverything: true } }),
       fetch(stacUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json", "User-Agent": "AegisSat-Pages-Edge/1.0" },
@@ -19,15 +21,20 @@ export async function onRequestGet() {
       }),
     ]);
 
+    const pResp = pSet.status === "fulfilled" ? pSet.value : null;
+    const kResp = kSet.status === "fulfilled" ? kSet.value : null;
+    const dResp = dSet.status === "fulfilled" ? dSet.value : null;
+    const sResp = sSet.status === "fulfilled" ? sSet.value : null;
+
     let pfu10 = null;
-    if (pResp.ok) {
+    if (pResp && pResp.ok) {
       const pData = await pResp.json();
       const filtered = pData.filter((d) => String(d.energy || "").startsWith(">=10"));
       if (filtered.length > 0) pfu10 = Number(filtered[filtered.length - 1].flux);
     }
 
     let kp = null;
-    if (kResp.ok) {
+    if (kResp && kResp.ok) {
       const kData = await kResp.json();
       if (Array.isArray(kData) && kData.length > 0) {
         const last = kData[kData.length - 1];
@@ -35,8 +42,20 @@ export async function onRequestGet() {
       }
     }
 
+    let donkiEvents = [];
+    if (dResp && dResp.ok) {
+      const dData = await dResp.json();
+      if (Array.isArray(dData) && dData.length > 0) {
+        donkiEvents = dData.slice(-3).map((ev) => ({
+          gstID: ev.gstID || null,
+          startTime: ev.startTime || null,
+          kpIndex: Array.isArray(ev.allKpIndex) && ev.allKpIndex.length > 0 ? ev.allKpIndex[ev.allKpIndex.length - 1].kpIndex : null,
+        }));
+      }
+    }
+
     let latestScene = null;
-    if (sResp.ok) {
+    if (sResp && sResp.ok) {
       const sData = await sResp.json();
       if (sData.features && sData.features.length > 0) {
         latestScene = {
@@ -49,10 +68,11 @@ export async function onRequestGet() {
     return new Response(
       JSON.stringify({
         ok: true,
-        source: "NOAA SWPC + Planetary Computer Live Edge",
+        source: "NOAA SWPC + NASA DONKI GST + Planetary Computer Live Edge",
         updated_utc: new Date().toISOString(),
         goes_proton_10mev_pfu: pfu10,
         kp_index: kp,
+        donki_events: donkiEvents,
         planetary_computer_latest_scene: latestScene,
       }),
       {

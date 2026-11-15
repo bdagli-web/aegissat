@@ -2,6 +2,8 @@
   "use strict";
 
   const KOENIGS_MU = 0.75;
+  const LINEAR_PID_MU = 0.905;
+  const SEU_DEGRADED_MU = 0.965;
   const SCHWARZIAN_AT_ZERO = 3.0 * Math.PI * Math.PI - (3.0 / 8.0) * Math.pow(Math.PI, 4);
   const GAMMA_CRIT = Math.log(1.5) / Math.log(2.0);
   const LAMBDA_HAAR = 0.5 * Math.log(0.75);
@@ -20,6 +22,7 @@
       safety_factor: 2.74,
       mode1_hz: 64.20,
       thermal_delta_c: 8.50,
+      mli_heater_regulated: false,
       rad_attenuation: 0.22,
     },
     CFRP: {
@@ -33,6 +36,7 @@
       safety_factor: 14.53,
       mode1_hz: 92.40,
       thermal_delta_c: 21.00,
+      mli_heater_regulated: false,
       rad_attenuation: 0.48,
     },
     WERR_AEGIS_HYBRID: {
@@ -46,6 +50,7 @@
       safety_factor: 27.20,
       mode1_hz: 100.76,
       thermal_delta_c: 37.23,
+      mli_heater_regulated: true,
       rad_attenuation: 0.84,
     },
   };
@@ -60,6 +65,7 @@
       mass_g: 120.0,
       cost_usd: 1200,
       seu_susceptible: true,
+      adcs_mode: "LINEAR_PID",
     },
     RAD_HARD_CPU: {
       id: 1,
@@ -70,6 +76,7 @@
       mass_g: 410.0,
       cost_usd: 38000,
       seu_susceptible: false,
+      adcs_mode: "LINEAR_PID",
     },
     WERR_24B_FNS: {
       id: 2,
@@ -80,6 +87,7 @@
       mass_g: 28.0,
       cost_usd: 1800,
       seu_susceptible: false,
+      adcs_mode: "WERR_SCHWARZIAN_KOENIGS",
     },
   };
 
@@ -259,6 +267,14 @@
     };
   }
 
+  function computeInternalMinTemp(chassisKey, orbitKey) {
+    const ch = CHASSIS_SPECS[chassisKey];
+    const orb = ORBIT_SPECS[orbitKey];
+    const passiveTemp = orb.ext_temp_min_c + ch.thermal_delta_c;
+    const internalMin = (ch.mli_heater_regulated && passiveTemp < -24.5) ? -24.5 : passiveTemp;
+    return { internalMin: roundTo(internalMin, 2), thermalOk: internalMin >= -30.0 };
+  }
+
   function evaluateMission(chassisKey, avionicsKey, orbitKey, solarStorm = true, spoofAttack = false) {
     const ch = CHASSIS_SPECS[chassisKey];
     const av = AVIONICS_SPECS[avionicsKey];
@@ -271,8 +287,7 @@
     }
 
     const structuralOk = ch.safety_factor >= 2.0 && ch.mode1_hz > 90.0;
-    const thermalInternalMin = orb.ext_temp_min_c + ch.thermal_delta_c;
-    const thermalOk = thermalInternalMin >= -40.0 || chassisKey === "WERR_AEGIS_HYBRID";
+    const { internalMin: thermalInternalMin, thermalOk } = computeInternalMinTemp(chassisKey, orbitKey);
 
     const spoofing = evaluateSpoofingBarrier(spoofAttack ? 9 : 2, 10);
     const spoofingMitigated = !spoofAttack || avionicsKey === "WERR_24B_FNS";
@@ -289,7 +304,15 @@
     const payloadMarginG = roundTo(1330.0 - totalMassG, 1);
     const totalCostUsd = ch.cost_usd + av.cost_usd;
 
-    const adcs = simulateAdcsDetumbling(KUPSAT01_BURST_RATE_DPS, 10, KOENIGS_MU, totalMassG);
+    let muEff = LINEAR_PID_MU;
+    if (av.adcs_mode === "WERR_SCHWARZIAN_KOENIGS") {
+      muEff = KOENIGS_MU;
+    } else if (av.seu_susceptible && solarStorm && bitFlipsPerDay > 5.0) {
+      muEff = SEU_DEGRADED_MU;
+    }
+
+    const adcs = simulateAdcsDetumbling(KUPSAT01_BURST_RATE_DPS, 10, muEff, totalMassG);
+    adcs.baseline_pid_energies = simulateAdcsDetumbling(KUPSAT01_BURST_RATE_DPS, 10, LINEAR_PID_MU, totalMassG).normalized_energy;
     const watchdog = evaluateAiWatchdog(spoofAttack ? 2.65 : 0.75);
 
     const badges = [];
@@ -297,6 +320,9 @@
     if (structuralOk) badges.push("GEVS 14.1 Grms Qualified");
     if (adcs.energy_damped_pct >= 94.0) badges.push("Schwarzian Detumbler");
     if (score >= 95.0) badges.push("Artemis Flight Ready");
+
+    const heaterPower = (ch.mli_heater_regulated && orb.ext_temp_min_c < -80.0) ? 0.50 : 0.0;
+    const totalPowerW = roundTo(av.power_w + heaterPower, 2);
 
     const flags = (solarStorm ? 0x03 : 0x01) | (spoofAttack ? 0x04 : 0x00);
     const frame = packWerr24Frame(
@@ -320,10 +346,11 @@
       survival_score_pct: score,
       bit_flips_per_day: bitFlipsPerDay,
       weight_sram_bytes: av.weight_sram_bytes,
-      power_w: av.power_w,
+      power_w: totalPowerW,
       total_cost_usd: totalCostUsd,
       effective_dose_krad: roundTo(effectiveDose, 2),
-      internal_min_temp_c: roundTo(thermalInternalMin, 2),
+      internal_min_temp_c: thermalInternalMin,
+      thermal_ok: thermalOk,
       total_bus_mass_g: totalMassG,
       payload_margin_g: payloadMarginG,
       structural_ok: structuralOk,
@@ -338,6 +365,8 @@
 
   const api = {
     KOENIGS_MU,
+    LINEAR_PID_MU,
+    SEU_DEGRADED_MU,
     SCHWARZIAN_AT_ZERO,
     GAMMA_CRIT,
     LAMBDA_HAAR,
@@ -352,6 +381,7 @@
     simulateAdcsDetumbling,
     evaluateAiWatchdog,
     evaluateSpoofingBarrier,
+    computeInternalMinTemp,
     evaluateMission,
   };
 

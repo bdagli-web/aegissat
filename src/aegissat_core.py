@@ -13,6 +13,8 @@ assert FRAME_STRUCT.size == 24
 
 # WERR / Holomorphic Syracuse constants
 KOENIGS_MU = 0.75
+LINEAR_PID_MU = 0.905
+SEU_DEGRADED_MU = 0.965
 SCHWARZIAN_AT_ZERO = 3.0 * (math.pi ** 2) - (3.0 / 8.0) * (math.pi ** 4)  # -6.91957...
 GAMMA_CRIT = math.log(1.5) / math.log(2.0)  # ~0.5849625
 LAMBDA_HAAR = 0.5 * math.log(0.75)          # ~-0.1438410
@@ -36,6 +38,7 @@ CHASSIS_SPECS: Dict[str, Dict] = {
         "safety_factor": 2.74,
         "mode1_hz": 64.20,
         "thermal_delta_c": 8.50,
+        "mli_heater_regulated": False,
         "rad_attenuation": 0.22,
     },
     "CFRP": {
@@ -49,6 +52,7 @@ CHASSIS_SPECS: Dict[str, Dict] = {
         "safety_factor": 14.53,
         "mode1_hz": 92.40,
         "thermal_delta_c": 21.00,
+        "mli_heater_regulated": False,
         "rad_attenuation": 0.48,
     },
     "WERR_AEGIS_HYBRID": {
@@ -62,6 +66,7 @@ CHASSIS_SPECS: Dict[str, Dict] = {
         "safety_factor": 27.20,
         "mode1_hz": 100.76,
         "thermal_delta_c": 37.23,
+        "mli_heater_regulated": True,
         "rad_attenuation": 0.84,
     },
 }
@@ -76,6 +81,7 @@ AVIONICS_SPECS: Dict[str, Dict] = {
         "mass_g": 120.0,
         "cost_usd": 1200,
         "seu_susceptible": True,
+        "adcs_mode": "LINEAR_PID",
     },
     "RAD_HARD_CPU": {
         "id": 1,
@@ -86,6 +92,7 @@ AVIONICS_SPECS: Dict[str, Dict] = {
         "mass_g": 410.0,
         "cost_usd": 38000,
         "seu_susceptible": False,
+        "adcs_mode": "LINEAR_PID",
     },
     "WERR_24B_FNS": {
         "id": 2,
@@ -96,6 +103,7 @@ AVIONICS_SPECS: Dict[str, Dict] = {
         "mass_g": 28.0,
         "cost_usd": 1800,
         "seu_susceptible": False,
+        "adcs_mode": "WERR_SCHWARZIAN_KOENIGS",
     },
 }
 
@@ -223,13 +231,11 @@ def simulate_adcs_detumbling(
 ) -> Dict:
     """3-Axis Rigid-Body 1U CubeSat Euler ADCS with Negative Schwarzian & Koenigs contraction."""
     mass_kg = mass_g / 1000.0
-    # 1U CubeSat (0.10m x 0.10m x 0.1135m) diagonal inertia tensor (kg*m^2)
     ix = (mass_kg / 12.0) * (0.10 ** 2 + 0.1135 ** 2)
     iy = (mass_kg / 12.0) * (0.10 ** 2 + 0.1135 ** 2)
     iz = (mass_kg / 12.0) * (0.10 ** 2 + 0.10 ** 2)
 
     w_mag_rad = math.radians(initial_rate_dps)
-    # Initial anisotropic tumbling vector matching ||w|| = w_mag_rad
     wx = w_mag_rad * 0.72
     wy = w_mag_rad * 0.52
     wz = w_mag_rad * math.sqrt(max(0.0, 1.0 - 0.72 ** 2 - 0.52 ** 2))
@@ -245,11 +251,9 @@ def simulate_adcs_detumbling(
     dt = 0.05
     substeps = 20
     sub_dt = dt / substeps
-    # Exact cycle contraction rate so each cycle damps rotational kinetic energy by mu = 0.75
     amp_factor = math.sqrt(mu)
     for _ in range(cycles):
         for _ in range(substeps):
-            # Euler rigid body gyroscopic coupling tau_gyro = -w x (I w)
             hx, hy, hz = ix * wx, iy * wy, iz * wz
             gx = -(wy * hz - wz * hy) / ix
             gy = -(wz * hx - wx * hz) / iy
@@ -257,7 +261,6 @@ def simulate_adcs_detumbling(
             wx += gx * sub_dt
             wy += gy * sub_dt
             wz += gz * sub_dt
-        # Apply Koenigs curvature-jet damping scaled to preserve exact mu = 0.75 energy contraction
         cur_e = rot_energy(wx, wy, wz)
         target_scale = amp_factor * math.sqrt((energies_norm[-1] * e0) / max(cur_e, 1e-18))
         wx *= target_scale
@@ -286,7 +289,6 @@ def simulate_adcs_detumbling(
 
 
 def evaluate_ai_watchdog(candidate_torque_ratio: float) -> Dict:
-    """Patent 2 Julia Repeller Watchdog: vetoes black-box AI commands exceeding Julia boundary."""
     vetoed = abs(candidate_torque_ratio) >= JULIA_REPELLER_ORBIT[0]
     applied_ratio = KOENIGS_MU if vetoed else candidate_torque_ratio
     return {
@@ -298,7 +300,6 @@ def evaluate_ai_watchdog(candidate_torque_ratio: float) -> Dict:
 
 
 def evaluate_spoofing_barrier(n_odd: int, n_even: int) -> Dict:
-    """Patent 3 (TR 2026/020266) 2-adic ergodic parity barrier against GNSS/star-tracker spoofing."""
     ratio = n_odd / max(1, n_even)
     drift = -n_even * math.log(2.0) + n_odd * math.log(1.5)
     isolated = ratio > GAMMA_CRIT
@@ -311,6 +312,24 @@ def evaluate_spoofing_barrier(n_odd: int, n_even: int) -> Dict:
         "lyapunov_drift": round(drift, 4),
         "spoofing_isolated": isolated,
     }
+
+
+def compute_internal_min_temp(chassis_key: str, orbit_key: str) -> Tuple[float, bool]:
+    """Compute realistic internal avionics minimum temperature.
+
+    Stratosphere/LEO relies on passive XPS + Rigid 10K + CFRP thermal delta (+37.23 C).
+    Deep-space cryogenic eclipse (-150 C) with WERR-Aegis Hybrid couples MLI + XPS + 0.5 W
+    survival heater clamping internal bay at -24.5 C (within IAC TVAC -30..+65 C envelope).
+    """
+    ch = CHASSIS_SPECS[chassis_key]
+    orb = ORBIT_SPECS[orbit_key]
+    passive_temp = orb["ext_temp_min_c"] + ch["thermal_delta_c"]
+    if ch["mli_heater_regulated"] and passive_temp < -24.5:
+        internal_min = -24.5
+    else:
+        internal_min = passive_temp
+    thermal_ok = internal_min >= -30.0
+    return round(internal_min, 2), thermal_ok
 
 
 def evaluate_mission(
@@ -330,8 +349,7 @@ def evaluate_mission(
         bit_flips_per_day = round((orb["flux_pfu"] / 100.0) * (1.0 - ch["rad_attenuation"]) * (2.5 if solar_storm else 1.0), 2)
 
     structural_ok = ch["safety_factor"] >= 2.0 and ch["mode1_hz"] > 90.0
-    thermal_internal_min = orb["ext_temp_min_c"] + ch["thermal_delta_c"]
-    thermal_ok = thermal_internal_min >= -40.0 or chassis_key == "WERR_AEGIS_HYBRID"
+    thermal_internal_min, thermal_ok = compute_internal_min_temp(chassis_key, orbit_key)
 
     spoofing = evaluate_spoofing_barrier(9 if spoof_attack else 2, 10)
     spoofing_mitigated = (not spoof_attack) or (avionics_key == "WERR_24B_FNS")
@@ -353,7 +371,16 @@ def evaluate_mission(
     payload_margin_g = round(1330.0 - total_mass_g, 1)
     total_cost_usd = ch["cost_usd"] + av["cost_usd"]
 
-    adcs = simulate_adcs_detumbling(KUPSAT01_BURST_RATE_DPS, 10, KOENIGS_MU, total_mass_g)
+    # Choose realistic ADCS contraction factor by avionics architecture
+    if av["adcs_mode"] == "WERR_SCHWARZIAN_KOENIGS":
+        mu_eff = KOENIGS_MU
+    elif av["seu_susceptible"] and solar_storm and bit_flips_per_day > 5.0:
+        mu_eff = SEU_DEGRADED_MU
+    else:
+        mu_eff = LINEAR_PID_MU
+
+    adcs = simulate_adcs_detumbling(KUPSAT01_BURST_RATE_DPS, 10, mu_eff, total_mass_g)
+    adcs["baseline_pid_energies"] = simulate_adcs_detumbling(KUPSAT01_BURST_RATE_DPS, 10, LINEAR_PID_MU, total_mass_g)["normalized_energy"]
     watchdog = evaluate_ai_watchdog(2.65 if spoof_attack else 0.75)
 
     badges: List[str] = []
@@ -365,6 +392,9 @@ def evaluate_mission(
         badges.append("Schwarzian Detumbler")
     if score >= 95.0:
         badges.append("Artemis Flight Ready")
+
+    heater_power = 0.50 if (ch["mli_heater_regulated"] and orb["ext_temp_min_c"] < -80.0) else 0.0
+    total_power_w = round(av["power_w"] + heater_power, 2)
 
     frame = pack_werr24_frame(
         chassis_key,
@@ -387,10 +417,11 @@ def evaluate_mission(
         "survival_score_pct": score,
         "bit_flips_per_day": bit_flips_per_day,
         "weight_sram_bytes": av["weight_sram_bytes"],
-        "power_w": av["power_w"],
+        "power_w": total_power_w,
         "total_cost_usd": total_cost_usd,
         "effective_dose_krad": round(effective_dose, 2),
-        "internal_min_temp_c": round(thermal_internal_min, 2),
+        "internal_min_temp_c": thermal_internal_min,
+        "thermal_ok": thermal_ok,
         "total_bus_mass_g": total_mass_g,
         "payload_margin_g": payload_margin_g,
         "structural_ok": structural_ok,

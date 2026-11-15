@@ -42,3 +42,8 @@ PYTHONPATH=src python src/cli.py --sync-nasa
 ## Super Intelligence (SI) Transparency Disclosure
 
 In accordance with NASA Space Apps Challenge 2026 SI guidelines, mission patch artwork (`assets/aegissat_mission_patch.jpg`) and code scaffolding were developed with AI/SI assistance without incorporating any NASA logos, flags, or official emblems. All telemetry calculations, 24-byte CRC-16 framing, 3-axis Euler ADCS equations, and Python ↔ JavaScript parity are verified by `tests/test_aegissat_core.py`.
+
+## Presentation Decks (PDF)
+
+- [AegisSat Presentation (English PDF)](docs/AegisSat_Presentation_EN.pdf) — 7-slide 16:9 interactive/print-ready NASA Space Apps deck
+- [AegisSat Sunum (Türkçe PDF)](docs/AegisSat_Presentation_TR.pdf) — 7 slaytlık Türkçe 16:9 görev sunumu

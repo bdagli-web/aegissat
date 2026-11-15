@@ -2,27 +2,185 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <title>AegisSat — 7 Slaytlık Görev Sunumu (TR)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AegisSat — Derin Uzay Sıfır-SRAM Küpsat Hayatta Kalma Mimarisi (TR)</title>
   <style>
-    body { font-family: system-ui, sans-serif; background: #050811; color: #e2e8f0; margin: 0; padding: 2rem; }
-    .deck { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
-    .slide { background: #0c1324; border: 1px solid #1e293b; border-radius: 14px; padding: 2rem; }
-    .slide h2 { color: #38bdf8; margin-top: 0; }
-    .tag { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; }
-    ul { line-height: 1.7; }
-    a { color: #38bdf8; }
+    :root { --bg: #070b14; --card: #0f172a; --text: #f8fafc; --muted: #94a3b8; --accent: #38bdf8; --ok: #22c55e; --warn: #f59e0b; --bad: #ef4444; --border: rgba(56,189,248,0.28); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Inter, system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--text); }
+    .toolbar { position: fixed; top: 12px; right: 16px; display: flex; gap: 8px; z-index: 99; background: rgba(15,23,42,0.92); padding: 6px 10px; border-radius: 10px; border: 1px solid var(--border); align-items: center; }
+    .toolbar a, .toolbar button { background: #1e293b; color: var(--text); border: 1px solid var(--border); padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; text-decoration: none; cursor: pointer; }
+    .toolbar a:hover, .toolbar button:hover { background: var(--accent); color: #020617; }
+    .slide { width: 100%; min-height: 100vh; padding: 48px 64px; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid rgba(148,163,184,0.12); background: radial-gradient(circle at top right, rgba(14,165,233,0.10), transparent 52%), var(--bg); page-break-after: always; break-after: page; position: relative; }
+    .slide-num { position: absolute; bottom: 18px; right: 32px; font-size: 12px; color: var(--muted); font-family: ui-monospace, monospace; }
+    .kicker { color: var(--accent); font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; font-size: 13px; margin-bottom: 8px; }
+    h1 { font-size: 46px; line-height: 1.12; margin-bottom: 14px; font-weight: 800; }
+    h2 { font-size: 32px; line-height: 1.18; margin-bottom: 22px; color: var(--accent); font-weight: 750; }
+    p.lead { font-size: 19px; color: var(--muted); max-width: 920px; line-height: 1.48; margin-bottom: 24px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .card { background: var(--card); border: 1px solid rgba(148,163,184,0.22); border-radius: 14px; padding: 20px; }
+    .card h3 { font-size: 17px; color: var(--accent); margin-bottom: 8px; }
+    .card p, .card li { font-size: 14.5px; color: #cbd5e1; line-height: 1.5; }
+    ul.clean { list-style: none; }
+    ul.clean li { margin-bottom: 7px; }
+    .metric { font-size: 34px; font-weight: 800; color: var(--ok); margin: 4px 0; font-family: ui-monospace, monospace; }
+    .metric.warn { color: var(--warn); }
+    .metric.bad { color: var(--bad); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .hex-box { background: #020617; border: 1px solid rgba(56,189,248,0.4); border-radius: 10px; padding: 14px 18px; font-size: 15px; color: var(--accent); letter-spacing: 0.04em; margin-top: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14.5px; }
+    th, td { border: 1px solid rgba(148,163,184,0.25); padding: 10px 14px; text-align: left; }
+    th { background: rgba(56,189,248,0.12); color: var(--accent); font-weight: 700; }
+    .hero-row { display: flex; align-items: center; gap: 36px; }
+    .patch-img { width: 150px; height: 150px; border-radius: 18px; object-fit: cover; border: 2px solid var(--border); flex-shrink: 0; }
+    @page { size: 13.333in 7.5in; margin: 0; }
+    @media print {
+      .toolbar { display: none !important; }
+      .slide { width: 13.333in; height: 7.5in; min-height: 7.5in; max-height: 7.5in; padding: 38px 54px; overflow: hidden; border-bottom: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
   </style>
 </head>
 <body>
-  <div class="deck">
-    <p><a href="../index.html">&larr; Canlı Simülatöre Dön</a> | <a href="slides_en.html">English Deck (EN)</a></p>
-    <div class="slide"><div class="tag">Slayt 1 / 7 · Misyon</div><h2>AegisSat — Uzay Görevi Mimari Simülatörü</h2><p>NASA Space Apps Challenge 2026 (Space Mission Design Game). Canlı portal: <a href="https://aegissat.space">aegissat.space</a>. TRL-7 stratosferik donanım mirasını sıfır-SRAM WERR aviyoniği ile birleştirir.</p></div>
-    <div class="slide"><div class="tag">Slayt 2 / 7 · Problem</div><h2>Küpsatlarda Kozmik Işın SEU &amp; Fırlatma Dinamiği</h2><p>LEO ve derin uzay uyduları SRAM yapay zekâ ağırlıklarında bit kaymaları (SEU), -150 °C / +120 °C termal şoklar ve ayrılma sonrası açısal savrulma riskiyle karşı karşıyadır.</p></div>
-    <div class="slide"><div class="tag">Slayt 3 / 7 · Donanım Mirası</div><h2>KÜPSAT-01 &amp; IAC 2026 Antalya (IAC-26-C2.IPB.29)</h2><ul><li><strong>TPMK 2025/007159</strong> · 345 g 1U şasi (AA7075-T6 + Toray T700 CFRP + Rigid 10K Seramik + XPS).</li><li>5 Nesil FEA: 100.87 MPa &rarr; 18.49 MPa (<strong>%81.7 gerilim düşüşü</strong>), 0.254 mm sapma, Mod 1 = <strong>100.76 Hz</strong>, FS = 27.20.</li></ul></div>
-    <div class="slide"><div class="tag">Slayt 4 / 7 · TRL-7 Uçuş</div><h2>7 Ağustos 2026 Mersin Stratosfer Uçuşu</h2><ul><li>Tepe İrtifa: <strong>25.64 km</strong> (22.51 hPa, atmosfer kütlesinin %97.75'i aşıldı).</li><li>Termal Fark: <strong>-54.50 °C</strong> dış ortamda iç aviyonik <strong>-17.27 °C</strong> (+37.23 °C pasif koruma).</li><li>Balon Patlama Şoku: ~20G ve <strong>3,647.58 °/s</strong> (10.13 devir/sn) savrulma kaydedildi.</li></ul></div>
-    <div class="slide"><div class="tag">Slayt 5 / 7 · 0-SRAM Aviyonik</div><h2>WERR 24-Bayt Rad-Hard PROM Mimarisi</h2><p>Tüm model <strong>24 baytlık tohumdan</strong> (tam TMR ile 72 B) anlık sentezlenir. <strong>0 bayt</strong> ağırlık SRAM'i ile bit-flip bağışıklığı ve 192/192 CRC-16 hata tespiti sağlanır.</p></div>
-    <div class="slide"><div class="tag">Slayt 6 / 7 · ADCS Kontrol</div><h2>Negatif Schwarzian + Koenigs Sönümleme</h2><p>Evrensel negatif Schwarzian türevi (<code>S(f)(0) &le; -6.9196 &lt; 0</code>) parazit denge noktalarını engeller; Koenigs büzülmesi (<code>&mu; = 0.75</code>) 10 çevrimde savrulma enerjisinin <strong>%94.37'sini</strong> sönümler.</p></div>
-    <div class="slide"><div class="tag">Slayt 7 / 7 · Ekip &amp; İletişim</div><h2>AegisSat Ekibi</h2><p>Bekirhan Dağlı (Takım Lideri), Burak Salar, Emrah Yurtseven · İletişim: <a href="mailto:info@aegissat.space">info@aegissat.space</a> · <a href="https://github.com/bdagli-web/aegissat">github.com/bdagli-web/aegissat</a></p></div>
+  <div class="toolbar">
+    <span id="slide-ind" class="mono" style="font-size:12px;color:#94a3b8;margin-right:4px;">1 / 7</span>
+    <button onclick="step(-1)">Önceki</button>
+    <button onclick="step(1)">Sonraki</button>
+    <a href="slides_en.html">EN</a>
+    <a href="../docs/AegisSat_Presentation_TR.pdf" target="_blank" rel="noopener">PDF</a>
+    <a href="../index.html">Simülatör</a>
   </div>
+
+  <section class="slide">
+    <div class="hero-row">
+      <img src="../assets/aegissat_mission_patch.jpg" alt="AegisSat Görev Arması" class="patch-img" />
+      <div>
+        <div class="kicker">NASA Space Apps Challenge 2026 · Derin Uzay (Beyond Earth)</div>
+        <h1>AegisSat: Sıfır-SRAM Hibrit 1U Küpsat Hayatta Kalma Mimarisi</h1>
+        <p class="lead">Uçuşu doğrulanmış <strong>KÜPSAT-01</strong> stratosfer sondası, <strong>IAC 2026</strong> kompozit-balpeteği kalkanı ve patentli <strong>WERR 24-Bayt Sıfır-SRAM</strong> matematik motorunu Ay/Artemis ve Mars görevleri için birleştirir.</p>
+      </div>
+    </div>
+    <div class="grid-3" style="margin-top:24px;">
+      <div class="card"><h3>Canlı 3D WebGL İkiz</h3><p>https://aegissat.space<br/>İletişim: info@aegissat.space</p></div>
+      <div class="card"><h3>Uçuş &amp; Kongre Mirası</h3><p>KÜPSAT-01 TRL-7 (7 Ağustos 2026) &amp; IAC-26-C2.IPB.29 Antalya</p></div>
+      <div class="card"><h3>AegisSat Takımı</h3><p>Bekirhan Dağlı (Uçuş Lideri) · Emrah Yurtseven (WERR AI/Patent) · Burak Salar (Simülasyon &amp; Veri)</p></div>
+    </div>
+    <span class="slide-num">01 / 07</span>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">01 · Derin Uzay Sorunu</div>
+    <h2>Standart Küpsatlar Alçak Dünya Yörüngesi Dışında Neden Çöker?</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Radyasyon Kaynaklı SEU Bit Hataları</h3>
+        <div class="metric bad">234.0 hata/gün</div>
+        <p>Mars Derin Uzay GCR + X-Sınıfı Güneş Proton Fırtınasında, Al-6061 şasideki 64 MB uçucu yapay zekâ ağırlık SRAM belleği günde 234 bit bozulmasına uğrayarak yönelimi çökertir.</p>
+      </div>
+      <div class="card">
+        <h3>Termomekanik &amp; Şiddetli Savrulma</h3>
+        <div class="metric warn">3,647.58 °/s · -150.0 °C</div>
+        <p>KÜPSAT-01 balon patlamasında ~20 G şok ve 3,647.58 °/s savrulma kaydetti. Korumasız Al-6061 şasi iç sıcaklığı -141.5 °C düzeyine donar ve 64 Hz modu 14.1 Grms altında yetersiz kalır.</p>
+      </div>
+    </div>
+    <span class="slide-num">02 / 07</span>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">02 · Doğrulanmış Donanım &amp; Uçuş Kanıtı</div>
+    <h2>KÜPSAT-01 Stratosfer Uçuşu + IAC 2026 Kompozit Şasi</h2>
+    <div class="grid-3">
+      <div class="card"><h3>KÜPSAT-01 Uçuşu (421 Örnek)</h3><div class="metric">25,636 m</div><p>7 Ağustos 2026 görevi: 22.51 hPa min basınç, -54.50 °C dış ortama karşı -17.27 °C iç sıcaklık (+37.23 °C pasif yalıtım farkı).</p></div>
+      <div class="card"><h3>IAC-26-C2.IPB.29 Yapısı</h3><div class="metric">-%81.7 Gerilme</div><p>Al7075-T6 / CFRP + Altıgen Balpeteği sandviç: 18.49 MPa von Mises, 0.254 mm sehim, Mod 1 = 100.76 Hz (GEVS 14.1 Grms), Emniyet Katsayısı = 27.20.</p></div>
+      <div class="card"><h3>1U Kütle &amp; Bütçe Avantajı</h3><div class="metric">345 g / $8,300</div><p>Tam WERR Hibrit platform 373 g (1,330 g limitinden 957 g faydalı yük payı) ve $8,300 maliyetle, 775 g ($42,800) ağır Rad-Hard TMR işlemci ihtiyacını bitirir.</p></div>
+    </div>
+    <span class="slide-num">03 / 07</span>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">03 · Çekirdek Yenilik</div>
+    <h2>WERR 24-Bayt Sıfır-SRAM PROM + MLI Aktif Isıl Kontrol</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Değişmez 24-Bayt (192-bit) Matematiksel Çekirdek</h3>
+        <ul class="clean">
+          <li>• <strong>0 Bayt değişebilir ağırlık SRAM</strong> (günde 0.0 SEU ağırlık hatası, <strong>0.35 W</strong> ultra düşük güç)</li>
+          <li>• Deterministik aritmetik, 64 MB uçucu sinir ağı matrislerinin yerini alır</li>
+          <li>• Donanımsal <strong>CRC-16/CCITT-FALSE</strong> tüm <strong>192 / 192</strong> tekil bit bozulmalarını %100 yakalar</li>
+        </ul>
+        <div class="hex-box mono">02 02 03 03 bf3ed46f 3de770bd 3fcccccd 445861ed ff0b f146</div>
+      </div>
+      <div class="card">
+        <h3>Çift Kademeli Derin Uzay Isıl Koruma</h3>
+        <div class="metric">-24.5 °C</div>
+        <p>IAC pasif MLI/balpeteği yalıtımı (+37.23 °C kazanç) ile termostatlı <strong>0.50 W hayatta kalma ısıtıcısı</strong> (derin uzayda toplam <strong>0.85 W</strong>) -150.0 °C soğukta bile iç sıcaklığı ≥ -24.5 °C (-30 °C sınırı üzeri) tutar.</p>
+      </div>
+    </div>
+    <span class="slide-num">04 / 07</span>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">04 · Kontrol Kuramı &amp; Patentler</div>
+    <h2>3-Eksen Euler ADCS (%94.37 Sönümleme) + Patent 2 &amp; 3 Bariyerleri</h2>
+    <div class="grid-3">
+      <div class="card"><h3>Schwarzian + Koenigs ADCS</h3><div class="metric">%94.37</div><p>Negatif Schwarzian S(f)(0) = -6.919 &lt; 0 ve Koenigs çarpanı μ = 0.75, 10 çevrimde 3,647.58 °/s savrulma enerjisini %94.37 sönümler (PID: %63.15, SEU ARM: %29.97).</p></div>
+      <div class="card"><h3>Patent 2 · Julia Bekçi Kapısı</h3><p>TR 2026/016633 donanım kapısı, kararsız kazanç oranlarını (|r| ≥ 2.4046) veto ederek eyleyici doyumundan önce sistemi μ = 0.75 kararlılığına kilitler.</p></div>
+      <div class="card"><h3>Patent 3 · Spoofing Bariyeri</h3><p>TR 2026/020266 Collatz Parite Lyapunov bariyeri, γ = n_odd / n_even &gt; 0.58496 aşıldığında sahte AI telemetri saldırısını anında izole eder.</p></div>
+    </div>
+    <span class="slide-num">05 / 07</span>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">05 · Canlı Veri &amp; Küresel İş Ortakları</div>
+    <h2>NASA, NOAA, Planetary Computer ve Meteomatics Entegrasyonu</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Canlı Uzay Havası &amp; Radyasyon Akışı</h3>
+        <ul class="clean">
+          <li>• <strong>Cloudflare Edge Proxy (`/api/space-weather`):</strong> gerçek zamanlı NOAA SWPC GOES ≥10 MeV proton akısı + Gezegensel Kp endeksi</li>
+          <li>• <strong>NASA DONKI GST &amp; SPENVIS/OMNIWeb:</strong> canlı jeomanyetik fırtınalar ve LEO/GEO/Artemis/Mars TID doz zarfları</li>
+          <li>• <strong>NASA GEVS STD-7000B:</strong> 14.1 Grms yapısal modal doğrulama (&gt;90 Hz Mod 1)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Kullanılan NASA Space Apps Global Teklifleri</h3>
+        <ul class="clean">
+          <li>• <strong>Microsoft Planetary Computer STAC:</strong> KÜPSAT-01 Arslanköy–Ermenek kurtarma koridoru için bulutsuz (&lt;%15) Sentinel-2 L2A sahneleri</li>
+          <li>• <strong>Meteomatics Weather API:</strong> fırlatma penceresi için yer sıcaklığı ve 100 m rüzgâr kesmesi telemetrisi</li>
+        </ul>
+      </div>
+    </div>
+    <span class="slide-num">06 / 07</span>
+  </section>
+
+  <section class="slide">
+    <div class="kicker">06 · Karşılaştırmalı Görev Analizi</div>
+    <h2>Mars Transit (Güneş Fırtınası + Spoofing): %2.0 vs %100.0</h2>
+    <table>
+      <thead><tr><th>Mimari Seçenek</th><th>Ağırlık SRAM</th><th>SEU Hata/Gün</th><th>10-Çevrim ADCS</th><th>Min İç Sıcaklık</th><th>Güç / Maliyet</th><th>1U Yük Payı</th><th>Hayatta Kalma</th></tr></thead>
+      <tbody>
+        <tr><td>Al-6061 + 64 MB ARM SRAM</td><td>64 MB</td><td>234.0</td><td>%29.97 (SEU)</td><td>-141.5 °C (Donma)</td><td>4.20 W / $3,600</td><td>730 g</td><td style="color:#ef4444;font-weight:700;">%2.0 ÇÖKÜŞ</td></tr>
+        <tr><td>CFRP + Rad-Hard TMR CPU</td><td>16 MB</td><td>0.0</td><td>%63.15 (PID)</td><td>-129.0 °C (Donma)</td><td>8.50 W / $42,800</td><td>555 g</td><td style="color:#f59e0b;font-weight:700;">%48.5 HASARLI</td></tr>
+        <tr><td><strong>AegisSat Hibrit + WERR 24B</strong></td><td><strong>0 B PROM</strong></td><td><strong>0.0</strong></td><td><strong>%94.37 (μ=0.75)</strong></td><td><strong>-24.5 °C (GÜVENLİ)</strong></td><td><strong>0.85 W / $8,300</strong></td><td><strong>957 g</strong></td><td style="color:#22c55e;font-weight:800;">%100.0 SAĞLAM</td></tr>
+      </tbody>
+    </table>
+    <p class="lead" style="margin-top:18px;font-size:16px;">Açık kaynak simülatör, Python/JS bit-özdeş çekirdek, KÜPSAT-01 uçuş tekrarı ve patentler: <strong>https://aegissat.space</strong> · <strong>github.com/bdagli-web/aegissat</strong></p>
+    <span class="slide-num">07 / 07</span>
+  </section>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll(".slide"));
+    let idx = 0;
+    function updateInd() { document.getElementById("slide-ind").textContent = `${idx + 1} / ${slides.length}`; }
+    function step(d) {
+      idx = Math.max(0, Math.min(slides.length - 1, idx + d));
+      slides[idx].scrollIntoView({ behavior: "smooth" });
+      updateInd();
+    }
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === "ArrowDown" || e.key === " ") step(1);
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") step(-1);
+    });
+  </script>
 </body>
 </html>
