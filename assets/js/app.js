@@ -332,10 +332,13 @@
     }, { passive: false });
 
     window.addEventListener("resize", () => {
-      if (!container.clientWidth) return;
-      camera.aspect = container.clientWidth / container.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
+      if (container.clientWidth) {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      }
+      if (state.lastResult && state.lastResult.adcs) drawAdcsChart(state.lastResult.adcs);
+      drawFlightChart();
     });
 
     let last = performance.now();
@@ -423,8 +426,10 @@
     const canvas = document.getElementById("adcs-chart");
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
-    const w = (canvas.width = canvas.clientWidth);
-    const h = (canvas.height = canvas.clientHeight);
+    const boxW = canvas.parentElement ? canvas.parentElement.clientWidth - 20 : canvas.clientWidth;
+    const w = (canvas.width = Math.max(240, Math.floor(boxW || canvas.clientWidth || 300)));
+    const h = (canvas.height = canvas.clientHeight || 165);
+    canvas.style.width = "100%";
     ctx.clearRect(0, 0, w, h);
 
     const pad = 24;
@@ -466,18 +471,23 @@
 
     const isTr = state.lang === "tr";
     ctx.fillStyle = "#94a3b8";
-    ctx.font = "11px monospace";
+    ctx.font = w < 330 ? "9.5px monospace" : "11px monospace";
+    ctx.textAlign = "left";
     ctx.fillText(isTr ? "E0: %100 (3,647.58°/s) | Kesikli: PID" : "E0: 100% (3,647.58°/s) | Dashed: PID", pad + 4, pad + 10);
     ctx.fillStyle = lineColor;
-    ctx.fillText(`E10: ${(pts[pts.length - 1] * 100).toFixed(2)}% (-${adcs.energy_damped_pct}%)`, w - 180, h - pad - 8);
+    ctx.textAlign = "right";
+    ctx.fillText(`E10: ${(pts[pts.length - 1] * 100).toFixed(2)}% (-${adcs.energy_damped_pct}%)`, w - pad - 4, h - pad - 8);
+    ctx.textAlign = "left";
   }
 
   function drawFlightChart() {
     const canvas = document.getElementById("flight-chart");
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
-    const w = (canvas.width = canvas.clientWidth);
-    const h = (canvas.height = canvas.clientHeight);
+    const boxW = canvas.parentElement ? canvas.parentElement.clientWidth - 20 : canvas.clientWidth;
+    const w = (canvas.width = Math.max(240, Math.floor(boxW || canvas.clientWidth || 300)));
+    const h = (canvas.height = canvas.clientHeight || 165);
+    canvas.style.width = "100%";
     ctx.clearRect(0, 0, w, h);
 
     const pad = 24;
@@ -530,10 +540,13 @@
 
     const isTr = state.lang === "tr";
     ctx.fillStyle = "#38bdf8";
-    ctx.font = "11px monospace";
-    ctx.fillText(isTr ? "Zirve: 25.64 km (ISA) | 22.51 hPa" : "Peak: 25.64 km (ISA) | 22.51 hPa", pad + 6, pad + 12);
+    ctx.font = w < 330 ? "9.5px monospace" : "11px monospace";
+    ctx.textAlign = "left";
+    ctx.fillText(isTr ? "Zirve: 25.64 km (ISA) | 22.51 hPa" : "Peak: 25.64 km (ISA) | 22.51 hPa", pad + 4, pad + 12);
     ctx.fillStyle = "#22c55e";
-    ctx.fillText(isTr ? "Dış -54.50°C | İç -17.27°C (+37.23°C)" : "Ext -54.50°C | Int -17.27°C (+37.23°C)", w - 245, h - pad - 8);
+    ctx.textAlign = "right";
+    ctx.fillText(isTr ? "Dış -54.50°C | İç -17.27°C (+37.23°C)" : "Ext -54.50°C | Int -17.27°C (+37.23°C)", w - pad - 4, h - pad - 8);
+    ctx.textAlign = "left";
   }
 
   function renderGameChrome(res) {
@@ -1158,7 +1171,7 @@
     document.getElementById("btn-launch-2").onclick = runLaunchSimulation;
     document.getElementById("btn-guide").onclick = showCubeSat101Modal;
     document.getElementById("btn-lb").onclick = () => {
-      openModal(state.lang === "tr" ? "Görev Tasarımı Skor Tablosu" : "Mission Design Leaderboard", renderLeaderboardHtml(getLeaderboard()));
+      openModal(state.lang === "tr" ? "Görev Tasarımı Skor Tablosu" : "Mission Design Leaderboard", `<div id="modal-lb-wrap">${renderLeaderboardHtml(getLeaderboard())}</div>`);
     };
     document.getElementById("btn-share").onclick = () => {
       const url = makeShareUrl();
