@@ -55,13 +55,13 @@
     <div class="hero-row">
       <img src="../assets/aegissat_mission_patch.jpg" alt="AegisSat Görev Arması" class="patch-img" />
       <div>
-        <div class="kicker">NASA Space Apps Challenge 2026 · Derin Uzay (Beyond Earth)</div>
-        <h1>AegisSat: Sıfır-SRAM Hibrit 1U Küpsat Hayatta Kalma Mimarisi</h1>
-        <p class="lead">Uçuşu doğrulanmış <strong>KÜPSAT-01</strong> stratosfer sondası, <strong>IAC 2026</strong> kompozit-balpeteği kalkanı ve patentli <strong>WERR 24-Bayt Sıfır-SRAM</strong> matematik motorunu Ay/Artemis ve Mars görevleri için birleştirir.</p>
+        <div class="kicker">NASA Space Apps Challenge 2026 · Space Mission Design Game</div>
+        <h1>AegisSat: Etkileşimli Sıfır-SRAM Küpsat Görev Tasarım Oyunu</h1>
+        <p class="lead"><strong>KÜPSAT-01</strong> TRL-7 uçuş mirası, <strong>IAC 2026</strong> hibrit kalkanı ve <strong>WERR 24-Bayt Sıfır-SRAM</strong> fiziğini Fırlatma, Uzay, Yer ve Kullanıcı segmentleriyle birleştiren tekli ve 4 oyunculu ortak tasarım oyunu.</p>
       </div>
     </div>
     <div class="grid-3" style="margin-top:24px;">
-      <div class="card"><h3>Canlı 3D WebGL İkiz</h3><p>https://aegissat.space<br/>İletişim: info@aegissat.space</p></div>
+      <div class="card"><h3>Etkileşimli Oyun &amp; İkiz</h3><p>https://aegissat.space<br/>4 Oyunculu MDL + Mission Viz 3D</p></div>
       <div class="card"><h3>Uçuş &amp; Kongre Mirası</h3><p>KÜPSAT-01 TRL-7 (7 Ağustos 2026) &amp; IAC-26-C2.IPB.29 Antalya</p></div>
       <div class="card"><h3>AegisSat Takımı</h3><p>Bekirhan Dağlı (Uçuş Lideri) · Emrah Yurtseven (WERR AI/Patent) · Burak Salar (Simülasyon &amp; Veri)</p></div>
     </div>
@@ -131,21 +131,22 @@
   </section>
 
   <section class="slide">
-    <div class="kicker">05 · Canlı Veri &amp; Küresel İş Ortakları</div>
-    <h2>NASA, NOAA, Planetary Computer ve Meteomatics Entegrasyonu</h2>
+    <div class="kicker">05 · Oyun Mimarisi &amp; Resmi NASA Kaynakları</div>
+    <h2>4 Oyunculu NASA MDL Ortak Tasarım, Mission Viz 3D &amp; Canlı Veri</h2>
     <div class="grid-2">
       <div class="card">
-        <h3>Canlı Uzay Havası &amp; Radyasyon Akışı</h3>
+        <h3>Uzay Görevi Tasarım Oyunu Döngüsü (CML 1–4)</h3>
         <ul class="clean">
-          <li>• <strong>Cloudflare Edge Proxy (`/api/space-weather`):</strong> gerçek zamanlı NOAA SWPC GOES ≥10 MeV proton akısı + Gezegensel Kp endeksi</li>
-          <li>• <strong>NASA DONKI GST &amp; SPENVIS/OMNIWeb:</strong> canlı jeomanyetik fırtınalar ve LEO/GEO/Artemis/Mars TID doz zarfları</li>
-          <li>• <strong>NASA GEVS STD-7000B:</strong> 14.1 Grms yapısal modal doğrulama (&gt;90 Hz Mod 1)</li>
+          <li>• <strong>4 Oyunculu Ortak Mod (GSFC MDL):</strong> Komutan, Yapı, Aviyonik ve Bilim liderleri 1,330 g kütle, EPS güç, veri indirme ve bütçe kapılarını onaylar</li>
+          <li>• <strong>3 Zorluk Seviyesi + Serbest Mod:</strong> Aday (Balon), Mühendis (Artemis Ay), Mars PI (+ Siber Spoof) &amp; Paylaşılabilir `#design=` Bağlantıları</li>
+          <li>• <strong>NASA Mission Viz + CubeSat 101:</strong> Çift 3D Donanım/Yörünge görünümü, rastgele uçuş olayları, CML 1–4 ve Skor Tablosu</li>
         </ul>
       </div>
       <div class="card">
-        <h3>Kullanılan NASA Space Apps Global Teklifleri</h3>
+        <h3>Canlı Uzay Havası &amp; Kullanılan Küresel Teklifler</h3>
         <ul class="clean">
-          <li>• <strong>Microsoft Planetary Computer STAC:</strong> KÜPSAT-01 Arslanköy–Ermenek kurtarma koridoru için bulutsuz (&lt;%15) Sentinel-2 L2A sahneleri</li>
+          <li>• <strong>NOAA SWPC &amp; NASA DONKI GST (`/api/space-weather`):</strong> GOES ≥10 MeV proton akısı, Kp endeksi ve SPENVIS/OMNIWeb doz zarfları</li>
+          <li>• <strong>Microsoft Planetary Computer STAC:</strong> KÜPSAT-01 Arslanköy–Ermenek kurtarma koridoru Sentinel-2 L2A uydu sahneleri</li>
           <li>• <strong>Meteomatics Weather API:</strong> fırlatma penceresi için yer sıcaklığı ve 100 m rüzgâr kesmesi telemetrisi</li>
         </ul>
       </div>
@@ -157,14 +158,14 @@
     <div class="kicker">06 · Karşılaştırmalı Görev Analizi</div>
     <h2>Mars Transit (Güneş Fırtınası + Spoofing): %2.0 vs %100.0</h2>
     <table>
-      <thead><tr><th>Mimari Seçenek</th><th>Ağırlık SRAM</th><th>SEU Hata/Gün</th><th>10-Çevrim ADCS</th><th>Min İç Sıcaklık</th><th>Güç / Maliyet</th><th>1U Yük Payı</th><th>Hayatta Kalma</th></tr></thead>
+      <thead><tr><th>Mimari Seçenek</th><th>Ağırlık SRAM</th><th>SEU Hata/Gün</th><th>10-Çevrim ADCS</th><th>Min İç Sıcaklık</th><th>Güç / Maliyet</th><th>1U Yük Payı</th><th>Oyun Skoru / CML</th></tr></thead>
       <tbody>
-        <tr><td>Al-6061 + 64 MB ARM SRAM</td><td>64 MB</td><td>234.0</td><td>%29.97 (SEU)</td><td>-141.5 °C (Donma)</td><td>4.20 W / $3,600</td><td>730 g</td><td style="color:#ef4444;font-weight:700;">%2.0 ÇÖKÜŞ</td></tr>
-        <tr><td>CFRP + Rad-Hard TMR CPU</td><td>16 MB</td><td>0.0</td><td>%63.15 (PID)</td><td>-129.0 °C (Donma)</td><td>8.50 W / $42,800</td><td>555 g</td><td style="color:#f59e0b;font-weight:700;">%48.5 HASARLI</td></tr>
-        <tr><td><strong>AegisSat Hibrit + WERR 24B</strong></td><td><strong>0 B PROM</strong></td><td><strong>0.0</strong></td><td><strong>%94.37 (μ=0.75)</strong></td><td><strong>-24.5 °C (GÜVENLİ)</strong></td><td><strong>0.85 W / $8,300</strong></td><td><strong>957 g</strong></td><td style="color:#22c55e;font-weight:800;">%100.0 SAĞLAM</td></tr>
+        <tr><td>Al-6061 + 64 MB ARM SRAM</td><td>64 MB</td><td>234.0</td><td>%29.97 (SEU)</td><td>-141.5 °C (Donma)</td><td>4.20 W / $3,600</td><td>730 g</td><td style="color:#ef4444;font-weight:700;">20 puan · CML-1 ÇÖKÜŞ</td></tr>
+        <tr><td>CFRP + Rad-Hard TMR CPU</td><td>16 MB</td><td>0.0</td><td>%63.15 (PID)</td><td>-129.0 °C (Donma)</td><td>8.50 W / $42,800</td><td>555 g</td><td style="color:#f59e0b;font-weight:700;">262 puan · CML-2 HATA</td></tr>
+        <tr><td><strong>AegisSat Hibrit + WERR 24B</strong></td><td><strong>0 B PROM</strong></td><td><strong>0.0</strong></td><td><strong>%94.37 (μ=0.75)</strong></td><td><strong>-24.5 °C (GÜVENLİ)</strong></td><td><strong>0.85 W / $8,300</strong></td><td><strong>957 g</strong></td><td style="color:#22c55e;font-weight:800;">776 puan · CML-4 (%100)</td></tr>
       </tbody>
     </table>
-    <p class="lead" style="margin-top:18px;font-size:16px;">Açık kaynak simülatör, Python/JS bit-özdeş çekirdek, KÜPSAT-01 uçuş tekrarı ve patentler: <strong>https://aegissat.space</strong> · <strong>github.com/bdagli-web/aegissat</strong></p>
+    <p class="lead" style="margin-top:18px;font-size:16px;">Açık kaynak Görev Tasarım Oyunu, Python/JS bit-özdeş çekirdek, KÜPSAT-01 uçuş tekrarı ve patentler: <strong>https://aegissat.space</strong> · <strong>github.com/bdagli-web/aegissat</strong></p>
     <span class="slide-num">07 / 07</span>
   </section>
 

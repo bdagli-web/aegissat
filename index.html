@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AegisSat — Space Mission Architecture Simulator | NASA Space Apps 2026</title>
-  <meta name="description" content="Interactive CubeSat Space Mission Architecture Simulator uniting KÜPSAT-01 TRL-7 heritage, IAC 2026 hybrid shielding, and WERR 24-Byte 0-SRAM SEU-immune avionics." />
+  <title>AegisSat — Space Mission Design Game | NASA Space Apps 2026</title>
+  <meta name="description" content="Interactive Space Mission Design Game & 3D CubeSat Survivability Simulator uniting KÜPSAT-01 TRL-7 heritage, IAC 2026 shielding, and WERR 24-Byte Zero-SRAM avionics." />
   <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261115c" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261115d" />
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 </head>
 <body>
@@ -14,11 +14,14 @@
     <div class="brand">
       <img src="assets/aegissat_mission_patch.jpg" alt="AegisSat Mission Patch" />
       <div>
-        <h1>AegisSat — Space Mission Architecture Simulator</h1>
-        <p data-i18n="subtitle">Space Mission Architecture Simulator · KÜPSAT-01 TRL-7 + IAC 2026 + WERR 24-Byte 0-SRAM</p>
+        <h1 data-i18n="app_title">AegisSat — Space Mission Design Game</h1>
+        <p data-i18n="subtitle">Interactive Mission Design Game · KÜPSAT-01 TRL-7 + IAC 2026 + WERR 24-Byte 0-SRAM</p>
       </div>
     </div>
     <nav class="nav-actions">
+      <button id="btn-launch" class="btn success" data-i18n="btn_launch">Launch Mission</button>
+      <button id="btn-guide" class="btn" data-i18n="btn_guide">CubeSat 101</button>
+      <button id="btn-share" class="btn" data-i18n="btn_share">Share Design</button>
       <button id="btn-lang" class="btn primary" data-i18n="btn_lang">TR / EN</button>
       <a class="btn" href="demo/slides_en.html" data-i18n="btn_slides">Slides (EN)</a>
       <a class="btn" href="demo/slides_tr.html" data-i18n="btn_slides_alt">Sunum (TR)</a>
@@ -27,22 +30,57 @@
     </nav>
   </header>
 
+  <section class="game-bar">
+    <div id="scenario-tabs" class="scenario-tabs"></div>
+    <div class="scenario-tabs">
+      <button id="btn-coop" class="tab-pill" data-i18n="btn_coop_off">Co-Op Mode: Solo (1–4 Players)</button>
+      <button id="btn-lb" class="tab-pill" data-i18n="btn_lb">Leaderboard</button>
+    </div>
+    <div id="cml-bar" class="cml-bar"></div>
+  </section>
+
+  <section id="coop-dock" class="coop-dock hidden"></section>
+
   <main class="layout">
-    <!-- Left: Modular Architecture Builder -->
+    <!-- Left: 4-Segment NASA Mission Configurator -->
     <section class="panel">
-      <h2 data-i18n="h_config">1. Mission Architecture</h2>
+      <h2 data-i18n="h_config">1. Mission Design &amp; NASA Segments</h2>
+
       <div class="opt-group">
-        <span class="opt-label" data-i18n="lbl_chassis">Chassis &amp; Shielding (IAC-26-C2.IPB.29)</span>
-        <div id="chassis-options" class="opt-group"></div>
-      </div>
-      <div class="opt-group">
-        <span class="opt-label" data-i18n="lbl_avionics">Avionics &amp; AI Memory</span>
-        <div id="avionics-options" class="opt-group"></div>
-      </div>
-      <div class="opt-group">
-        <span class="opt-label" data-i18n="lbl_orbit">Orbit / Environment (NASA SPENVIS &amp; OMNIWeb)</span>
+        <span class="opt-label" data-i18n="lbl_orbit">Orbit / Target (NASA SPENVIS &amp; OMNIWeb)</span>
         <div id="orbit-options" class="opt-group"></div>
       </div>
+
+      <div class="opt-group">
+        <span class="opt-label" data-i18n="lbl_launch">Launch Segment (Vehicle Compatibility)</span>
+        <div id="launch-options" class="opt-group"></div>
+      </div>
+
+      <div class="opt-group">
+        <span class="opt-label" data-i18n="lbl_chassis">Spacecraft Structure (IAC-26-C2.IPB.29)</span>
+        <div id="chassis-options" class="opt-group"></div>
+      </div>
+
+      <div class="opt-group">
+        <span class="opt-label" data-i18n="lbl_avionics">Avionics &amp; AI Memory (WERR Zero-SRAM)</span>
+        <div id="avionics-options" class="opt-group"></div>
+      </div>
+
+      <div class="opt-group">
+        <span class="opt-label" data-i18n="lbl_eps">Power Subsystem (Solar EPS &amp; Battery)</span>
+        <div id="eps-options" class="opt-group"></div>
+      </div>
+
+      <div class="opt-group">
+        <span class="opt-label" data-i18n="lbl_comm">Ground &amp; Comm Downlink Segment</span>
+        <div id="comm-options" class="opt-group"></div>
+      </div>
+
+      <div class="opt-group">
+        <span class="opt-label" data-i18n="lbl_payloads">Science Instruments (Multi-Select)</span>
+        <div id="payload-options" class="opt-group"></div>
+      </div>
+
       <div class="opt-group">
         <span class="opt-label" data-i18n="lbl_events">Stress Tests &amp; Fault Injection</span>
         <div style="display:flex; flex-wrap:wrap; gap:0.42rem;">
@@ -55,42 +93,63 @@
       </div>
     </section>
 
-    <!-- Center: 3D CubeSat & Real-time Charts -->
+    <!-- Center: Dual 3D View (CubeSat Hardware Twin <-> Mission Viz 3D Trajectory) & Live Resource Gauges -->
     <section class="panel">
-      <h2 data-i18n="h_sim">2. 3D CubeSat &amp; Rigid-Body ADCS</h2>
+      <div class="viz-switch">
+        <h2 data-i18n="h_sim">2. 3D Spacecraft Twin &amp; Mission Viz Orbit</h2>
+        <div style="display:flex; gap:0.4rem;">
+          <button id="btn-viz-cube" class="tab-pill active" data-i18n="btn_viz_cube">3D CubeSat</button>
+          <button id="btn-viz-orbit" class="tab-pill" data-i18n="btn_viz_orbit">3D Trajectory (Mission Viz)</button>
+        </div>
+      </div>
+
       <div class="viewport-wrap">
         <canvas id="cube-canvas"></canvas>
         <div class="hud-overlay">
-          <span class="hud-pill">1U CDS Rev 14.1 · 100×100×113.5 mm</span>
+          <span id="hud-mode-label" class="hud-pill">1U CDS Rev 14.1 · 100×100×113.5 mm</span>
           <span id="hud-status" class="hud-pill">S(f) = -6.9196 &lt; 0 | Mode 1: 100.76 Hz</span>
         </div>
         <div class="hud-bottom">
-          <span class="hud-pill" data-i18n="hud_hint">Drag to rotate 3D CubeSat · Scroll to zoom</span>
+          <span class="hud-pill" data-i18n="hud_hint">Drag to rotate · Scroll to zoom</span>
           <span id="hud-omega" class="hud-pill mono">ω = 3,647.58 °/s</span>
         </div>
       </div>
+
+      <div id="resource-bars" class="res-bars"></div>
+
       <div class="charts-row">
         <div class="chart-card">
-          <h3 data-i18n="chart_adcs">3-Axis Schwarzian + Koenigs ADCS Energy Damping (10 Cycles = 94.37%)</h3>
+          <h3 data-i18n="chart_adcs">3-Axis Schwarzian + Koenigs ADCS Energy Damping vs. PID Baseline</h3>
           <canvas id="adcs-chart" class="mini-chart"></canvas>
         </div>
         <div class="chart-card">
-          <h3 data-i18n="chart_flight">KÜPSAT-01 Verified Flight Replay (421 Samples · 25.64 km · 22.51 hPa)</h3>
+          <h3 data-i18n="chart_flight">KÜPSAT-01 Verified Flight Replay (421 Samples · 25.64 km · +37.23°C Gap)</h3>
           <canvas id="flight-chart" class="mini-chart"></canvas>
         </div>
       </div>
     </section>
 
-    <!-- Right: Survivability Telemetry & 24-Byte WERR Frame -->
+    <!-- Right: Game Score, 8 Constraint Gates, Telemetry & 24B WERR -->
     <section class="panel">
-      <h2 data-i18n="h_telemetry">3. Survivability, Watchdog &amp; 24B WERR</h2>
+      <h2 data-i18n="h_telemetry">3. Mission Score, Gates &amp; 24B WERR</h2>
+
+      <div id="score-banner" class="score-banner">
+        <div>
+          <div style="font-size:0.7rem;color:var(--muted);" data-i18n="lbl_game_score">MISSION DESIGN SCORE · JPL CML</div>
+          <div id="val-game-score" class="mono" style="font-size:1.35rem;font-weight:800;color:var(--accent-2);">776 / 1000 · CML-4</div>
+        </div>
+        <button id="btn-launch-2" class="btn success" data-i18n="btn_launch_short">Launch!</button>
+      </div>
+
+      <div id="gates-list" class="gates-list"></div>
+
       <div class="kpi-grid">
         <div class="kpi"><div class="k-label" data-i18n="k_survival">Mission Survival Score</div><div id="val-survival" class="k-val k-good">100%</div></div>
         <div class="kpi"><div class="k-label" data-i18n="k_seu">SRAM Weight Bit-Flips / Day</div><div id="val-seu" class="k-val k-good">0</div></div>
         <div class="kpi"><div class="k-label" data-i18n="k_sram">Mutable Weight SRAM</div><div id="val-sram" class="k-val">0 B</div></div>
-        <div class="kpi"><div class="k-label" data-i18n="k_temp">Internal Min Temp</div><div id="val-temp" class="k-val">-112.77 °C</div></div>
+        <div class="kpi"><div class="k-label" data-i18n="k_temp">Internal Min Temp</div><div id="val-temp" class="k-val">-24.5 °C</div></div>
         <div class="kpi"><div class="k-label" data-i18n="k_mass">1U Payload Margin (1,330 g)</div><div id="val-mass" class="k-val">957 g</div></div>
-        <div class="kpi"><div class="k-label" data-i18n="k_power">Avionics Power / Bus Cost</div><div id="val-power" class="k-val">0.35 W / $8,300</div></div>
+        <div class="kpi"><div class="k-label" data-i18n="k_power">Bus Power / Bus Cost</div><div id="val-power" class="k-val">0.85 W / $8,300</div></div>
         <div class="kpi"><div class="k-label" data-i18n="k_adcs">ADCS 10-Cycle Damping</div><div id="val-adcs" class="k-val k-good">94.37%</div></div>
         <div class="kpi"><div class="k-label" data-i18n="k_guard">Watchdog &amp; Spoof Gate</div><div id="val-guard" class="k-val k-good">NOMINAL</div></div>
       </div>
@@ -104,23 +163,29 @@
       </div>
 
       <div class="sw-box">
-        <div class="opt-label" data-i18n="lbl_sw">Live Space Weather (NOAA SWPC / NASA DONKI)</div>
+        <div class="opt-label" data-i18n="lbl_sw">Live Space Weather (NOAA SWPC / NASA DONKI / Planetary Computer)</div>
         <div id="sw-status">Syncing NOAA SWPC &amp; NASA DONKI...</div>
       </div>
 
       <div>
         <h2 style="margin-bottom:0.45rem;" data-i18n="h_heritage">Verified Flight &amp; Research Heritage</h2>
-        <ul id="heritage-list" class="heritage-list">
-          <li>• <strong>IAC 2026 Antalya:</strong> <a href="https://iac2026.ipostersessions.com/default.aspx?s=37-F2-E3-3C-C9-44-80-17-24-BB-B9-A7-A6-5B-65-2D&guestview=true" target="_blank" rel="noopener">IAC-26-C2.IPB.29 Interactive Poster</a> (81.7% stress reduction, 100.76 Hz)</li>
-          <li>• <strong>KÜPSAT-01 Flight Report:</strong> <a href="https://teknosanat.com.tr/lib/cubesat/cubesat_master_flight_report_tr.html" target="_blank" rel="noopener">7 Aug 2026 Stratospheric Mission</a> (25.64 km, 22.51 hPa, -54.50 °C)</li>
-          <li>• <strong>IP &amp; Patents:</strong> TPMK 2025/007159 · TR 2026/016285 · TR 2026/016633 · TR 2026/020266 · arXiv:2611.11641</li>
-          <li>• <strong>Presentations &amp; Contact:</strong> <a href="docs/AegisSat_Presentation_EN.pdf" target="_blank" rel="noopener">EN PDF</a> · <a href="docs/AegisSat_Presentation_TR.pdf" target="_blank" rel="noopener">TR PDF</a> · <a href="mailto:info@aegissat.space">info@aegissat.space</a> · <a href="https://www.spaceappschallenge.org/2026/find-a-team/aegissat/?tab=details" target="_blank" rel="noopener">NASA Space Apps Team</a></li>
-        </ul>
+        <ul id="heritage-list" class="heritage-list"></ul>
       </div>
     </section>
   </main>
 
-  <script src="assets/js/werr_aegissat_core.js?v=20261115c"></script>
-  <script src="assets/js/app.js?v=20261115c"></script>
+  <!-- Interactive Launch Simulation, Post-Mission Debrief, Leaderboard & CubeSat 101 Modal -->
+  <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="modal-title" style="color:var(--accent);font-size:1.15rem;">Mission Launch Simulation</h2>
+        <button id="btn-modal-close" class="btn">Close</button>
+      </div>
+      <div id="modal-body" style="display:flex;flex-direction:column;gap:0.75rem;"></div>
+    </div>
+  </div>
+
+  <script src="assets/js/werr_aegissat_core.js?v=20261115d"></script>
+  <script src="assets/js/app.js?v=20261115d"></script>
 </body>
 </html>

@@ -134,6 +134,205 @@
     },
   };
 
+  const LAUNCH_SPECS = {
+    STRATO_BALLOON: {
+      id: 0,
+      name_en: "KÜPSAT-01 Stratospheric Balloon ($1.5k)",
+      name_tr: "KÜPSAT-01 Stratosferik Balon ($1.5k)",
+      max_mass_g: 1330.0,
+      cost_usd: 1500,
+      allowed_orbits: ["STRATOSPHERE"],
+      max_grms: 6.0,
+    },
+    SMALL_RIDESHARE: {
+      id: 1,
+      name_en: "SmallSat LEO Rideshare / Electron ($18k)",
+      name_tr: "SmallSat LEO Paylaşımlı / Electron ($18k)",
+      max_mass_g: 1330.0,
+      cost_usd: 18000,
+      allowed_orbits: ["STRATOSPHERE", "LEO"],
+      max_grms: 14.1,
+    },
+    CISLUNAR_RIDESHARE: {
+      id: 2,
+      name_en: "Artemis Cislunar Rideshare / Falcon-SLS ($42k)",
+      name_tr: "Artemis Ay Yörüngesi / Falcon-SLS ($42k)",
+      max_mass_g: 1330.0,
+      cost_usd: 42000,
+      allowed_orbits: ["STRATOSPHERE", "LEO", "LUNAR_ARTEMIS"],
+      max_grms: 14.1,
+    },
+    DEEP_SPACE_ESCORT: {
+      id: 3,
+      name_en: "Deep-Space Escort / Falcon Heavy-Vulcan ($68k)",
+      name_tr: "Derin Uzay Fırlatma / Falcon Heavy ($68k)",
+      max_mass_g: 1330.0,
+      cost_usd: 68000,
+      allowed_orbits: ["STRATOSPHERE", "LEO", "LUNAR_ARTEMIS", "MARS_DEEP_SPACE"],
+      max_grms: 14.1,
+    },
+  };
+
+  const EPS_SPECS = {
+    BODY_SOLAR: {
+      id: 0,
+      name_en: "Body-Mounted Si Panels + Li-Ion",
+      name_tr: "Gövde Üstü Si Panel + Li-Ion",
+      mass_g: 145.0,
+      power_gen_1au_w: 3.40,
+      cost_usd: 1200,
+    },
+    DEPLOY_WINGS: {
+      id: 1,
+      name_en: "Deployable 1U Triple-Junction Wings",
+      name_tr: "Açılır 1U Üç-Eklemli Güneş Kanatları",
+      mass_g: 230.0,
+      power_gen_1au_w: 8.60,
+      cost_usd: 4200,
+    },
+    DEEP_SPACE_GAAS: {
+      id: 2,
+      name_en: "Concentrator GaAs + Solid-State Battery",
+      name_tr: "Yoğunlaştırıcı GaAs + Katı-Hal Batarya",
+      mass_g: 285.0,
+      power_gen_1au_w: 14.80,
+      cost_usd: 7800,
+    },
+  };
+
+  const COMM_SPECS = {
+    UHF_9K6: {
+      id: 0,
+      name_en: "UHF Whip Transceiver (9.6 kbps)",
+      name_tr: "UHF Anten Alıcı-Verici (9.6 kbps)",
+      mass_g: 65.0,
+      power_w: 0.35,
+      cost_usd: 900,
+      rate_mb_day_leo: 14.0,
+      deep_space_mult: 0.08,
+    },
+    SBAND_PATCH: {
+      id: 1,
+      name_en: "S-Band Patch Array (256 kbps)",
+      name_tr: "S-Band Yama Anten Dizisi (256 kbps)",
+      mass_g: 110.0,
+      power_w: 1.20,
+      cost_usd: 3200,
+      rate_mb_day_leo: 220.0,
+      deep_space_mult: 0.25,
+    },
+    OPTICAL_KA: {
+      id: 2,
+      name_en: "Ka / Optical Laser Terminal (2.0 Mbps)",
+      name_tr: "Ka / Optik Lazer Terminali (2.0 Mbps)",
+      mass_g: 165.0,
+      power_w: 2.10,
+      cost_usd: 6800,
+      rate_mb_day_leo: 900.0,
+      deep_space_mult: 0.45,
+    },
+  };
+
+  const PAYLOAD_SPECS = {
+    WERR_DOSIMETER: {
+      id: 0,
+      name_en: "Radiation Particle Dosimeter",
+      name_tr: "Radyasyon Parçacık Dozimetresi",
+      mass_g: 85.0,
+      power_w: 0.25,
+      cost_usd: 1500,
+      data_mb_day: 2.0,
+      science_pts: 24,
+    },
+    LASER_BEACON: {
+      id: 1,
+      name_en: "Deep-Space Optical Nav Beacon",
+      name_tr: "Derin Uzay Optik Seyrüsefer İşaretçisi",
+      mass_g: 110.0,
+      power_w: 0.45,
+      cost_usd: 2600,
+      data_mb_day: 6.0,
+      science_pts: 28,
+    },
+    MAG_PLASMA: {
+      id: 2,
+      name_en: "Magnetometer & Plasma Suite",
+      name_tr: "Manyetometre & Plazma Paketi",
+      mass_g: 155.0,
+      power_w: 0.85,
+      cost_usd: 3400,
+      data_mb_day: 16.0,
+      science_pts: 32,
+    },
+    OPTICAL_CAM: {
+      id: 3,
+      name_en: "Planetary Optical Terrain Imager",
+      name_tr: "Gezegensel Optik Yüzey Kamerası",
+      mass_g: 215.0,
+      power_w: 1.40,
+      cost_usd: 4200,
+      data_mb_day: 48.0,
+      science_pts: 38,
+    },
+    UV_SPECTRO: {
+      id: 4,
+      name_en: "UV/IR Atmospheric Spectrometer",
+      name_tr: "UV/IR Atmosfer Spektrometresi",
+      mass_g: 265.0,
+      power_w: 1.90,
+      cost_usd: 5900,
+      data_mb_day: 120.0,
+      science_pts: 46,
+    },
+  };
+
+  const SCENARIO_SPECS = {
+    CADET_STRATO: {
+      id: 0,
+      name_en: "Level 1 · Cadet (Stratosphere Probe)",
+      name_tr: "Seviye 1 · Aday (Stratosfer Sondası)",
+      orbit: "STRATOSPHERE",
+      launch: "STRATO_BALLOON",
+      budget_usd: 22000,
+      min_science_pts: 40,
+      storm: false,
+      spoof: false,
+    },
+    ENGINEER_LUNAR: {
+      id: 1,
+      name_en: "Level 2 · Flight Engineer (Artemis Moon)",
+      name_tr: "Seviye 2 · Uçuş Mühendisi (Artemis Ay)",
+      orbit: "LUNAR_ARTEMIS",
+      launch: "CISLUNAR_RIDESHARE",
+      budget_usd: 74000,
+      min_science_pts: 65,
+      storm: true,
+      spoof: false,
+    },
+    PI_MARS: {
+      id: 2,
+      name_en: "Level 3 · Principal Investigator (Mars Deep Space)",
+      name_tr: "Seviye 3 · Baş Araştırmacı (Mars Derin Uzay)",
+      orbit: "MARS_DEEP_SPACE",
+      launch: "DEEP_SPACE_ESCORT",
+      budget_usd: 98000,
+      min_science_pts: 85,
+      storm: true,
+      spoof: true,
+    },
+    SANDBOX: {
+      id: 3,
+      name_en: "Sandbox · Free Engineering Twin",
+      name_tr: "Serbest Mod · Açık Mühendislik İkizi",
+      orbit: "MARS_DEEP_SPACE",
+      launch: "DEEP_SPACE_ESCORT",
+      budget_usd: 250000,
+      min_science_pts: 0,
+      storm: true,
+      spoof: false,
+    },
+  };
+
   function crc16CcittFalse(bytes) {
     let crc = 0xffff;
     for (let i = 0; i < bytes.length; i++) {
@@ -363,6 +562,130 @@
     };
   }
 
+  function orbitSolarFactor(orbitKey) {
+    return ({ STRATOSPHERE: 0.92, LEO: 1.0, LUNAR_ARTEMIS: 1.0, MARS_DEEP_SPACE: 0.45 })[orbitKey] || 1.0;
+  }
+
+  function orbitCommFactor(orbitKey, commSpec) {
+    if (orbitKey === "STRATOSPHERE" || orbitKey === "LEO") return 1.0;
+    if (orbitKey === "LUNAR_ARTEMIS") return Math.min(1.0, commSpec.deep_space_mult * 2.2);
+    return commSpec.deep_space_mult;
+  }
+
+  function orbitScienceMult(orbitKey) {
+    return ({ STRATOSPHERE: 0.85, LEO: 1.0, LUNAR_ARTEMIS: 1.2, MARS_DEEP_SPACE: 1.35 })[orbitKey] || 1.0;
+  }
+
+  function evaluateGameMission(
+    chassisKey = "WERR_AEGIS_HYBRID",
+    avionicsKey = "WERR_24B_FNS",
+    orbitKey = "MARS_DEEP_SPACE",
+    solarStorm = true,
+    spoofAttack = false,
+    launchKey = "DEEP_SPACE_ESCORT",
+    epsKey = "DEPLOY_WINGS",
+    commKey = "SBAND_PATCH",
+    payloadKeys = ["WERR_DOSIMETER", "LASER_BEACON", "MAG_PLASMA"],
+    scenarioKey = "PI_MARS"
+  ) {
+    const base = evaluateMission(chassisKey, avionicsKey, orbitKey, solarStorm, spoofAttack);
+    const lv = LAUNCH_SPECS[launchKey];
+    const eps = EPS_SPECS[epsKey];
+    const cm = COMM_SPECS[commKey];
+    const sc = SCENARIO_SPECS[scenarioKey];
+
+    const uniquePayloads = [];
+    (payloadKeys || []).forEach((k) => {
+      if (PAYLOAD_SPECS[k] && uniquePayloads.indexOf(k) === -1) uniquePayloads.push(k);
+    });
+
+    let payMass = 0, payPower = 0, payCost = 0, payData = 0, rawScience = 0;
+    uniquePayloads.forEach((k) => {
+      const p = PAYLOAD_SPECS[k];
+      payMass += p.mass_g;
+      payPower += p.power_w;
+      payCost += p.cost_usd;
+      payData += p.data_mb_day;
+      rawScience += p.science_pts;
+    });
+
+    const totalMassG = roundTo(base.total_bus_mass_g + eps.mass_g + cm.mass_g + payMass, 1);
+    const totalCostUsd = Math.round(base.total_cost_usd + eps.cost_usd + cm.cost_usd + payCost + lv.cost_usd);
+    const powerLoadW = roundTo(base.power_w + cm.power_w + payPower, 2);
+    const powerGenW = roundTo(eps.power_gen_1au_w * orbitSolarFactor(orbitKey), 2);
+    const powerMarginW = roundTo(powerGenW - powerLoadW, 2);
+
+    const dataCapMbDay = roundTo(cm.rate_mb_day_leo * orbitCommFactor(orbitKey, cm), 2);
+    const dataGenMbDay = roundTo(payData, 2);
+    const dataMarginMbDay = roundTo(dataCapMbDay - dataGenMbDay, 2);
+
+    const massOk = totalMassG <= lv.max_mass_g;
+    const launchOk = (lv.allowed_orbits.indexOf(orbitKey) !== -1) && (base.structural_ok || lv.max_grms < 10.0);
+    const powerOk = powerMarginW >= 0.0;
+    const commOk = (dataMarginMbDay >= 0.0) && (uniquePayloads.length > 0);
+    const budgetOk = scenarioKey === "SANDBOX" ? true : (totalCostUsd <= sc.budget_usd);
+    const thermalOk = !!base.thermal_ok;
+    const radCyberOk = (base.bit_flips_per_day === 0.0) && ((!spoofAttack) || avionicsKey === "WERR_24B_FNS");
+
+    const sciencePts = uniquePayloads.length > 0 ? Math.round(rawScience * orbitScienceMult(orbitKey)) : 0;
+    const scienceOk = sciencePts >= sc.min_science_pts;
+
+    const gates = {
+      mass_ok: massOk,
+      launch_ok: launchOk,
+      power_ok: powerOk,
+      comm_ok: commOk,
+      budget_ok: budgetOk,
+      thermal_ok: thermalOk,
+      rad_cyber_ok: radCyberOk,
+      science_ok: scienceOk,
+    };
+    const passedCount = Object.values(gates).filter(Boolean).length;
+
+    let cmlLevel = 1;
+    if (passedCount >= 8 && base.survival_score_pct >= 95.0) cmlLevel = 4;
+    else if (passedCount >= 6 && launchOk && massOk) cmlLevel = 3;
+    else if (uniquePayloads.length > 0 && launchOk) cmlLevel = 2;
+
+    const survComp = base.survival_score_pct * 5.0;
+    const sciComp = Math.min(250.0, sciencePts * 2.2);
+    const effMass = massOk ? Math.max(0.0, (1330.0 - totalMassG) / 1330.0) * 100.0 : 0.0;
+    const effBudget = budgetOk ? Math.max(0.0, (sc.budget_usd - totalCostUsd) / Math.max(1, sc.budget_usd)) * 100.0 : 0.0;
+    let penalty = 0.0;
+    if (!launchOk) penalty += 220.0;
+    if (!massOk) penalty += 180.0;
+    if (!powerOk) penalty += 170.0;
+    if (!commOk) penalty += 120.0;
+    if (!budgetOk) penalty += 110.0;
+
+    const gameScore = Math.round(Math.max(20.0, Math.min(1000.0, survComp + sciComp + effMass + effBudget - penalty)));
+    const missionSuccess = (passedCount === 8) && (base.survival_score_pct >= 85.0);
+
+    return Object.assign({}, base, {
+      scenario: scenarioKey,
+      launch_vehicle: launchKey,
+      eps: epsKey,
+      comm: commKey,
+      payloads: uniquePayloads,
+      total_spacecraft_mass_g: totalMassG,
+      total_mission_cost_usd: totalCostUsd,
+      budget_usd: sc.budget_usd,
+      power_gen_w: powerGenW,
+      power_load_w: powerLoadW,
+      power_margin_w: powerMarginW,
+      data_cap_mb_day: dataCapMbDay,
+      data_gen_mb_day: dataGenMbDay,
+      data_margin_mb_day: dataMarginMbDay,
+      science_points: sciencePts,
+      min_science_pts: sc.min_science_pts,
+      gates,
+      gates_passed: passedCount,
+      cml_level: cmlLevel,
+      game_score: gameScore,
+      mission_success: missionSuccess,
+    });
+  }
+
   const api = {
     KOENIGS_MU,
     LINEAR_PID_MU,
@@ -374,6 +697,11 @@
     CHASSIS_SPECS,
     AVIONICS_SPECS,
     ORBIT_SPECS,
+    LAUNCH_SPECS,
+    EPS_SPECS,
+    COMM_SPECS,
+    PAYLOAD_SPECS,
+    SCENARIO_SPECS,
     crc16CcittFalse,
     packWerr24Frame,
     verifyWerr24FrameBytes,
@@ -383,6 +711,7 @@
     evaluateSpoofingBarrier,
     computeInternalMinTemp,
     evaluateMission,
+    evaluateGameMission,
   };
 
   if (typeof module !== "undefined" && module.exports) {

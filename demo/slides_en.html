@@ -55,13 +55,13 @@
     <div class="hero-row">
       <img src="../assets/aegissat_mission_patch.jpg" alt="AegisSat Mission Patch" class="patch-img" />
       <div>
-        <div class="kicker">NASA Space Apps Challenge 2026 · Beyond Earth</div>
-        <h1>AegisSat: Zero-SRAM Hybrid 1U CubeSat Survivability Architecture</h1>
-        <p class="lead">Uniting the flight-proven <strong>KÜPSAT-01</strong> stratospheric probe, <strong>IAC 2026</strong> composite-honeycomb shielding, and the patent-pending <strong>WERR 24-Byte Zero-SRAM</strong> mathematical engine for Lunar/Artemis &amp; Mars deep-space missions.</p>
+        <div class="kicker">NASA Space Apps Challenge 2026 · Space Mission Design Game</div>
+        <h1>AegisSat: Interactive Zero-SRAM CubeSat Mission Design Game</h1>
+        <p class="lead">An interactive solo &amp; 4-player co-op spacecraft design game uniting <strong>KÜPSAT-01</strong> TRL-7 heritage, <strong>IAC 2026</strong> shielding, and <strong>WERR 24-Byte Zero-SRAM</strong> physics across Launch, Space, Ground &amp; User segments.</p>
       </div>
     </div>
     <div class="grid-3" style="margin-top:24px;">
-      <div class="card"><h3>Live WebGL Twin</h3><p>https://aegissat.space<br/>Contact: info@aegissat.space</p></div>
+      <div class="card"><h3>Interactive Game &amp; Twin</h3><p>https://aegissat.space<br/>4-Player MDL Co-Op + Mission Viz 3D</p></div>
       <div class="card"><h3>Flight Heritage</h3><p>KÜPSAT-01 TRL-7 (7 Aug 2026) &amp; IAC-26-C2.IPB.29 Antalya</p></div>
       <div class="card"><h3>Team AegisSat</h3><p>Bekirhan Dağlı (Flight Lead) · Emrah Yurtseven (WERR AI/IP) · Burak Salar (Sim &amp; Data)</p></div>
     </div>
@@ -131,22 +131,23 @@
   </section>
 
   <section class="slide">
-    <div class="kicker">05 · Live Data &amp; Global Collaborators</div>
-    <h2>NASA, NOAA, Planetary Computer &amp; Meteomatics Integration</h2>
+    <div class="kicker">05 · Game Architecture &amp; Official NASA Resources</div>
+    <h2>4-Player NASA MDL Co-Op, Mission Viz 3D &amp; Live Data Feeds</h2>
     <div class="grid-2">
       <div class="card">
-        <h3>Live Space Weather &amp; Radiation Telemetry</h3>
+        <h3>Space Mission Design Game Loop (CML 1–4)</h3>
         <ul class="clean">
-          <li>• <strong>Cloudflare Edge Proxy (`/api/space-weather`):</strong> real-time NOAA SWPC GOES ≥10 MeV proton flux + Planetary Kp index</li>
-          <li>• <strong>NASA DONKI GST &amp; SPENVIS/OMNIWeb:</strong> real geomagnetic storms + trapped LEO/GEO/Artemis/Mars TID envelopes</li>
-          <li>• <strong>NASA GEVS STD-7000B:</strong> 14.1 Grms structural modal validation (&gt;90 Hz Mode 1)</li>
+          <li>• <strong>4-Player Co-Op (GSFC MDL):</strong> Commander, Structures, Avionics &amp; Science leads sign off mass (1,330 g), solar EPS, link &amp; budget gates</li>
+          <li>• <strong>3 Difficulty Scenarios + Sandbox:</strong> Cadet (Balloon), Engineer (Artemis Moon), Mars PI (+ Cyber Spoof) &amp; Shareable `#design=` Links</li>
+          <li>• <strong>NASA Mission Viz + CubeSat 101:</strong> Dual 3D Hardware / Orbit view, random in-flight events, CML 1–4 badge &amp; Leaderboard</li>
         </ul>
       </div>
       <div class="card">
-        <h3>Space Apps Global Offers Utilized</h3>
+        <h3>Live Space Weather &amp; Global Offers Utilized</h3>
         <ul class="clean">
-          <li>• <strong>Microsoft Planetary Computer STAC:</strong> Sentinel-2 L2A optical imagery (&lt;15% cloud) mapping the KÜPSAT-01 Arslanköy–Ermenek recovery corridor</li>
-          <li>• <strong>Meteomatics Weather API:</strong> surface temperature &amp; 100 m wind shear telemetry for stratospheric balloon launch windows</li>
+          <li>• <strong>NOAA SWPC &amp; NASA DONKI GST (`/api/space-weather`):</strong> GOES ≥10 MeV proton flux, Planetary Kp &amp; SPENVIS/OMNIWeb radiation</li>
+          <li>• <strong>Microsoft Planetary Computer STAC:</strong> Sentinel-2 L2A scenes over KÜPSAT-01 Arslanköy–Ermenek recovery corridor</li>
+          <li>• <strong>Meteomatics Weather API:</strong> 100 m wind shear &amp; surface meteorology for stratospheric balloon launch windows</li>
         </ul>
       </div>
     </div>
@@ -157,14 +158,14 @@
     <div class="kicker">06 · Mission Trade Study &amp; Impact</div>
     <h2>Mars Transit (Solar Storm + Spoofing Attack): 2.0% vs 100.0%</h2>
     <table>
-      <thead><tr><th>Architecture</th><th>Weight SRAM</th><th>SEU Flips/Day</th><th>10-Cycle ADCS</th><th>Min Temp</th><th>Power / Cost</th><th>1U Margin</th><th>Survival</th></tr></thead>
+      <thead><tr><th>Architecture</th><th>Weight SRAM</th><th>SEU Flips/Day</th><th>10-Cycle ADCS</th><th>Min Temp</th><th>Power / Cost</th><th>1U Margin</th><th>Game Score / CML</th></tr></thead>
       <tbody>
-        <tr><td>Al-6061 + 64 MB ARM SRAM</td><td>64 MB</td><td>234.0</td><td>29.97% (SEU)</td><td>-141.5 °C (Freeze)</td><td>4.20 W / $3,600</td><td>730 g</td><td style="color:#ef4444;font-weight:700;">2.0% FAIL</td></tr>
-        <tr><td>CFRP + Rad-Hard TMR CPU</td><td>16 MB</td><td>0.0</td><td>63.15% (PID)</td><td>-129.0 °C (Freeze)</td><td>8.50 W / $42,800</td><td>555 g</td><td style="color:#f59e0b;font-weight:700;">48.5% DEGRADED</td></tr>
-        <tr><td><strong>AegisSat Hybrid + WERR 24B</strong></td><td><strong>0 B PROM</strong></td><td><strong>0.0</strong></td><td><strong>94.37% (μ=0.75)</strong></td><td><strong>-24.5 °C (OK)</strong></td><td><strong>0.85 W / $8,300</strong></td><td><strong>957 g</strong></td><td style="color:#22c55e;font-weight:800;">100.0% SURVIVED</td></tr>
+        <tr><td>Al-6061 + 64 MB ARM SRAM</td><td>64 MB</td><td>234.0</td><td>29.97% (SEU)</td><td>-141.5 °C (Freeze)</td><td>4.20 W / $3,600</td><td>730 g</td><td style="color:#ef4444;font-weight:700;">20 pts · CML-1 FAIL</td></tr>
+        <tr><td>CFRP + Rad-Hard TMR CPU</td><td>16 MB</td><td>0.0</td><td>63.15% (PID)</td><td>-129.0 °C (Freeze)</td><td>8.50 W / $42,800</td><td>555 g</td><td style="color:#f59e0b;font-weight:700;">262 pts · CML-2 FAIL</td></tr>
+        <tr><td><strong>AegisSat Hybrid + WERR 24B</strong></td><td><strong>0 B PROM</strong></td><td><strong>0.0</strong></td><td><strong>94.37% (μ=0.75)</strong></td><td><strong>-24.5 °C (OK)</strong></td><td><strong>0.85 W / $8,300</strong></td><td><strong>957 g</strong></td><td style="color:#22c55e;font-weight:800;">776 pts · CML-4 (100%)</td></tr>
       </tbody>
     </table>
-    <p class="lead" style="margin-top:18px;font-size:16px;">Open-source simulator, Python/JS bit-exact core, KÜPSAT-01 replay &amp; patents live at <strong>https://aegissat.space</strong> · <strong>github.com/bdagli-web/aegissat</strong></p>
+    <p class="lead" style="margin-top:18px;font-size:16px;">Open-source Mission Design Game, Python/JS bit-exact core, KÜPSAT-01 replay &amp; patents live at <strong>https://aegissat.space</strong> · <strong>github.com/bdagli-web/aegissat</strong></p>
     <span class="slide-num">07 / 07</span>
   </section>
 

@@ -11,6 +11,7 @@ from aegissat_core import (  # noqa: E402
     KUPSAT01_BURST_RATE_DPS,
     compute_internal_min_temp,
     evaluate_ai_watchdog,
+    evaluate_game_mission,
     evaluate_mission,
     evaluate_spoofing_barrier,
     pack_werr24_frame,
@@ -151,6 +152,46 @@ class TestAegisSatCore(unittest.TestCase):
             self.assertEqual(py_res["adcs"]["energy_damped_pct"], js_res["adcs"]["energy_damped_pct"])
             self.assertEqual(py_res["watchdog"]["vetoed"], js_res["watchdog"]["vetoed"])
             self.assertEqual(py_res["spoofing"]["spoofing_isolated"], js_res["spoofing"]["spoofing_isolated"])
+
+    def test_space_mission_design_game_constraints_and_js_parity(self):
+        # Winning WERR build passes all 8 NASA gates -> CML 4
+        win = evaluate_game_mission(
+            "WERR_AEGIS_HYBRID", "WERR_24B_FNS", "MARS_DEEP_SPACE", True, True,
+            "DEEP_SPACE_ESCORT", "DEPLOY_WINGS", "SBAND_PATCH",
+            ["WERR_DOSIMETER", "LASER_BEACON", "MAG_PLASMA"], "PI_MARS",
+        )
+        self.assertTrue(win["mission_success"])
+        self.assertEqual(win["cml_level"], 4)
+        self.assertEqual(win["gates_passed"], 8)
+
+        # Incompatible launch vehicle + Mars 45% solar brownout + UHF bottleneck -> fails
+        bad = evaluate_game_mission(
+            "AL6061", "ARM_SRAM", "MARS_DEEP_SPACE", True, True,
+            "SMALL_RIDESHARE", "BODY_SOLAR", "UHF_9K6",
+            ["OPTICAL_CAM"], "PI_MARS",
+        )
+        self.assertFalse(bad["mission_success"])
+        self.assertFalse(bad["gates"]["launch_ok"])
+        self.assertFalse(bad["gates"]["power_ok"])
+        self.assertFalse(bad["gates"]["comm_ok"])
+        self.assertEqual(bad["cml_level"], 1)
+
+        # Python vs JS parity for evaluateGameMission
+        js_path = (ROOT / "assets" / "js" / "werr_aegissat_core.js").as_posix()
+        script = f"""
+        const core = require({json.dumps(js_path)});
+        console.log(JSON.stringify(core.evaluateGameMission(
+          "WERR_AEGIS_HYBRID","WERR_24B_FNS","MARS_DEEP_SPACE",true,true,
+          "DEEP_SPACE_ESCORT","DEPLOY_WINGS","SBAND_PATCH",
+          ["WERR_DOSIMETER","LASER_BEACON","MAG_PLASMA"],"PI_MARS"
+        )));
+        """
+        js_win = json.loads(subprocess.check_output(["node", "-e", script], text=True))
+        self.assertEqual(win["game_score"], js_win["game_score"])
+        self.assertEqual(win["cml_level"], js_win["cml_level"])
+        self.assertEqual(win["power_margin_w"], js_win["power_margin_w"])
+        self.assertEqual(win["data_margin_mb_day"], js_win["data_margin_mb_day"])
+        self.assertEqual(win["gates_passed"], js_win["gates_passed"])
 
 
 if __name__ == "__main__":

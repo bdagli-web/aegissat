@@ -47,3 +47,13 @@ In accordance with NASA Space Apps Challenge 2026 SI guidelines, mission patch a
 
 - [AegisSat Presentation (English PDF)](docs/AegisSat_Presentation_EN.pdf) — 7-slide 16:9 interactive/print-ready NASA Space Apps deck
 - [AegisSat Sunum (Türkçe PDF)](docs/AegisSat_Presentation_TR.pdf) — 7 slaytlık Türkçe 16:9 görev sunumu
+
+## NASA Space Mission Design Game Alignment
+
+Aligned directly with the [NASA Space Apps 2026 — Space Mission Design Game](https://www.spaceappschallenge.org/2026/challenges/space-mission-design-game/) challenge and official NASA/CSA resources:
+
+- **4 Mission Segments ([NASA Science Missions](https://www.nasa.gov/wp-content/uploads/2025/04/250323-design-and-develop-science-mission.pdf?emrc=a454cf)):** Interactive engineering trade-offs across **Launch Segment** (Stratospheric Balloon, Electron LEO, Falcon/SLS Cislunar, Falcon Heavy Mars), **Space Segment** (IAC 2026 Shielding, WERR 24-Byte Zero-SRAM PROM vs SRAM/Rad-Hard TMR, Solar EPS + Solid-State Battery, 5 Science Instruments), **Ground Segment** (UHF, S-Band, Ka/Optical Downlink Capacity), and **User Segment** (Science Return).
+- **4-Player Co-Op NASA MDL Mode ([GSFC MDL](https://etd.gsfc.nasa.gov/capabilities/integrated-design-center/mission-design-lab/)):** Collaborate in **Commander**, **Structures & Thermal**, **Avionics & Cyber-ADCS**, and **Science, EPS & Ops** roles with team sign-offs and shareable `#design=` mission URLs.
+- **JPL Concept Maturity Levels ([JPL CML 1–4](https://dataverse.jpl.nasa.gov/dataset.xhtml?persistentId=hdl:2014/44299)):** Live progression meter evaluating all 8 mission gates (Mass `<= 1,330 g`, Launch/GEVS Compatibility, Mars Solar Irradiance `45%` Power Balance, Data Downlink, Scenario Budget, Thermal `>= -30 °C`, Radiation SEU & Spoofing Immunity, and Science Target).
+- **Dual 3D Visualization ([NASA Mission Viz](https://nasa.github.io/mission-viz/)):** Switch interactively inside Three.js between the **1U Hardware Twin** (deployable solar wings + exploded view + proton particle storm) and **Earth–Moon–Mars 3D Trajectory**.
+- **3 Difficulty Scenarios + Sandbox + In-Flight Random Events + Leaderboard + CubeSat 101 ([NASA CSLI CubeSat 101](https://www3.nasa.gov/sites/default/files/atoms/files/nasa_csli_cubesat_101_508.pdf)).**
