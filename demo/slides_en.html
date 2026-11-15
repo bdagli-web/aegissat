@@ -33,16 +33,29 @@
     th, td { border: 1px solid rgba(148,163,184,0.25); padding: 10px 14px; text-align: left; }
     th { background: rgba(56,189,248,0.12); color: var(--accent); font-weight: 700; }
     .hero-row { display: flex; align-items: center; gap: 36px; }
+    .patch-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; flex-shrink: 0; }
     .patch-img { width: 150px; height: 150px; border-radius: 18px; object-fit: cover; border: 2px solid var(--border); flex-shrink: 0; }
+    .patch-cap { font-size: 10.5px; color: var(--muted); font-family: ui-monospace, monospace; letter-spacing: 0.03em; }
+    .showcase-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 14px; }
+    .shot-card { background: #020617; border: 1px solid var(--border); border-radius: 12px; padding: 8px 8px 6px; overflow: hidden; }
+    .shot-card img { width: 100%; height: 256px; object-fit: cover; object-position: top center; border-radius: 8px; display: block; border: 1px solid rgba(148,163,184,0.18); }
+    .shot-cap { font-size: 11.5px; color: var(--muted); margin-top: 6px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .shot-cap strong { color: var(--accent); font-size: 12px; }
+    .card-compact { padding: 14px 16px; }
+    .card-compact h3 { font-size: 15.5px; margin-bottom: 6px; }
+    .card-compact li { font-size: 13px; margin-bottom: 4px; line-height: 1.38; }
+    code.mono { background: rgba(56,189,248,0.12); color: var(--accent); padding: 1px 5px; border-radius: 4px; font-size: 0.92em; }
     @media screen and (max-width: 820px) {
       .toolbar { position: static; width: calc(100% - 24px); margin: 10px auto 0; flex-wrap: wrap; justify-content: center; }
       .slide { min-height: auto; padding: 28px 16px 42px; }
       .hero-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .patch-wrap { align-items: flex-start; }
       .patch-img { width: 92px; height: 92px; }
       h1 { font-size: 26px; }
       h2 { font-size: 21px; margin-bottom: 14px; }
       p.lead { font-size: 15px; margin-bottom: 16px; }
-      .grid-2, .grid-3 { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+      .grid-2, .grid-3, .showcase-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+      .shot-card img { height: auto; max-height: 240px; }
       .card { padding: 14px; min-width: 0; max-width: 100%; }
       .metric { font-size: 24px; }
       .hex-box { font-size: 12px; padding: 10px 12px; }
@@ -54,6 +67,7 @@
     @media print {
       .toolbar { display: none !important; }
       .slide { width: 13.333in; height: 7.5in; min-height: 7.5in; max-height: 7.5in; padding: 38px 54px; overflow: hidden; border-bottom: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .shot-card img { height: 246px; }
     }
   </style>
 </head>
@@ -69,7 +83,10 @@
 
   <section class="slide">
     <div class="hero-row">
-      <img src="../assets/aegissat_mission_patch.jpg" alt="AegisSat Mission Patch" class="patch-img" />
+      <div class="patch-wrap">
+        <img src="../assets/aegissat_mission_patch.jpg" alt="AegisSat Mission Patch" class="patch-img" />
+        <span class="patch-cap">Mission Patch (SI-Assisted)</span>
+      </div>
       <div>
         <div class="kicker">NASA Space Apps Challenge 2026 · Space Mission Design Game</div>
         <h1>AegisSat: Interactive Zero-SRAM CubeSat Mission Design Game</h1>
@@ -147,23 +164,31 @@
   </section>
 
   <section class="slide">
-    <div class="kicker">05 · Game Architecture &amp; Official NASA Resources</div>
-    <h2>4-Player NASA MDL Co-Op, Mission Viz 3D &amp; Live Data Feeds</h2>
+    <div class="kicker">05 · Live Simulator UX, Mission Viz 3D &amp; NASA Open Data</div>
+    <h2 style="margin-bottom:14px;">Interactive 3D Digital Twin, 4-Player MDL Co-Op &amp; Live Feeds</h2>
+    <div class="showcase-grid">
+      <div class="shot-card">
+        <img src="../assets/demo_simulator_en.jpg" alt="AegisSat Live 3D CubeSat Simulator and CML-4 Engineering Gates" />
+        <div class="shot-cap"><strong>3D CubeSat Digital Twin &amp; 8 Gates</strong><span class="mono">776/1000 · CML-4 PASS</span></div>
+      </div>
+      <div class="shot-card">
+        <img src="../assets/demo_trajectory_en.jpg" alt="NASA Mission Viz 3D Transfer Trajectory and Resource Telemetry" />
+        <div class="shot-cap"><strong>NASA Mission Viz 3D Orbit &amp; Telemetry</strong><span class="mono">Earth · Moon · Mars</span></div>
+      </div>
+    </div>
     <div class="grid-2">
-      <div class="card">
-        <h3>Space Mission Design Game Loop (CML 1–4)</h3>
+      <div class="card card-compact">
+        <h3>User Experience &amp; Game Loop (aegissat.space)</h3>
         <ul class="clean">
-          <li>• <strong>4-Player Co-Op (GSFC MDL):</strong> Commander, Structures, Avionics &amp; Science leads sign off mass (1,330 g), solar EPS, link &amp; budget gates</li>
-          <li>• <strong>3 Difficulty Scenarios + Sandbox:</strong> Cadet (Balloon), Engineer (Artemis Moon), Mars PI (+ Cyber Spoof) &amp; Shareable `#design=` Links</li>
-          <li>• <strong>NASA Mission Viz + CubeSat 101:</strong> Dual 3D Hardware / Orbit view, random in-flight events, CML 1–4 badge &amp; Leaderboard</li>
+          <li>• <strong>Design &amp; Stress-Test:</strong> Configure Launch, Orbit, Chassis, EPS &amp; WERR avionics across 3 tiers + Sandbox; inject Solar Storms, Spoofing &amp; bit-flips live.</li>
+          <li>• <strong>4-Player GSFC MDL Co-Op:</strong> Commander, Structures, Avionics &amp; Science leads approve 1,330 g mass, budget &amp; CML 1–4 gates via <code class="mono">#design=</code> URLs.</li>
         </ul>
       </div>
-      <div class="card">
-        <h3>Live Space Weather &amp; Global Offers Utilized</h3>
+      <div class="card card-compact">
+        <h3>NASA &amp; Partner Data Making It Possible</h3>
         <ul class="clean">
-          <li>• <strong>NOAA SWPC &amp; NASA DONKI GST (`/api/space-weather`):</strong> GOES ≥10 MeV proton flux, Planetary Kp &amp; SPENVIS/OMNIWeb radiation</li>
-          <li>• <strong>Microsoft Planetary Computer STAC:</strong> Sentinel-2 L2A scenes over KÜPSAT-01 Arslanköy–Ermenek recovery corridor</li>
-          <li>• <strong>Meteomatics Weather API:</strong> 100 m wind shear &amp; surface meteorology for stratospheric balloon launch windows</li>
+          <li>• <strong>NASA DONKI GST &amp; NOAA SWPC (<code class="mono">/api/space-weather</code>):</strong> Live GOES &ge;10 MeV protons, Planetary Kp &amp; OMNIWeb/SPENVIS radiation envelopes.</li>
+          <li>• <strong>Planetary Computer &amp; Meteomatics:</strong> Sentinel-2 L2A Mersin recovery imagery + 100 m wind shear for KÜPSAT-01 launch windows.</li>
         </ul>
       </div>
     </div>

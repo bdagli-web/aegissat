@@ -33,16 +33,29 @@
     th, td { border: 1px solid rgba(148,163,184,0.25); padding: 10px 14px; text-align: left; }
     th { background: rgba(56,189,248,0.12); color: var(--accent); font-weight: 700; }
     .hero-row { display: flex; align-items: center; gap: 36px; }
+    .patch-wrap { display: flex; flex-direction: column; align-items: center; gap: 6px; flex-shrink: 0; }
     .patch-img { width: 150px; height: 150px; border-radius: 18px; object-fit: cover; border: 2px solid var(--border); flex-shrink: 0; }
+    .patch-cap { font-size: 10.5px; color: var(--muted); font-family: ui-monospace, monospace; letter-spacing: 0.03em; }
+    .showcase-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 14px; }
+    .shot-card { background: #020617; border: 1px solid var(--border); border-radius: 12px; padding: 8px 8px 6px; overflow: hidden; }
+    .shot-card img { width: 100%; height: 256px; object-fit: cover; object-position: top center; border-radius: 8px; display: block; border: 1px solid rgba(148,163,184,0.18); }
+    .shot-cap { font-size: 11.5px; color: var(--muted); margin-top: 6px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .shot-cap strong { color: var(--accent); font-size: 12px; }
+    .card-compact { padding: 14px 16px; }
+    .card-compact h3 { font-size: 15.5px; margin-bottom: 6px; }
+    .card-compact li { font-size: 13px; margin-bottom: 4px; line-height: 1.38; }
+    code.mono { background: rgba(56,189,248,0.12); color: var(--accent); padding: 1px 5px; border-radius: 4px; font-size: 0.92em; }
     @media screen and (max-width: 820px) {
       .toolbar { position: static; width: calc(100% - 24px); margin: 10px auto 0; flex-wrap: wrap; justify-content: center; }
       .slide { min-height: auto; padding: 28px 16px 42px; }
       .hero-row { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .patch-wrap { align-items: flex-start; }
       .patch-img { width: 92px; height: 92px; }
       h1 { font-size: 26px; }
       h2 { font-size: 21px; margin-bottom: 14px; }
       p.lead { font-size: 15px; margin-bottom: 16px; }
-      .grid-2, .grid-3 { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+      .grid-2, .grid-3, .showcase-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+      .shot-card img { height: auto; max-height: 240px; }
       .card { padding: 14px; min-width: 0; max-width: 100%; }
       .metric { font-size: 24px; }
       .hex-box { font-size: 12px; padding: 10px 12px; }
@@ -54,6 +67,7 @@
     @media print {
       .toolbar { display: none !important; }
       .slide { width: 13.333in; height: 7.5in; min-height: 7.5in; max-height: 7.5in; padding: 38px 54px; overflow: hidden; border-bottom: none; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .shot-card img { height: 246px; }
     }
   </style>
 </head>
@@ -69,7 +83,10 @@
 
   <section class="slide">
     <div class="hero-row">
-      <img src="../assets/aegissat_mission_patch.jpg" alt="AegisSat Görev Arması" class="patch-img" />
+      <div class="patch-wrap">
+        <img src="../assets/aegissat_mission_patch.jpg" alt="AegisSat Görev Arması" class="patch-img" />
+        <span class="patch-cap">Görev Arması (SI Destekli)</span>
+      </div>
       <div>
         <div class="kicker">NASA Space Apps Challenge 2026 · Space Mission Design Game</div>
         <h1>AegisSat: Etkileşimli Sıfır-SRAM Küpsat Görev Tasarım Oyunu</h1>
@@ -147,23 +164,31 @@
   </section>
 
   <section class="slide">
-    <div class="kicker">05 · Oyun Mimarisi &amp; Resmi NASA Kaynakları</div>
-    <h2>4 Oyunculu NASA MDL Ortak Tasarım, Mission Viz 3D &amp; Canlı Veri</h2>
+    <div class="kicker">05 · Canlı Simülatör Deneyimi, Mission Viz 3D &amp; NASA Açık Verisi</div>
+    <h2 style="margin-bottom:14px;">Etkileşimli 3B Dijital İkiz, 4 Oyunculu MDL &amp; Canlı Veri Akışları</h2>
+    <div class="showcase-grid">
+      <div class="shot-card">
+        <img src="../assets/demo_simulator_en.jpg" alt="AegisSat Canlı 3B Küpsat Simülatörü ve CML-4 Mühendislik Kapıları" />
+        <div class="shot-cap"><strong>3B Küpsat İkizi &amp; 8 Mühendislik Kapısı</strong><span class="mono">776/1000 · CML-4 PASS</span></div>
+      </div>
+      <div class="shot-card">
+        <img src="../assets/demo_trajectory_en.jpg" alt="NASA Mission Viz 3B Transfer Yörüngesi ve Telemetri" />
+        <div class="shot-cap"><strong>NASA Mission Viz 3B Yörünge &amp; Telemetri</strong><span class="mono">Dünya · Ay · Mars</span></div>
+      </div>
+    </div>
     <div class="grid-2">
-      <div class="card">
-        <h3>Uzay Görevi Tasarım Oyunu Döngüsü (CML 1–4)</h3>
+      <div class="card card-compact">
+        <h3>Kullanıcı Deneyimi &amp; Oyun Döngüsü (aegissat.space)</h3>
         <ul class="clean">
-          <li>• <strong>4 Oyunculu Ortak Mod (GSFC MDL):</strong> Komutan, Yapı, Aviyonik ve Bilim liderleri 1,330 g kütle, EPS güç, veri indirme ve bütçe kapılarını onaylar</li>
-          <li>• <strong>3 Zorluk Seviyesi + Serbest Mod:</strong> Aday (Balon), Mühendis (Artemis Ay), Mars PI (+ Siber Spoof) &amp; Paylaşılabilir `#design=` Bağlantıları</li>
-          <li>• <strong>NASA Mission Viz + CubeSat 101:</strong> Çift 3D Donanım/Yörünge görünümü, rastgele uçuş olayları, CML 1–4 ve Skor Tablosu</li>
+          <li>• <strong>Tasarla &amp; Stres-Test Et:</strong> 3 seviye + Serbest Modda fırlatma, yörünge, şasi, EPS &amp; WERR seç; Güneş Fırtınası, Spoofing ve bit hatası enjekte et.</li>
+          <li>• <strong>4 Oyunculu GSFC MDL Ortak Mod:</strong> Komutan, Yapı, Aviyonik ve Bilim liderleri <code class="mono">#design=</code> linkleriyle 1,330 g kütle ve CML 1–4 kapılarını onaylar.</li>
         </ul>
       </div>
-      <div class="card">
-        <h3>Canlı Uzay Havası &amp; Kullanılan Küresel Teklifler</h3>
+      <div class="card card-compact">
+        <h3>Çözümü Mümkün Kılan NASA &amp; Ortak Verileri</h3>
         <ul class="clean">
-          <li>• <strong>NOAA SWPC &amp; NASA DONKI GST (`/api/space-weather`):</strong> GOES ≥10 MeV proton akısı, Kp endeksi ve SPENVIS/OMNIWeb doz zarfları</li>
-          <li>• <strong>Microsoft Planetary Computer STAC:</strong> KÜPSAT-01 Arslanköy–Ermenek kurtarma koridoru Sentinel-2 L2A uydu sahneleri</li>
-          <li>• <strong>Meteomatics Weather API:</strong> fırlatma penceresi için yer sıcaklığı ve 100 m rüzgâr kesmesi telemetrisi</li>
+          <li>• <strong>NASA DONKI GST &amp; NOAA SWPC (<code class="mono">/api/space-weather</code>):</strong> Canlı GOES &ge;10 MeV proton akısı, Kp ve OMNIWeb/SPENVIS radyasyon zarfları.</li>
+          <li>• <strong>Planetary Computer &amp; Meteomatics:</strong> KÜPSAT-01 kurtarma koridoru Sentinel-2 L2A sahneleri + 100 m rüzgâr kesmesi telemetrisi.</li>
         </ul>
       </div>
     </div>
