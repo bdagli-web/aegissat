@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>AegisSat — 7 Slaytlık Görev Sunumu (TR)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #050811; color: #e2e8f0; margin: 0; padding: 2rem; }
+    .deck { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+    .slide { background: #0c1324; border: 1px solid #1e293b; border-radius: 14px; padding: 2rem; }
+    .slide h2 { color: #38bdf8; margin-top: 0; }
+    .tag { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; }
+    ul { line-height: 1.7; }
+    a { color: #38bdf8; }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <p><a href="../index.html">&larr; Canlı Simülatöre Dön</a> | <a href="slides_en.html">English Deck (EN)</a></p>
+    <div class="slide"><div class="tag">Slayt 1 / 7 · Misyon</div><h2>AegisSat — Uzay Görevi Mimari Simülatörü</h2><p>NASA Space Apps Challenge 2026 (Space Mission Design Game). Canlı portal: <a href="https://aegissat.space">aegissat.space</a>. TRL-7 stratosferik donanım mirasını sıfır-SRAM WERR aviyoniği ile birleştirir.</p></div>
+    <div class="slide"><div class="tag">Slayt 2 / 7 · Problem</div><h2>Küpsatlarda Kozmik Işın SEU &amp; Fırlatma Dinamiği</h2><p>LEO ve derin uzay uyduları SRAM yapay zekâ ağırlıklarında bit kaymaları (SEU), -150 °C / +120 °C termal şoklar ve ayrılma sonrası açısal savrulma riskiyle karşı karşıyadır.</p></div>
+    <div class="slide"><div class="tag">Slayt 3 / 7 · Donanım Mirası</div><h2>KÜPSAT-01 &amp; IAC 2026 Antalya (IAC-26-C2.IPB.29)</h2><ul><li><strong>TPMK 2025/007159</strong> · 345 g 1U şasi (AA7075-T6 + Toray T700 CFRP + Rigid 10K Seramik + XPS).</li><li>5 Nesil FEA: 100.87 MPa &rarr; 18.49 MPa (<strong>%81.7 gerilim düşüşü</strong>), 0.254 mm sapma, Mod 1 = <strong>100.76 Hz</strong>, FS = 27.20.</li></ul></div>
+    <div class="slide"><div class="tag">Slayt 4 / 7 · TRL-7 Uçuş</div><h2>7 Ağustos 2026 Mersin Stratosfer Uçuşu</h2><ul><li>Tepe İrtifa: <strong>25.64 km</strong> (22.51 hPa, atmosfer kütlesinin %97.75'i aşıldı).</li><li>Termal Fark: <strong>-54.50 °C</strong> dış ortamda iç aviyonik <strong>-17.27 °C</strong> (+37.23 °C pasif koruma).</li><li>Balon Patlama Şoku: ~20G ve <strong>3,647.58 °/s</strong> (10.13 devir/sn) savrulma kaydedildi.</li></ul></div>
+    <div class="slide"><div class="tag">Slayt 5 / 7 · 0-SRAM Aviyonik</div><h2>WERR 24-Bayt Rad-Hard PROM Mimarisi</h2><p>Tüm model <strong>24 baytlık tohumdan</strong> (tam TMR ile 72 B) anlık sentezlenir. <strong>0 bayt</strong> ağırlık SRAM'i ile bit-flip bağışıklığı ve 192/192 CRC-16 hata tespiti sağlanır.</p></div>
+    <div class="slide"><div class="tag">Slayt 6 / 7 · ADCS Kontrol</div><h2>Negatif Schwarzian + Koenigs Sönümleme</h2><p>Evrensel negatif Schwarzian türevi (<code>S(f)(0) &le; -6.9196 &lt; 0</code>) parazit denge noktalarını engeller; Koenigs büzülmesi (<code>&mu; = 0.75</code>) 10 çevrimde savrulma enerjisinin <strong>%94.37'sini</strong> sönümler.</p></div>
+    <div class="slide"><div class="tag">Slayt 7 / 7 · Ekip &amp; İletişim</div><h2>AegisSat Ekibi</h2><p>Bekirhan Dağlı (Takım Lideri), Burak Salar, Emrah Yurtseven · İletişim: <a href="mailto:info@aegissat.space">info@aegissat.space</a> · <a href="https://github.com/bdagli-web/aegissat">github.com/bdagli-web/aegissat</a></p></div>
+  </div>
+</body>
+</html>

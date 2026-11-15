@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AegisSat — Space Mission Architecture Simulator | NASA Space Apps 2026</title>
+  <meta name="description" content="Interactive CubeSat Space Mission Architecture Simulator uniting KÜPSAT-01 TRL-7 heritage, IAC 2026 hybrid shielding, and WERR 24-Byte 0-SRAM SEU-immune avionics." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/aegissat_mission_patch.jpg" alt="AegisSat Mission Patch (SI-GENERATED)" />
+      <div>
+        <h1>AegisSat — Space Mission Architecture Simulator</h1>
+        <p data-i18n="subtitle">Space Mission Architecture Simulator · KÜPSAT-01 TRL-7 + IAC 2026 + WERR 24-Byte 0-SRAM</p>
+      </div>
+    </div>
+    <nav class="nav-actions">
+      <button id="btn-lang" class="btn primary" data-i18n="btn_lang">TR / EN</button>
+      <a class="btn" href="demo/slides_en.html" data-i18n="btn_slides">Slides (EN)</a>
+      <a class="btn" href="demo/slides_tr.html" data-i18n="btn_slides_alt">Sunum (TR)</a>
+      <a class="btn" href="https://github.com/bdagli-web/aegissat" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <!-- Left: Modular Architecture Builder -->
+    <section class="panel">
+      <h2 data-i18n="h_config">1. Mission Architecture</h2>
+      <div class="opt-group">
+        <span class="opt-label" data-i18n="lbl_chassis">Chassis &amp; Shielding (IAC-26-C2.IPB.29)</span>
+        <div id="chassis-options" class="opt-group"></div>
+      </div>
+      <div class="opt-group">
+        <span class="opt-label" data-i18n="lbl_avionics">Avionics &amp; AI Memory</span>
+        <div id="avionics-options" class="opt-group"></div>
+      </div>
+      <div class="opt-group">
+        <span class="opt-label" data-i18n="lbl_orbit">Orbit / Environment (NASA SPENVIS &amp; OMNIWeb)</span>
+        <div id="orbit-options" class="opt-group"></div>
+      </div>
+      <div class="opt-group">
+        <span class="opt-label" data-i18n="lbl_events">Stress Tests &amp; Controls</span>
+        <div style="display:flex; flex-wrap:wrap; gap:0.45rem;">
+          <button id="btn-storm" class="btn" data-i18n="btn_storm">Solar Storm: ON</button>
+          <button id="btn-explode" class="btn" data-i18n="btn_explode">Exploded View</button>
+          <button id="btn-tumble" class="btn danger" data-i18n="btn_tumble">Inject KÜPSAT-01 Burst (3,647.58 °/s)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Center: 3D CubeSat & Real-time Charts -->
+    <section class="panel">
+      <h2 data-i18n="h_sim">2. 3D CubeSat &amp; ADCS Detumbling</h2>
+      <div class="viewport-wrap">
+        <canvas id="cube-canvas"></canvas>
+        <div class="hud-overlay">
+          <span class="hud-pill">1U CDS Rev 14.1 · 100×100×113.5 mm</span>
+          <span id="hud-status" class="hud-pill">S(f) = -6.9196 &lt; 0 | Mode 1: 100.76 Hz</span>
+        </div>
+      </div>
+      <div class="charts-row">
+        <div class="chart-card">
+          <h3 data-i18n="chart_adcs">Negative Schwarzian + Koenigs ADCS Energy Damping (10 Cycles = 94.37%)</h3>
+          <canvas id="adcs-chart" class="mini-chart"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3 data-i18n="chart_flight">KÜPSAT-01 Verified Stratospheric Profile (25.64 km / 22.51 hPa / -54.50 °C)</h3>
+          <canvas id="flight-chart" class="mini-chart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right: Survivability Telemetry & 24-Byte WERR Frame -->
+    <section class="panel">
+      <h2 data-i18n="h_telemetry">3. Survivability &amp; 24-Byte WERR Frame</h2>
+      <div class="kpi-grid">
+        <div class="kpi"><div class="k-label" data-i18n="k_survival">Mission Survival Score</div><div id="val-survival" class="k-val k-good">100%</div></div>
+        <div class="kpi"><div class="k-label" data-i18n="k_seu">SRAM Weight Bit-Flips / Day</div><div id="val-seu" class="k-val k-good">0</div></div>
+        <div class="kpi"><div class="k-label" data-i18n="k_sram">Mutable Weight SRAM</div><div id="val-sram" class="k-val">0 B</div></div>
+        <div class="kpi"><div class="k-label" data-i18n="k_temp">Internal Min Temp</div><div id="val-temp" class="k-val">-112.77 °C</div></div>
+        <div class="kpi"><div class="k-label" data-i18n="k_mass">1U Payload Margin (1,330 g)</div><div id="val-mass" class="k-val">957 g</div></div>
+        <div class="kpi"><div class="k-label" data-i18n="k_adcs">ADCS 10-Cycle Damping</div><div id="val-adcs" class="k-val k-good">94.37%</div></div>
+      </div>
+      <div>
+        <div class="opt-label" style="margin-bottom:0.35rem;" data-i18n="lbl_hex">Immutable 24-Byte (192-bit) WERR Frame + CRC-16/CCITT-FALSE</div>
+        <div id="werr24-hex" class="hex-box">020203...</div>
+      </div>
+      <div>
+        <h2 style="margin-bottom:0.5rem;" data-i18n="h_heritage">Verified Flight &amp; Research Heritage</h2>
+        <ul class="heritage-list">
+          <li>• <strong>IAC 2026 Antalya:</strong> <a href="https://iac2026.ipostersessions.com/default.aspx?s=37-F2-E3-3C-C9-44-80-17-24-BB-B9-A7-A6-5B-65-2D&guestview=true" target="_blank" rel="noopener">IAC-26-C2.IPB.29 Interactive Poster</a> (81.7% stress reduction, 100.76 Hz)</li>
+          <li>• <strong>KÜPSAT-01 Flight Report:</strong> <a href="https://teknosanat.com.tr/lib/cubesat/cubesat_master_flight_report_tr.html" target="_blank" rel="noopener">7 Aug 2026 Stratospheric Mission</a> (25.64 km, 22.51 hPa, -54.50 °C)</li>
+          <li>• <strong>IP &amp; Patents:</strong> TPMK 2025/007159 (CubeSat Chassis) · TR 2026/020266 (Spoofing Barrier) · arXiv:2611.11641</li>
+          <li>• <strong>Contact:</strong> <a href="mailto:info@aegissat.space">info@aegissat.space</a> · <a href="https://www.spaceappschallenge.org/2026/find-a-team/aegissat/?tab=details" target="_blank" rel="noopener">NASA Space Apps Team</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/werr_aegissat_core.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

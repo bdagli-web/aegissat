@@ -1,34 +1,36 @@
-# AegisSat — Orbital & Space Mission Design Simulator
+<p align="center">
+  <img src="assets/aegissat_mission_patch.jpg" alt="AegisSat Mission Patch (SI-GENERATED)" width="220" />
+</p>
 
-**Event:** NASA Space Apps Challenge 2026 (Universal Event, Anywhere in the World)
+# AegisSat — Space Mission Architecture Simulator
 
-**Challenge:** Space Mission Design Game
+**NASA Space Apps Challenge 2026 — *Space Mission Design Game* (Universal Event)**  
+Live Simulator: **[https://aegissat.space/](https://aegissat.space/)**  
+Slides: **[English (EN)](demo/slides_en.html)** · **[Türkçe (TR)](demo/slides_tr.html)**  
+Team Contact: **[info@aegissat.space](mailto:info@aegissat.space)** · **[NASA Space Apps Team](https://www.spaceappschallenge.org/2026/find-a-team/aegissat/?tab=details)**
 
-**Team Page:** https://www.spaceappschallenge.org/2026/find-a-team/aegissat/?tab=details
+---
+
+## Overview
+
+**AegisSat** is an interactive 3D CubeSat mission architecture simulator uniting **TRL-7 stratospheric flight heritage** from **KÜPSAT-01**, peer-reviewed **IAC 2026 Antalya** structural optimization (`IAC-26-C2.IPB.29`), and **WERR 24-Byte 0-SRAM** SEU-immune avionics with **Negative Schwarzian / Koenigs ADCS detumbling**.
+
+- **KÜPSAT-01 Flight Heritage (7 Aug 2026, Mersin):** 25.64 km peak altitude, 22.51 hPa, -54.50 °C ambient (+37.23 °C passive thermal delta), 20G burst shock, and 3,647.58 °/s tumbling telemetry ([Flight Report](https://teknosanat.com.tr/lib/cubesat/cubesat_master_flight_report_tr.html) · `data/kupsat01_flight_20260807.csv`).
+- **IAC 2026 Hybrid Shield (`IAC-26-C2.IPB.29` / `TPMK 2025/007159`):** 345 g 1U chassis (`AA7075-T6 + Toray T700 CFRP + Rigid 10K Ceramic + XPS`), 81.7% Von Mises stress reduction (`100.87 -> 18.49 MPa`), `100.76 Hz` primary mode, `FS = 27.20`.
+- **WERR 24-Byte 0-SRAM & ADCS:** 0 B mutable weight SRAM (72 B full TMR PROM), `192/192` CRC-16/CCITT-FALSE single-bit SEU detection, and `94.37%` 10-cycle detumbling energy damping (`S(f)(0) <= -6.9196 < 0`, `mu = 0.75`).
+
+## Quickstart & Verification
+
+```bash
+python -m unittest discover -s tests -v
+```
 
 ## Team Members
 
-Team roster: https://www.spaceappschallenge.org/2026/find-a-team/aegissat/?tab=members
+- **Bekirhan Dagli** (`@bdagli`) — Team Owner
+- **Burak Salar** (`@pcfox`) — Aerospace & Mechatronics Systems Engineer
+- **Emrah Yurtseven** (`@eyurtseven`) — Maritime & Space Cybernetics
 
-- **Bekirhan Dagli** (Team Owner)
-- **Burak Salar**
-- **EMRAH YURTSEVEN**
+## Super Intelligence (SI) Transparency Disclosure
 
-## Official Community & Rules
-
-- NASA Space Apps GitHub: https://github.com/nasa/spaceapps
-- Legal & rules: https://www.spaceappschallenge.org/legal/
-
-## Project Structure
-
-```
-aegissat/
-├── docs/     # Documentation
-├── src/      # Source code
-├── assets/   # Images and media
-└── tests/    # Tests
-```
-
-## License
-
-This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+In accordance with NASA Space Apps Challenge 2026 SI guidelines, mission patch artwork (`assets/aegissat_mission_patch.jpg`) and code scaffolding were developed with AI/SI assistance without incorporating any NASA logos, flags, or official emblems. All telemetry calculations, 24-byte CRC-16 framing, and Python ↔ JavaScript parity are verified by `tests/test_aegissat_core.py`.

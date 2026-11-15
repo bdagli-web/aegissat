@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AegisSat — 7-Slide Mission Deck (EN)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #050811; color: #e2e8f0; margin: 0; padding: 2rem; }
+    .deck { max-width: 920px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+    .slide { background: #0c1324; border: 1px solid #1e293b; border-radius: 14px; padding: 2rem; }
+    .slide h2 { color: #38bdf8; margin-top: 0; }
+    .tag { font-size: 0.78rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; }
+    ul { line-height: 1.7; }
+    a { color: #38bdf8; }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <p><a href="../index.html">&larr; Back to Live Simulator</a> | <a href="slides_tr.html">Türkçe Sunum (TR)</a></p>
+    <div class="slide"><div class="tag">Slide 1 / 7 · Mission</div><h2>AegisSat — Space Mission Architecture Simulator</h2><p>NASA Space Apps Challenge 2026 (Space Mission Design Game). Live at <a href="https://aegissat.space">aegissat.space</a>. Uniting TRL-7 stratospheric hardware heritage with zero-SRAM WERR avionics.</p></div>
+    <div class="slide"><div class="tag">Slide 2 / 7 · Problem</div><h2>Cosmic-Ray SEU &amp; Launch Dynamics in SmallSats</h2><p>Deep-space and LEO CubeSats face Single Event Upsets (SEU) in SRAM AI weights, extreme -150 °C / +120 °C thermal cycling, and post-deployment angular tumbling.</p></div>
+    <div class="slide"><div class="tag">Slide 3 / 7 · Hardware Heritage</div><h2>KÜPSAT-01 &amp; IAC 2026 Antalya (IAC-26-C2.IPB.29)</h2><ul><li><strong>TPMK 2025/007159</strong> · 345 g 1U chassis (AA7075-T6 + Toray T700 CFRP + Rigid 10K Ceramic + XPS).</li><li>5-Gen FEA: 100.87 MPa &rarr; 18.49 MPa (<strong>-81.7% stress</strong>), 0.254 mm deflection, Mode 1 = <strong>100.76 Hz</strong>, FS = 27.20.</li></ul></div>
+    <div class="slide"><div class="tag">Slide 4 / 7 · TRL-7 Flight</div><h2>7 August 2026 Mersin Stratospheric Flight</h2><ul><li>Peak Altitude: <strong>25.64 km</strong> (22.51 hPa, 97.75% atmosphere traversed).</li><li>Thermal Delta: <strong>-54.50 °C</strong> ambient vs <strong>-17.27 °C</strong> internal (+37.23 °C passive protection).</li><li>Balloon Burst Shock: ~20G &amp; <strong>3,647.58 °/s</strong> (10.13 rev/s) tumbling recorded.</li></ul></div>
+    <div class="slide"><div class="tag">Slide 5 / 7 · 0-SRAM Avionics</div><h2>WERR 24-Byte Rad-Hard PROM Architecture</h2><p>Entire neural decision model synthesized on demand from a <strong>24-byte seed</strong> (72 B full TMR). <strong>0 bytes</strong> mutable weight SRAM = zero weight bit-flips, with 192/192 CRC-16/CCITT-FALSE fault detection.</p></div>
+    <div class="slide"><div class="tag">Slide 6 / 7 · ADCS Control</div><h2>Negative Schwarzian + Koenigs Detumbling</h2><p>Universal negative Schwarzian derivative (<code>S(f)(0) &le; -6.9196 &lt; 0</code>) prevents spurious equilibria; Koenigs contraction (<code>&mu; = 0.75</code>) damps <strong>94.37%</strong> of KÜPSAT-01's 3,647.58 °/s tumbling energy in 10 cycles.</p></div>
+    <div class="slide"><div class="tag">Slide 7 / 7 · Team &amp; Impact</div><h2>Team AegisSat</h2><p>Bekirhan Dağlı (Team Owner), Burak Salar, Emrah Yurtseven · Contact: <a href="mailto:info@aegissat.space">info@aegissat.space</a> · <a href="https://github.com/bdagli-web/aegissat">github.com/bdagli-web/aegissat</a></p></div>
+  </div>
+</body>
+</html>
