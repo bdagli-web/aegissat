@@ -22,8 +22,9 @@ export async function onRequestGet() {
     let kp = null;
     if (kResp.ok) {
       const kData = await kResp.json();
-      if (Array.isArray(kData) && kData.length > 1) {
-        kp = Number(kData[kData.length - 1][1]);
+      if (Array.isArray(kData) && kData.length > 0) {
+        const last = kData[kData.length - 1];
+        kp = typeof last === "object" && !Array.isArray(last) ? Number(last.Kp) : Number(last[1]);
       }
     }
 

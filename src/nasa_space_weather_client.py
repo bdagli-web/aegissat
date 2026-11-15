@@ -97,8 +97,10 @@ def sync_live_space_weather(snapshot_path: Path) -> Dict[str, Any]:
 
     try:
         kp_rows = _get_json(NOAA_KP_URL)
-        if len(kp_rows) > 1:
-            kp_index = round(float(kp_rows[-1][1]), 2)
+        if kp_rows:
+            last_kp = kp_rows[-1]
+            kp_val = last_kp["Kp"] if isinstance(last_kp, dict) else last_kp[1]
+            kp_index = round(float(kp_val), 2)
             live_sources.append("NOAA SWPC Planetary Kp")
     except Exception:
         pass
