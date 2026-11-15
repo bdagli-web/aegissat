@@ -1,15 +1,22 @@
 /**
- * Cloudflare Pages Function — Live Space Weather Proxy (NOAA SWPC + NASA DONKI)
- * Provides clean CORS-enabled live telemetry for https://aegissat.space/api/space-weather
+ * Cloudflare Pages Function — Live Space Weather & Planetary Computer STAC Proxy
+ * Serves https://aegissat.space/api/space-weather
  */
 export async function onRequestGet() {
   const protonsUrl = "https://services.swpc.noaa.gov/json/goes/primary/integral-protons-1-day.json";
   const kpUrl = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json";
+  const stacUrl = "https://planetarycomputer.microsoft.com/api/stac/v1/search";
 
   try {
-    const [pResp, kResp] = await Promise.all([
+    const [pResp, kResp, sResp] = await Promise.all([
       fetch(protonsUrl, { headers: { "User-Agent": "AegisSat-Pages-Edge/1.0" }, cf: { cacheTtl: 900, cacheEverything: true } }),
       fetch(kpUrl, { headers: { "User-Agent": "AegisSat-Pages-Edge/1.0" }, cf: { cacheTtl: 900, cacheEverything: true } }),
+      fetch(stacUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "User-Agent": "AegisSat-Pages-Edge/1.0" },
+        body: JSON.stringify({ collections: ["sentinel-2-l2a"], bbox: [34.15, 36.95, 34.85, 37.35], limit: 1 }),
+        cf: { cacheTtl: 1800, cacheEverything: true },
+      }),
     ]);
 
     let pfu10 = null;
@@ -28,13 +35,25 @@ export async function onRequestGet() {
       }
     }
 
+    let latestScene = null;
+    if (sResp.ok) {
+      const sData = await sResp.json();
+      if (sData.features && sData.features.length > 0) {
+        latestScene = {
+          id: sData.features[0].id,
+          datetime: sData.features[0].properties?.datetime || null,
+        };
+      }
+    }
+
     return new Response(
       JSON.stringify({
         ok: true,
-        source: "NOAA SWPC Live Edge",
+        source: "NOAA SWPC + Planetary Computer Live Edge",
         updated_utc: new Date().toISOString(),
         goes_proton_10mev_pfu: pfu10,
         kp_index: kp,
+        planetary_computer_latest_scene: latestScene,
       }),
       {
         status: 200,

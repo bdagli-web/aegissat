@@ -18,7 +18,7 @@ Team Contact: **[info@aegissat.space](mailto:info@aegissat.space)** · **[NASA S
 - **KÜPSAT-01 Flight Heritage (7 Aug 2026, Mersin):** 25.64 km peak altitude, 22.51 hPa, -54.50 °C ambient (+37.23 °C passive thermal delta), ~20G burst shock, and 3,647.58 °/s tumbling telemetry ([Flight Report](https://teknosanat.com.tr/lib/cubesat/cubesat_master_flight_report_tr.html) · `data/kupsat01_flight_20260807.json` [421 samples]).
 - **IAC 2026 Hybrid Shield (`IAC-26-C2.IPB.29` / `TPMK 2025/007159`):** 345 g 1U chassis (`AA7075-T6 + Toray T700 CFRP + Rigid 10K Ceramic + XPS`), 81.7% Von Mises stress reduction (`100.87 -> 18.49 MPa`), `100.76 Hz` primary mode, `FS = 27.20`.
 - **WERR 24-Byte 0-SRAM & ADCS:** 0 B mutable weight SRAM (72 B full TMR PROM), `192/192` CRC-16/CCITT-FALSE single-bit SEU detection, `94.37%` 10-cycle detumbling energy damping (`S(f)(0) <= -6.9196 < 0`, `mu = 0.75`), Julia Repeller AI Watchdog, and 2-adic Haar spoofing barrier (`TR 2026/020266`).
-- **Live Space Weather Edge Proxy:** Real-time **NOAA SWPC GOES >=10 MeV Protons** & **Planetary Kp** via Cloudflare Pages Edge (`/api/space-weather`), plus **NASA DONKI SEP** & SPENVIS/OMNIWeb offline cache (`data/verified_nasa_space_weather.json`).
+- **Live Space Weather & Global Offers Open Data:** Real-time **NOAA SWPC GOES >=10 MeV Protons** & **Planetary Kp** + **Microsoft Planetary Computer STAC** (`sentinel-2-l2a` KÜPSAT-01 corridor) via Cloudflare Pages Edge (`/api/space-weather`), paired with **NASA DONKI SEP**, **SPENVIS/OMNIWeb**, and **Meteomatics Weather API** launch-pad telemetry (`data/verified_nasa_space_weather.json`).
 
 ## Quickstart & Verification
 

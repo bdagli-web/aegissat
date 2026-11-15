@@ -93,6 +93,8 @@ class TestAegisSatCore(unittest.TestCase):
 
         sw = json.loads((ROOT / "data" / "verified_nasa_space_weather.json").read_text(encoding="utf-8"))
         self.assertIn("noaa_swpc", sw)
+        self.assertTrue(len(sw.get("planetary_computer_corridor", [])) >= 1)
+        self.assertIn("arslankoy_mersin", sw.get("meteomatics_launch_weather", {}))
         self.assertEqual(map_proton_flux_to_noaa_scale(1500.0)["scale"], "S3 (Strong)")
 
     def test_python_js_bit_exact_parity(self):

@@ -447,24 +447,36 @@
     const swEl = document.getElementById("sw-status");
     try {
       let swData = null;
+      let snapJson = null;
+      try {
+        const snap = await fetch("./data/verified_nasa_space_weather.json");
+        if (snap.ok) snapJson = await snap.json();
+      } catch (_) {}
       try {
         const edge = await fetch("/api/space-weather");
         if (edge.ok) swData = await edge.json();
       } catch (_) {}
       if (!swData || !swData.ok) {
-        const snap = await fetch("./data/verified_nasa_space_weather.json");
-        if (snap.ok) {
-          const s = await snap.json();
+        if (snapJson) {
           swData = {
             source: "Verified Snapshot (NOAA SWPC + NASA DONKI)",
-            goes_proton_10mev_pfu: s.noaa_swpc.goes_proton_10mev_pfu,
-            kp_index: s.noaa_swpc.kp_index,
-            s_scale: s.noaa_swpc.s_scale,
+            goes_proton_10mev_pfu: snapJson.noaa_swpc.goes_proton_10mev_pfu,
+            kp_index: snapJson.noaa_swpc.kp_index,
+            planetary_computer_latest_scene: (snapJson.planetary_computer_corridor || [])[0] || null,
           };
         }
       }
       if (swData) {
-        swEl.innerHTML = `<strong>${swData.source || "NOAA SWPC Live"}</strong><br/>GOES &ge;10 MeV: <code>${swData.goes_proton_10mev_pfu} pfu</code> · Kp: <code>${swData.kp_index}</code>`;
+        const pcScene = swData.planetary_computer_latest_scene || ((snapJson && snapJson.planetary_computer_corridor) || [])[0];
+        const meteo = snapJson && snapJson.meteomatics_launch_weather && snapJson.meteomatics_launch_weather.arslankoy_mersin;
+        let html = `<strong>${swData.source || "NOAA SWPC Live"}</strong><br/>GOES &ge;10 MeV: <code>${swData.goes_proton_10mev_pfu} pfu</code> · Kp: <code>${swData.kp_index}</code>`;
+        if (pcScene && pcScene.id) {
+          html += `<br/>Planetary Computer STAC: <code>${pcScene.id.slice(0, 26)}…</code>`;
+        }
+        if (meteo && meteo["t_2m:C"] !== undefined) {
+          html += `<br/>Meteomatics Arslanköy: <code>${meteo["t_2m:C"]}°C</code> · Wind <code>${meteo["wind_speed_100m:ms"]} m/s</code>`;
+        }
+        swEl.innerHTML = html;
       }
     } catch (_) {
       swEl.textContent = "Offline SPENVIS / OMNIWeb Envelope Active";
