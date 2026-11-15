@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AegisSat — Space Mission Architecture Simulator | NASA Space Apps 2026</title>
   <meta name="description" content="Interactive CubeSat Space Mission Architecture Simulator uniting KÜPSAT-01 TRL-7 heritage, IAC 2026 hybrid shielding, and WERR 24-Byte 0-SRAM SEU-immune avionics." />
+  <link rel="manifest" href="manifest.webmanifest" />
   <link rel="stylesheet" href="assets/css/styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 </head>
@@ -42,32 +43,37 @@
         <div id="orbit-options" class="opt-group"></div>
       </div>
       <div class="opt-group">
-        <span class="opt-label" data-i18n="lbl_events">Stress Tests &amp; Controls</span>
-        <div style="display:flex; flex-wrap:wrap; gap:0.45rem;">
+        <span class="opt-label" data-i18n="lbl_events">Stress Tests &amp; Fault Injection</span>
+        <div style="display:flex; flex-wrap:wrap; gap:0.42rem;">
           <button id="btn-storm" class="btn" data-i18n="btn_storm">Solar Storm: ON</button>
+          <button id="btn-spoof" class="btn warn" data-i18n="btn_spoof">Spoof / AI Attack: OFF</button>
           <button id="btn-explode" class="btn" data-i18n="btn_explode">Exploded View</button>
           <button id="btn-tumble" class="btn danger" data-i18n="btn_tumble">Inject KÜPSAT-01 Burst (3,647.58 °/s)</button>
+          <button id="btn-seu" class="btn warn" data-i18n="btn_seu">Flip 1 Bit in 24B Frame (SEU)</button>
         </div>
       </div>
     </section>
 
     <!-- Center: 3D CubeSat & Real-time Charts -->
     <section class="panel">
-      <h2 data-i18n="h_sim">2. 3D CubeSat &amp; ADCS Detumbling</h2>
+      <h2 data-i18n="h_sim">2. 3D CubeSat &amp; Rigid-Body ADCS</h2>
       <div class="viewport-wrap">
         <canvas id="cube-canvas"></canvas>
         <div class="hud-overlay">
           <span class="hud-pill">1U CDS Rev 14.1 · 100×100×113.5 mm</span>
           <span id="hud-status" class="hud-pill">S(f) = -6.9196 &lt; 0 | Mode 1: 100.76 Hz</span>
         </div>
+        <div class="hud-bottom">
+          <span class="hud-pill" data-i18n="hud_hint">Drag to rotate 3D CubeSat · Scroll to zoom</span>
+        </div>
       </div>
       <div class="charts-row">
         <div class="chart-card">
-          <h3 data-i18n="chart_adcs">Negative Schwarzian + Koenigs ADCS Energy Damping (10 Cycles = 94.37%)</h3>
+          <h3 data-i18n="chart_adcs">3-Axis Schwarzian + Koenigs ADCS Energy Damping (10 Cycles = 94.37%)</h3>
           <canvas id="adcs-chart" class="mini-chart"></canvas>
         </div>
         <div class="chart-card">
-          <h3 data-i18n="chart_flight">KÜPSAT-01 Verified Stratospheric Profile (25.64 km / 22.51 hPa / -54.50 °C)</h3>
+          <h3 data-i18n="chart_flight">KÜPSAT-01 Verified Flight Replay (421 Samples · 25.64 km · 22.51 hPa)</h3>
           <canvas id="flight-chart" class="mini-chart"></canvas>
         </div>
       </div>
@@ -75,25 +81,37 @@
 
     <!-- Right: Survivability Telemetry & 24-Byte WERR Frame -->
     <section class="panel">
-      <h2 data-i18n="h_telemetry">3. Survivability &amp; 24-Byte WERR Frame</h2>
+      <h2 data-i18n="h_telemetry">3. Survivability, Watchdog &amp; 24B WERR</h2>
       <div class="kpi-grid">
         <div class="kpi"><div class="k-label" data-i18n="k_survival">Mission Survival Score</div><div id="val-survival" class="k-val k-good">100%</div></div>
         <div class="kpi"><div class="k-label" data-i18n="k_seu">SRAM Weight Bit-Flips / Day</div><div id="val-seu" class="k-val k-good">0</div></div>
         <div class="kpi"><div class="k-label" data-i18n="k_sram">Mutable Weight SRAM</div><div id="val-sram" class="k-val">0 B</div></div>
         <div class="kpi"><div class="k-label" data-i18n="k_temp">Internal Min Temp</div><div id="val-temp" class="k-val">-112.77 °C</div></div>
         <div class="kpi"><div class="k-label" data-i18n="k_mass">1U Payload Margin (1,330 g)</div><div id="val-mass" class="k-val">957 g</div></div>
+        <div class="kpi"><div class="k-label" data-i18n="k_power">Avionics Power / Bus Cost</div><div id="val-power" class="k-val">0.35 W / $8,300</div></div>
         <div class="kpi"><div class="k-label" data-i18n="k_adcs">ADCS 10-Cycle Damping</div><div id="val-adcs" class="k-val k-good">94.37%</div></div>
+        <div class="kpi"><div class="k-label" data-i18n="k_guard">Watchdog &amp; Spoof Gate</div><div id="val-guard" class="k-val k-good">NOMINAL</div></div>
       </div>
+
+      <div id="badges-wrap" class="badges-wrap"></div>
+
       <div>
         <div class="opt-label" style="margin-bottom:0.35rem;" data-i18n="lbl_hex">Immutable 24-Byte (192-bit) WERR Frame + CRC-16/CCITT-FALSE</div>
         <div id="werr24-hex" class="hex-box">020203...</div>
+        <div id="seu-status" class="seu-alert">CRC-16/CCITT-FALSE: VALID</div>
       </div>
+
+      <div class="sw-box">
+        <div class="opt-label" data-i18n="lbl_sw">Live Space Weather (NOAA SWPC / NASA DONKI)</div>
+        <div id="sw-status">Syncing NOAA SWPC &amp; NASA DONKI...</div>
+      </div>
+
       <div>
-        <h2 style="margin-bottom:0.5rem;" data-i18n="h_heritage">Verified Flight &amp; Research Heritage</h2>
+        <h2 style="margin-bottom:0.45rem;" data-i18n="h_heritage">Verified Flight &amp; Research Heritage</h2>
         <ul class="heritage-list">
           <li>• <strong>IAC 2026 Antalya:</strong> <a href="https://iac2026.ipostersessions.com/default.aspx?s=37-F2-E3-3C-C9-44-80-17-24-BB-B9-A7-A6-5B-65-2D&guestview=true" target="_blank" rel="noopener">IAC-26-C2.IPB.29 Interactive Poster</a> (81.7% stress reduction, 100.76 Hz)</li>
           <li>• <strong>KÜPSAT-01 Flight Report:</strong> <a href="https://teknosanat.com.tr/lib/cubesat/cubesat_master_flight_report_tr.html" target="_blank" rel="noopener">7 Aug 2026 Stratospheric Mission</a> (25.64 km, 22.51 hPa, -54.50 °C)</li>
-          <li>• <strong>IP &amp; Patents:</strong> TPMK 2025/007159 (CubeSat Chassis) · TR 2026/020266 (Spoofing Barrier) · arXiv:2611.11641</li>
+          <li>• <strong>IP &amp; Patents:</strong> TPMK 2025/007159 · TR 2026/020266 · arXiv:2611.11641</li>
           <li>• <strong>Contact:</strong> <a href="mailto:info@aegissat.space">info@aegissat.space</a> · <a href="https://www.spaceappschallenge.org/2026/find-a-team/aegissat/?tab=details" target="_blank" rel="noopener">NASA Space Apps Team</a></li>
         </ul>
       </div>

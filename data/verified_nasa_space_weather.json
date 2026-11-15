@@ -1,0 +1,30 @@
+{
+  "updated_utc": "2026-11-15T15:13:09.938881+00:00",
+  "live_sources": [
+    "NOAA SWPC GOES >=10 MeV",
+    "NASA DONKI SEP"
+  ],
+  "noaa_swpc": {
+    "goes_proton_10mev_pfu": 0.2165,
+    "s_scale": "S0 (Quiet)",
+    "tier": "optimal",
+    "kp_index": 2.33
+  },
+  "nasa_donki": {
+    "recent_sep_events": []
+  },
+  "spenvis_omniweb_reference": {
+    "LEO_550km": {
+      "gcr_dose_krad_yr": 12.0,
+      "peak_sep_pfu": 450.0
+    },
+    "LUNAR_ARTEMIS": {
+      "gcr_dose_krad_yr": 45.0,
+      "peak_sep_pfu": 4200.0
+    },
+    "MARS_DEEP_SPACE": {
+      "gcr_dose_krad_yr": 85.0,
+      "peak_sep_pfu": 12000.0
+    }
+  }
+}

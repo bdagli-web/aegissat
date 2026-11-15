@@ -1,0 +1,3802 @@
+{
+  "mission": "KÜPSAT-01 Stratospheric Flight (TRL-7)",
+  "date": "2026-08-07",
+  "launch_site": "Arslanköy, Mersin, Türkiye (37.00379°N, 34.25370°E)",
+  "verified_peak_altitude_isa_m": 25636,
+  "verified_min_pressure_hpa": 22.51,
+  "verified_min_ext_temp_c": -54.5,
+  "verified_thermal_delta_c": 37.23,
+  "verified_burst_shock_g": 20.0,
+  "verified_burst_tumble_dps": 3647.58,
+  "samples": [
+    {
+      "t": "06:00:00",
+      "sec": 0,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:02:00",
+      "sec": 120,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:04:00",
+      "sec": 240,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:06:00",
+      "sec": 360,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:08:00",
+      "sec": 480,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:10:00",
+      "sec": 600,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:12:00",
+      "sec": 720,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:14:00",
+      "sec": 840,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:16:00",
+      "sec": 960,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:18:00",
+      "sec": 1080,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:20:00",
+      "sec": 1200,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:22:00",
+      "sec": 1320,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:24:00",
+      "sec": 1440,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:26:00",
+      "sec": 1560,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:28:00",
+      "sec": 1680,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:30:00",
+      "sec": 1800,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:32:00",
+      "sec": 1920,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:34:00",
+      "sec": 2040,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:36:00",
+      "sec": 2160,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:38:00",
+      "sec": 2280,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:40:00",
+      "sec": 2400,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:42:00",
+      "sec": 2520,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:44:00",
+      "sec": 2640,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:46:00",
+      "sec": 2760,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:48:00",
+      "sec": 2880,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:50:00",
+      "sec": 3000,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1455.37,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:52:00",
+      "sec": 3120,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1455.5,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:54:00",
+      "sec": 3240,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1455.25,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:56:00",
+      "sec": 3360,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1455.42,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "06:58:00",
+      "sec": 3480,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1460.82,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:00:00",
+      "sec": 3600,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1454.91,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:02:00",
+      "sec": 3720,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1454.01,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:04:00",
+      "sec": 3840,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1453.98,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:06:00",
+      "sec": 3960,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.64,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:08:00",
+      "sec": 4080,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1454.85,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:10:00",
+      "sec": 4200,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1455.09,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:12:00",
+      "sec": 4320,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1454.92,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:14:00",
+      "sec": 4440,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1455.66,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:16:00",
+      "sec": 4560,
+      "phase": "Saha Hazırlığı & Helyum Dolumu",
+      "alt_m": 1456.27,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:18:00",
+      "sec": 4680,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 1456.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:20:00",
+      "sec": 4800,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 1729.36,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:22:00",
+      "sec": 4920,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 2282.12,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:24:00",
+      "sec": 5040,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 3360.61,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:26:00",
+      "sec": 5160,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 3697.95,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:28:00",
+      "sec": 5280,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 4305.39,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:30:00",
+      "sec": 5400,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 4795.8,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:32:00",
+      "sec": 5520,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 4958.34,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:34:00",
+      "sec": 5640,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 5249.29,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:36:00",
+      "sec": 5760,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 5736.61,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:38:00",
+      "sec": 5880,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 5925.55,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:40:00",
+      "sec": 6000,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 6282.63,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:42:00",
+      "sec": 6120,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 6680.46,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:44:00",
+      "sec": 6240,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 6789.64,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:46:00",
+      "sec": 6360,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 7032.11,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:48:00",
+      "sec": 6480,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 7474.46,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:50:00",
+      "sec": 6600,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 7651.92,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:52:00",
+      "sec": 6720,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 7986.71,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:54:00",
+      "sec": 6840,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 8460.47,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:56:00",
+      "sec": 6960,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 8762.84,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "07:58:00",
+      "sec": 7080,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 8914.58,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:00:00",
+      "sec": 7200,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 9378.69,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:02:00",
+      "sec": 7320,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 9525.15,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:04:00",
+      "sec": 7440,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 9800.28,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:06:00",
+      "sec": 7560,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 10207.23,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:08:00",
+      "sec": 7680,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 10349.96,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:10:00",
+      "sec": 7800,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 10645.32,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:12:00",
+      "sec": 7920,
+      "phase": "Yükseliş Katmanı (GSM Aktif)",
+      "alt_m": 11086.78,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:14:00",
+      "sec": 8040,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 11241.75,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:16:00",
+      "sec": 8160,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 11712.63,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:18:00",
+      "sec": 8280,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 11882.77,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:20:00",
+      "sec": 8400,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 12229.13,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:22:00",
+      "sec": 8520,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 12695.17,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:24:00",
+      "sec": 8640,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 12861.25,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:26:00",
+      "sec": 8760,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 13358.33,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:28:00",
+      "sec": 8880,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 13514.48,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:30:00",
+      "sec": 9000,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 13835.59,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:32:00",
+      "sec": 9120,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 14346.03,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:34:00",
+      "sec": 9240,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 14525.82,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:36:00",
+      "sec": 9360,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 15063.88,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:38:00",
+      "sec": 9480,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 15241.29,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:40:00",
+      "sec": 9600,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 15772.48,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:42:00",
+      "sec": 9720,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 15959.92,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:44:00",
+      "sec": 9840,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 16322.22,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:46:00",
+      "sec": 9960,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 16905.94,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:48:00",
+      "sec": 10080,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 17090.32,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:50:00",
+      "sec": 10200,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 17613.34,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:52:00",
+      "sec": 10320,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 17798.77,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:54:00",
+      "sec": 10440,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 18127.47,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:56:00",
+      "sec": 10560,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 18629.63,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "08:58:00",
+      "sec": 10680,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 18793.82,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:00:00",
+      "sec": 10800,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 19280.02,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:02:00",
+      "sec": 10920,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 19434.92,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:04:00",
+      "sec": 11040,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 19739.93,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:06:00",
+      "sec": 11160,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 20214.69,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:08:00",
+      "sec": 11280,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 20358.1,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:10:00",
+      "sec": 11400,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 20814.98,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:12:00",
+      "sec": 11520,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 20955.12,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:14:00",
+      "sec": 11640,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 21240.4,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:16:00",
+      "sec": 11760,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 21669.88,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:18:00",
+      "sec": 11880,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 21810.93,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:20:00",
+      "sec": 12000,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 22224.24,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:22:00",
+      "sec": 12120,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 22355.58,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:24:00",
+      "sec": 12240,
+      "phase": "Stratosfer Yükselişi (GSM Blackout)",
+      "alt_m": 22627.29,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:26:00",
+      "sec": 12360,
+      "phase": "ZİRVE İRTİFA & Balon Patlaması",
+      "alt_m": 21661.55,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:28:00",
+      "sec": 12480,
+      "phase": "ZİRVE İRTİFA & Balon Patlaması",
+      "alt_m": 20922.03,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:30:00",
+      "sec": 12600,
+      "phase": "Paraşütlü Süzülme (GSM Blackout)",
+      "alt_m": 18832.79,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:32:00",
+      "sec": 12720,
+      "phase": "Paraşütlü Süzülme (GSM Blackout)",
+      "alt_m": 18172.56,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:34:00",
+      "sec": 12840,
+      "phase": "Paraşütlü Süzülme (GSM Blackout)",
+      "alt_m": 16332.67,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:36:00",
+      "sec": 12960,
+      "phase": "Paraşütlü Süzülme (GSM Blackout)",
+      "alt_m": 15748.51,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:38:00",
+      "sec": 13080,
+      "phase": "Paraşütlü Süzülme (GSM Blackout)",
+      "alt_m": 14179.86,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:40:00",
+      "sec": 13200,
+      "phase": "Paraşütlü Süzülme (GSM Blackout)",
+      "alt_m": 13681.18,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:42:00",
+      "sec": 13320,
+      "phase": "Paraşütlü Süzülme (GSM Blackout)",
+      "alt_m": 12297.62,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:44:00",
+      "sec": 13440,
+      "phase": "Paraşütlü Süzülme (GSM Blackout)",
+      "alt_m": 11853.08,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:46:00",
+      "sec": 13560,
+      "phase": "Paraşütlü Süzülme (GSM Blackout)",
+      "alt_m": 10771.78,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:48:00",
+      "sec": 13680,
+      "phase": "Paraşütlü Süzülme (GSM Blackout)",
+      "alt_m": 10408.42,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:50:00",
+      "sec": 13800,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 9408.53,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:52:00",
+      "sec": 13920,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 9110.69,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:54:00",
+      "sec": 14040,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 8243.13,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:56:00",
+      "sec": 14160,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 7943.6,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "09:58:00",
+      "sec": 14280,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 7098.41,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:00:00",
+      "sec": 14400,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 6817.9,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:02:00",
+      "sec": 14520,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 6305.45,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:04:00",
+      "sec": 14640,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 5591.01,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:06:00",
+      "sec": 14760,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 5342.67,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:08:00",
+      "sec": 14880,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 4598.24,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:10:00",
+      "sec": 15000,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 4361.67,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:12:00",
+      "sec": 15120,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 3637.26,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:14:00",
+      "sec": 15240,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 3298.45,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:16:00",
+      "sec": 15360,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 2655.72,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:18:00",
+      "sec": 15480,
+      "phase": "Paraşütlü Süzülme (GSM Aktif)",
+      "alt_m": 2036.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:20:00",
+      "sec": 15600,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1562.43,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:22:00",
+      "sec": 15720,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.58,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:24:00",
+      "sec": 15840,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1516.72,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:26:00",
+      "sec": 15960,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.34,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:28:00",
+      "sec": 16080,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.67,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:30:00",
+      "sec": 16200,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.31,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:32:00",
+      "sec": 16320,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.28,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:34:00",
+      "sec": 16440,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.66,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:36:00",
+      "sec": 16560,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.25,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:38:00",
+      "sec": 16680,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.96,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:40:00",
+      "sec": 16800,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.2,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:42:00",
+      "sec": 16920,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.09,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:44:00",
+      "sec": 17040,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.29,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:46:00",
+      "sec": 17160,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.25,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:48:00",
+      "sec": 17280,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.61,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:50:00",
+      "sec": 17400,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.49,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:52:00",
+      "sec": 17520,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.08,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:54:00",
+      "sec": 17640,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.26,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:56:00",
+      "sec": 17760,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.94,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "10:58:00",
+      "sec": 17880,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.48,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:00:00",
+      "sec": 18000,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.52,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:02:00",
+      "sec": 18120,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.47,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:04:00",
+      "sec": 18240,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.23,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:06:00",
+      "sec": 18360,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.5,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:08:00",
+      "sec": 18480,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.21,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:10:00",
+      "sec": 18600,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.66,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:12:00",
+      "sec": 18720,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.45,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:14:00",
+      "sec": 18840,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.48,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:16:00",
+      "sec": 18960,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.36,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:18:00",
+      "sec": 19080,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.16,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:20:00",
+      "sec": 19200,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.01,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:22:00",
+      "sec": 19320,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.03,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:24:00",
+      "sec": 19440,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1510.88,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:26:00",
+      "sec": 19560,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.06,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:28:00",
+      "sec": 19680,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.33,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:30:00",
+      "sec": 19800,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1510.68,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:32:00",
+      "sec": 19920,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1510.45,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:34:00",
+      "sec": 20040,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.85,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:36:00",
+      "sec": 20160,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:38:00",
+      "sec": 20280,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.84,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:40:00",
+      "sec": 20400,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.49,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:42:00",
+      "sec": 20520,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.62,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:44:00",
+      "sec": 20640,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.88,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:46:00",
+      "sec": 20760,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.32,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:48:00",
+      "sec": 20880,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.69,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:50:00",
+      "sec": 21000,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.37,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:52:00",
+      "sec": 21120,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.57,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:54:00",
+      "sec": 21240,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.81,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:56:00",
+      "sec": 21360,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.76,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "11:58:00",
+      "sec": 21480,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.34,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:00:00",
+      "sec": 21600,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.29,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:02:00",
+      "sec": 21720,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.06,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:04:00",
+      "sec": 21840,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.06,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:06:00",
+      "sec": 21960,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1511.42,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:08:00",
+      "sec": 22080,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.46,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:10:00",
+      "sec": 22200,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.81,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:12:00",
+      "sec": 22320,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.73,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:14:00",
+      "sec": 22440,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1516.61,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:16:00",
+      "sec": 22560,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.97,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:18:00",
+      "sec": 22680,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.37,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:20:00",
+      "sec": 22800,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.45,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:22:00",
+      "sec": 22920,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.28,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:24:00",
+      "sec": 23040,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.95,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:26:00",
+      "sec": 23160,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.76,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:28:00",
+      "sec": 23280,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.96,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:30:00",
+      "sec": 23400,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.51,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:32:00",
+      "sec": 23520,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.88,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:34:00",
+      "sec": 23640,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.61,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:36:00",
+      "sec": 23760,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.62,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:38:00",
+      "sec": 23880,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.49,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:40:00",
+      "sec": 24000,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.18,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:42:00",
+      "sec": 24120,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.38,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:44:00",
+      "sec": 24240,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.27,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:46:00",
+      "sec": 24360,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.55,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:48:00",
+      "sec": 24480,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.32,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:50:00",
+      "sec": 24600,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.1,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:52:00",
+      "sec": 24720,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.43,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:54:00",
+      "sec": 24840,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1512.96,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:56:00",
+      "sec": 24960,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.61,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "12:58:00",
+      "sec": 25080,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.88,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:00:00",
+      "sec": 25200,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.95,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:02:00",
+      "sec": 25320,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:04:00",
+      "sec": 25440,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.08,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:06:00",
+      "sec": 25560,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.13,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:08:00",
+      "sec": 25680,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.96,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:10:00",
+      "sec": 25800,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.68,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:12:00",
+      "sec": 25920,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.07,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:14:00",
+      "sec": 26040,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.63,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:16:00",
+      "sec": 26160,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.43,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:18:00",
+      "sec": 26280,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.39,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:20:00",
+      "sec": 26400,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1513.96,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:22:00",
+      "sec": 26520,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.29,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:24:00",
+      "sec": 26640,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.48,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:26:00",
+      "sec": 26760,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.13,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:28:00",
+      "sec": 26880,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.2,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:30:00",
+      "sec": 27000,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:32:00",
+      "sec": 27120,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.49,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:34:00",
+      "sec": 27240,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.2,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:36:00",
+      "sec": 27360,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.4,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:38:00",
+      "sec": 27480,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.53,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:40:00",
+      "sec": 27600,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.02,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:42:00",
+      "sec": 27720,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.33,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:44:00",
+      "sec": 27840,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.48,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:46:00",
+      "sec": 27960,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.52,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:48:00",
+      "sec": 28080,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.69,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:50:00",
+      "sec": 28200,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1514.58,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:52:00",
+      "sec": 28320,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.04,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:54:00",
+      "sec": 28440,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.52,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:56:00",
+      "sec": 28560,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.4,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "13:58:00",
+      "sec": 28680,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.98,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:00:00",
+      "sec": 28800,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1516.11,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:02:00",
+      "sec": 28920,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.3,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:04:00",
+      "sec": 29040,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.77,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:06:00",
+      "sec": 29160,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1516.24,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:08:00",
+      "sec": 29280,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.51,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:10:00",
+      "sec": 29400,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.31,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:12:00",
+      "sec": 29520,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.44,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:14:00",
+      "sec": 29640,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.46,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:16:00",
+      "sec": 29760,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.22,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:18:00",
+      "sec": 29880,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.27,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:20:00",
+      "sec": 30000,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.04,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:22:00",
+      "sec": 30120,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.21,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:24:00",
+      "sec": 30240,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.65,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:26:00",
+      "sec": 30360,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.61,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:28:00",
+      "sec": 30480,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1516.01,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:30:00",
+      "sec": 30600,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.99,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:32:00",
+      "sec": 30720,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.37,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:34:00",
+      "sec": 30840,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.1,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:36:00",
+      "sec": 30960,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.54,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:38:00",
+      "sec": 31080,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.56,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:40:00",
+      "sec": 31200,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.96,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:42:00",
+      "sec": 31320,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1515.75,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:44:00",
+      "sec": 31440,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1516.16,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:46:00",
+      "sec": 31560,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.2,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:48:00",
+      "sec": 31680,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.03,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:50:00",
+      "sec": 31800,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.09,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:52:00",
+      "sec": 31920,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1516.87,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:54:00",
+      "sec": 32040,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.01,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:56:00",
+      "sec": 32160,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.31,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "14:58:00",
+      "sec": 32280,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.59,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:00:00",
+      "sec": 32400,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.8,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:02:00",
+      "sec": 32520,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1516.91,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:04:00",
+      "sec": 32640,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.72,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:06:00",
+      "sec": 32760,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.73,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:08:00",
+      "sec": 32880,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1518.1,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:10:00",
+      "sec": 33000,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.66,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:12:00",
+      "sec": 33120,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.61,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:14:00",
+      "sec": 33240,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.55,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:16:00",
+      "sec": 33360,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1516.95,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:18:00",
+      "sec": 33480,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.45,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:20:00",
+      "sec": 33600,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.14,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:22:00",
+      "sec": 33720,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1517.53,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:24:00",
+      "sec": 33840,
+      "phase": "Dağlık Arazide Sabit Bekleme (Reset #1)",
+      "alt_m": 1518.06,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:26:00",
+      "sec": 33960,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1509.82,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:28:00",
+      "sec": 34080,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1500.83,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:30:00",
+      "sec": 34200,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1502.58,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:32:00",
+      "sec": 34320,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1480.04,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:34:00",
+      "sec": 34440,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1456.22,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:36:00",
+      "sec": 34560,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1438.68,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:38:00",
+      "sec": 34680,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1401.77,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:40:00",
+      "sec": 34800,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1362.3,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:42:00",
+      "sec": 34920,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1345.83,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:44:00",
+      "sec": 35040,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1325.8,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:46:00",
+      "sec": 35160,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1250.03,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:48:00",
+      "sec": 35280,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1194.85,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:50:00",
+      "sec": 35400,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1146.35,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:52:00",
+      "sec": 35520,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1085.44,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:54:00",
+      "sec": 35640,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1048.73,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:56:00",
+      "sec": 35760,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1046.29,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "15:58:00",
+      "sec": 35880,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1103.65,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:00:00",
+      "sec": 36000,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1199.05,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:02:00",
+      "sec": 36120,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1202.81,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:04:00",
+      "sec": 36240,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1202.51,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:06:00",
+      "sec": 36360,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1203.64,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:08:00",
+      "sec": 36480,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1203.4,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:10:00",
+      "sec": 36600,
+      "phase": "Kurtarma Ekibi Nakil (Reset #2)",
+      "alt_m": 1203.15,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:12:00",
+      "sec": 36720,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:14:00",
+      "sec": 36840,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:16:00",
+      "sec": 36960,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:18:00",
+      "sec": 37080,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:20:00",
+      "sec": 37200,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:22:00",
+      "sec": 37320,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:24:00",
+      "sec": 37440,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:26:00",
+      "sec": 37560,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:28:00",
+      "sec": 37680,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:30:00",
+      "sec": 37800,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:32:00",
+      "sec": 37920,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:34:00",
+      "sec": 38040,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:36:00",
+      "sec": 38160,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:38:00",
+      "sec": 38280,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:40:00",
+      "sec": 38400,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:42:00",
+      "sec": 38520,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:44:00",
+      "sec": 38640,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:46:00",
+      "sec": 38760,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:48:00",
+      "sec": 38880,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:50:00",
+      "sec": 39000,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:52:00",
+      "sec": 39120,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:54:00",
+      "sec": 39240,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:56:00",
+      "sec": 39360,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "16:58:00",
+      "sec": 39480,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:00:00",
+      "sec": 39600,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:02:00",
+      "sec": 39720,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:04:00",
+      "sec": 39840,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:06:00",
+      "sec": 39960,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:08:00",
+      "sec": 40080,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:10:00",
+      "sec": 40200,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:12:00",
+      "sec": 40320,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:14:00",
+      "sec": 40440,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:16:00",
+      "sec": 40560,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:18:00",
+      "sec": 40680,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:20:00",
+      "sec": 40800,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:22:00",
+      "sec": 40920,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:24:00",
+      "sec": 41040,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:26:00",
+      "sec": 41160,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:28:00",
+      "sec": 41280,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:30:00",
+      "sec": 41400,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:32:00",
+      "sec": 41520,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:34:00",
+      "sec": 41640,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:36:00",
+      "sec": 41760,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:38:00",
+      "sec": 41880,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:40:00",
+      "sec": 42000,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:42:00",
+      "sec": 42120,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:44:00",
+      "sec": 42240,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:46:00",
+      "sec": 42360,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:48:00",
+      "sec": 42480,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:50:00",
+      "sec": 42600,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:52:00",
+      "sec": 42720,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:54:00",
+      "sec": 42840,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:56:00",
+      "sec": 42960,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "17:58:00",
+      "sec": 43080,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:00:00",
+      "sec": 43200,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:02:00",
+      "sec": 43320,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:04:00",
+      "sec": 43440,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:06:00",
+      "sec": 43560,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:08:00",
+      "sec": 43680,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:10:00",
+      "sec": 43800,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:12:00",
+      "sec": 43920,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:14:00",
+      "sec": 44040,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:16:00",
+      "sec": 44160,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:18:00",
+      "sec": 44280,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:20:00",
+      "sec": 44400,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:22:00",
+      "sec": 44520,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:24:00",
+      "sec": 44640,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:26:00",
+      "sec": 44760,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:28:00",
+      "sec": 44880,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:30:00",
+      "sec": 45000,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:32:00",
+      "sec": 45120,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:34:00",
+      "sec": 45240,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:36:00",
+      "sec": 45360,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:38:00",
+      "sec": 45480,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:40:00",
+      "sec": 45600,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:42:00",
+      "sec": 45720,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:44:00",
+      "sec": 45840,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:46:00",
+      "sec": 45960,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:48:00",
+      "sec": 46080,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:50:00",
+      "sec": 46200,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:52:00",
+      "sec": 46320,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:54:00",
+      "sec": 46440,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:56:00",
+      "sec": 46560,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "18:58:00",
+      "sec": 46680,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:00:00",
+      "sec": 46800,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:02:00",
+      "sec": 46920,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:04:00",
+      "sec": 47040,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:06:00",
+      "sec": 47160,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:08:00",
+      "sec": 47280,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:10:00",
+      "sec": 47400,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:12:00",
+      "sec": 47520,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:14:00",
+      "sec": 47640,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:16:00",
+      "sec": 47760,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:18:00",
+      "sec": 47880,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:20:00",
+      "sec": 48000,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:22:00",
+      "sec": 48120,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:24:00",
+      "sec": 48240,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:26:00",
+      "sec": 48360,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:28:00",
+      "sec": 48480,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:30:00",
+      "sec": 48600,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:32:00",
+      "sec": 48720,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:34:00",
+      "sec": 48840,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:36:00",
+      "sec": 48960,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:38:00",
+      "sec": 49080,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:40:00",
+      "sec": 49200,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:42:00",
+      "sec": 49320,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:44:00",
+      "sec": 49440,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:46:00",
+      "sec": 49560,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:48:00",
+      "sec": 49680,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:50:00",
+      "sec": 49800,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:52:00",
+      "sec": 49920,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:54:00",
+      "sec": 50040,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:56:00",
+      "sec": 50160,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "19:58:00",
+      "sec": 50280,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    },
+    {
+      "t": "20:00:00",
+      "sec": 50400,
+      "phase": "Mezitli Üssüne Dönüş",
+      "alt_m": 20.0,
+      "press_hpa": 0.0,
+      "t_in_c": 0.0,
+      "t_out_c": 0.0
+    }
+  ]
+}
